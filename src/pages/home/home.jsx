@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Form from "../form/form";
+import Form from "../../components/form/form";
 
 function home() {
   const settings = {

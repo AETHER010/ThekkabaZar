@@ -1,14 +1,14 @@
 // AppRouter.js
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/home/home";
-import Price from "./components/pricelist/price";
+import Home from "./pages/home/home";
+import Price from "./pages/pricelist/price";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
-import Results from "./components/result/results";
+import Results from "./pages/result/results";
 import Bazar from "./components/Bazar/bazar";
-import PrivateWorks from "./components/privateWorks/privatework";
-import Taxvat from "./components/TaxVat/taxvat";
+import PrivateWorks from "./pages/privateWorks/privatework";
+import Taxvat from "./pages/TaxVat/taxvat";
 
 function App() {
   return (
