@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start m-5 p-5">
+        <div className="flex flex-col items-start m-5 p-5 ">
           <h1 className="text-lg text-white ">Company</h1>
 
           <p className="text-white m-3">About Us</p>
@@ -53,10 +53,23 @@ export default function Footer() {
           <p className="text-white m-3">Refund Policy</p>
         </div>
 
-        <div className="flex border rounded-sm bg-main m-5 p-5">
+        <div className="flex flex-col border border-slate-400 rounded-lg bg-sky-600 m-5 p-5">
           <h1 className="text=lg text-white font-popins font-semibold	subpixel-antialiased">
             Subscribe Newsletter
           </h1>
+          <div className="flex items-center m-4 rounded-full bg-white">
+            <input
+              type="text"
+              placeholder="Enter your email address"
+              className=" p-2 rounded-full w-full focus:border-none outline-none"
+            />
+            <button className="bg-orange text-white p-2 w-44 text-lg rounded-full ">
+              Submit
+            </button>
+          </div>
+          <p className="text-white text-sm mt-4 p-2 font-popins">
+            Will send you weekly updates for your better tool management.
+          </p>
         </div>
       </div>
     </footer>

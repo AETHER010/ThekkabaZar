@@ -6,7 +6,7 @@ import Price from "./pages/pricelist/price";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import Results from "./pages/result/results";
-import Bazar from "./components/Bazar/bazar";
+import Bazar from "./pages/Bazar/bazar";
 import PrivateWorks from "./pages/privateWorks/privatework";
 import Taxvat from "./pages/TaxVat/taxvat";
 
