@@ -72,6 +72,14 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      <div className="flex justify-between">
+        <p className="text-white text-popins">
+          © Copyright Bolpatra Nepal. All Rights Reserved
+        </p>
+        <p className="text-white text-popins">
+          Designed by: <span className="text-sky-500">IT Nepal Solutions </span>
+        </p>
+      </div>
     </footer>
   );
 }

@@ -43,12 +43,12 @@ function navbar() {
         >
           Register
         </Button>
-        <Button
+        <Link
+          to="/login"
           className="text-black bg-lime-600 px-4 py-2 rounded-lg"
-          variant="outlined"
         >
           Login
-        </Button>
+        </Link>
 
         {/* <button className="bg-orange-400 text-black px-4 py-2 rounded-lg">
           Register

@@ -9,6 +9,7 @@ import Results from "./pages/result/results";
 import Bazar from "./pages/Bazar/bazar";
 import PrivateWorks from "./pages/privateWorks/privatework";
 import Taxvat from "./pages/TaxVat/taxvat";
+import Login from "./pages/login/login";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/bazar" element={<Bazar />} />
           <Route path="/privateWorks" element={<PrivateWorks />} />
           <Route path="/taxvat" element={<Taxvat />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </div>

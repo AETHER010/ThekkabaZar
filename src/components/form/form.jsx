@@ -57,8 +57,8 @@ function Form() {
 
       <div className="border-b-2 m-5"></div>
 
-      <div className="flex space-x-4 p-3">
-        <Box className="w-56 " sx={{ minWidth: 120 }}>
+      <div className="flex flex-wrap space-y-4 md:space-x-4 md:space-y-0 p-3">
+        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label items-center">
               Select Category
@@ -77,7 +77,7 @@ function Form() {
             </Select>
           </FormControl>
         </Box>
-        <Box className="w-56" sx={{ minWidth: 120 }}>
+        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label" className=" w-full">
               Select Locations
@@ -96,7 +96,7 @@ function Form() {
             </Select>
           </FormControl>
         </Box>
-        <Box className="w-56" sx={{ minWidth: 120 }}>
+        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label" className=" w-full">
               Published Date
@@ -115,7 +115,7 @@ function Form() {
             </Select>
           </FormControl>
         </Box>
-        <Box className="w-56" sx={{ minWidth: 120 }}>
+        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label" className=" w-full">
               Project Types
@@ -134,7 +134,7 @@ function Form() {
             </Select>
           </FormControl>
         </Box>
-        <Box className="w-56" sx={{ minWidth: 120 }}>
+        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label" className=" w-full">
               Procruments Types
@@ -154,7 +154,7 @@ function Form() {
           </FormControl>
         </Box>
         <Button
-          className="bg-primary h-12 items-center w-60 text-sm shadow"
+          className="bg-primary h-12 items-center text-sm shadow"
           variant="contained"
         >
           Search Tender
