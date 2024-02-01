@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Form from "../../components/form/form";
+import Card from "./Card/card";
 
 function home() {
   const settings = {
@@ -63,6 +64,7 @@ function home() {
         </Slider>
       </div>
       <Form />
+      <Card />
     </div>
   );
 }
