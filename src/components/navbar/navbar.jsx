@@ -37,7 +37,7 @@ function navbar() {
 
       <div className="flex items-center space-x-6 ">
         <Button
-          className="bg-orange-400 text-black px-4 py-2 rounded-lg"
+          className="bg-[#F48023] text-black px-4 py-2 rounded-lg"
           variant="contained"
           startIcon={<AddCircleIcon />}
         >
