@@ -15,7 +15,7 @@ function Form() {
     setAge(event.target.value);
   };
   return (
-    <div className=" m-8 p-3 bg-lightblue shadow-lg	 border-1">
+    <div className=" mx-8 p-5 bg-lightblue shadow-lg border-1">
       <h1 className="text-4xl m-3 font-medium text-cyan-600">Filter</h1>
 
       <div className="flex items-center space-x-4 p-3">
@@ -45,6 +45,9 @@ function Form() {
             variant="outlined"
             label="Enter Keywords"
             InputProps={{
+              classes: {
+                notchedOutline: "border-none",
+              },
               endAdornment: (
                 <span style={{ cursor: "pointer" }}>
                   <SearchIcon />

@@ -88,7 +88,8 @@ export default function Bazar() {
             </Button>
           </div>
         </div>
-        <div className="w-3/5 flex flex-row flex-wrap justify-center items-center ">
+
+        <div className="lg:w-3/5 md:w-full sm:w-full flex flex-row flex-wrap justify-center ">
           <div className="flex flex-col items-center w-60 ">
             <h1 className="text-main text-md font-popins mb-4">
               Emulsion Paints & Putty

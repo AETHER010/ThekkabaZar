@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,9 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Form from "../../components/form/form";
 import Card from "./Card/card";
 
-function home() {
+const Home = () => {
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -24,7 +23,7 @@ function home() {
         <Slider {...settings}>
           <div className="relative">
             <img
-              src="https://placekitten.com/1200/300"
+              src="https://placekitten.com/1200/301"
               alt="Slider 1"
               className="w-full h-96 object-cover"
             />
@@ -67,6 +66,6 @@ function home() {
       <Card />
     </div>
   );
-}
+};
 
-export default home;
+export default Home;

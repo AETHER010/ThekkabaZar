@@ -13,6 +13,11 @@ module.exports = {
       fontFamily: {
         popins: ["popins", "Proxima Nova", "sans-serif"],
       },
+      // screens: {
+      //   lg: "",
+      //   md: "",
+      //   sm: "428",
+      // },
     },
   },
   plugins: [],
