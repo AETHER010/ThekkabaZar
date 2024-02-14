@@ -2,18 +2,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchDropdownData = createAsyncThunk(
-  "data/fetchDropdownData",
+export const fetchNoticeData = createAsyncThunk(
+  "data/fetchNoticeData",
   async () => {
     const response = await axios.get(
-      "https://thekkabazar.itnepalsolutions.com/tender/apis/master/list/"
+      "https://thekkabazar.itnepalsolutions.com/tender/apis/tender-notice/"
     );
     const data = response.data;
-    return data.data;
+    return data;
   }
 );
 
-const dropDownSlice = createSlice({
+const noticeSlice = createSlice({
   name: "data",
   initialState: {
     data: [],
@@ -23,18 +23,18 @@ const dropDownSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDropdownData.pending, (state) => {
+      .addCase(fetchNoticeData.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchDropdownData.fulfilled, (state, action) => {
+      .addCase(fetchNoticeData.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
       })
-      .addCase(fetchDropdownData.rejected, (state, action) => {
+      .addCase(fetchNoticeData.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
   },
 });
 
-export default dropDownSlice.reducer;
+export default noticeSlice.reducer;

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchNoticeData } from "../../../reducers/noticeSlice";
+
 const Noticecard = () => {
+  const dispatch = useDispatch();
+  const { data, status, error } = useSelector((state) => state.notice);
+
+  useEffect(() => {
+    dispatch(fetchNoticeData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log("Noticecard", data);
+  }, []);
+
   return (
     <div className="border mx-3 my-5 p-3 shadow-lg">
       <div className="flex flex-row justify-center">
@@ -13,20 +27,18 @@ const Noticecard = () => {
 
       <div className="pl-6 mt-3">
         <ul className="flex flex-col list-disc">
-          <li>
-            <p className="text-[#035FC8] overflow-hidden line-clamp-2">
-              A tender notice can be the on prepared in the form dummy. A tender
-              notice can be the on prepared in the form dummy...
-            </p>
-            <p className="text-sm">2080/12/12, Monday</p>
-          </li>
-          <li>
-            <p className="text-[#035FC8] overflow-hidden line-clamp-2">
-              A tender notice can be the on prepared in the form dummy. A tender
-              notice can be the on prepared in the form dummy...
-            </p>
-            <p className="text-sm">2080/12/12, Monday</p>
-          </li>
+          {data?.data?.map((items, index) => (
+            <li>
+              <p
+                className="text-[#035FC8] overflow-hidden line-clamp-2"
+                key={index}
+                value={items.tender}
+              >
+                {items.notice}
+              </p>
+              <p className="text-sm">2080/12/12, Monday</p>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

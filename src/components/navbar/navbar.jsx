@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 
-function navbar() {
+function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuClose = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="bg-white p-4 flex items-center justify-between shadow-lg">
       <div className="flex items-center space-x-9 pl-2">
@@ -14,28 +26,71 @@ function navbar() {
         />
       </div>
 
-      <div className="space-x-8">
-        <Link to="/" className="text-black">
+      {/* Mobile Menu */}
+      <div className="lg:hidden">
+        <Button onClick={handleMenuToggle} aria-label="Menu">
+          <MenuIcon />
+        </Button>
+      </div>
+
+      {/* Desktop Menu */}
+      <div
+        className={`space-x-8 lg:flex hidden ${isMenuOpen ? "flex" : "hidden"}`}
+      >
+        <Link to="/" className="text-black" onClick={handleMenuClose}>
           Home
         </Link>
-        <Link to="/results" className="text-black">
+        <Link to="/results" className="text-black" onClick={handleMenuClose}>
           Result
         </Link>
-        <Link to="/pricing" className="text-black">
+        <Link to="/pricing" className="text-black" onClick={handleMenuClose}>
           Pricing
         </Link>
-        <Link to="/bazar" className="text-black">
+        <Link to="/bazar" className="text-black" onClick={handleMenuClose}>
           Bazar
         </Link>
-        <Link to="/privateWorks" className="text-black">
+        <Link
+          to="/privateWorks"
+          className="text-black"
+          onClick={handleMenuClose}
+        >
           Private Works
         </Link>
-        <Link to="/taxvat" className="text-black">
+        <Link to="/taxvat" className="text-black" onClick={handleMenuClose}>
           Tax & VAT Services
         </Link>
       </div>
 
-      <div className="flex items-center space-x-6 ">
+      {/* Mobile Menu Links */}
+      {isMenuOpen && (
+        <div className="lg:hidden fixed w-72 top-0 right-0 bottom-0 bg-main flex flex-col items-center p-4 z-10">
+          <div className="flex justify-end w-full">
+            <Button onClick={handleMenuClose} aria-label="Close">
+              <CloseIcon style={{ color: "white" }} />
+            </Button>
+          </div>
+          <Link to="/" className="text-white my-2">
+            Home
+          </Link>
+          <Link to="/results" className="text-white my-2">
+            Result
+          </Link>
+          <Link to="/pricing" className="text-white my-2">
+            Pricing
+          </Link>
+          <Link to="/bazar" className="text-white my-2">
+            Bazar
+          </Link>
+          <Link to="/privateWorks" className="text-white my-2">
+            Private Works
+          </Link>
+          <Link to="/taxvat" className="text-white my-2">
+            Tax & VAT Services
+          </Link>
+        </div>
+      )}
+
+      <div className="flex items-center space-x-6 lg:flex hidden">
         <Button
           className="bg-[#F48023] text-black px-4 py-2 rounded-lg"
           variant="contained"
@@ -49,16 +104,9 @@ function navbar() {
         >
           Login
         </Link>
-
-        {/* <button className="bg-orange-400 text-black px-4 py-2 rounded-lg">
-          Register
-        </button>
-        <button className="text-black bg-lime-600 px-4 py-2 rounded-lg">
-          Login
-        </button> */}
       </div>
     </nav>
   );
 }
 
-export default navbar;
+export default Navbar;

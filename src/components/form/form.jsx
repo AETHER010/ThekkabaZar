@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -8,12 +8,22 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDropdownData } from "../../reducers/formSlice";
+
 function Form() {
+  const dispatch = useDispatch();
+  const { data, status, error } = useSelector((state) => state.dropdetails);
   const [age, setAge] = useState("");
+
+  useEffect(() => {
+    dispatch(fetchDropdownData());
+  }, [dispatch]);
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
   return (
     <div className=" mx-8 p-5 bg-lightblue shadow-lg border-1">
       <h1 className="text-4xl m-3 font-medium text-cyan-600">Filter</h1>
@@ -32,9 +42,11 @@ function Form() {
               sx={{ height: "3rem" }}
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {data?.organization_sectors?.map((organization, index) => (
+                <MenuItem key={index} value={organization.id}>
+                  {organization.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
@@ -60,8 +72,8 @@ function Form() {
 
       <div className="border-b-2 m-5"></div>
 
-      <div className="flex flex-wrap space-y-4 md:space-x-4 md:space-y-0 p-3">
-        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
+      <div className="flex flex-wrap p-3 justify-evenly">
+        <Box className="w-full md:w-80 lg:w-56 mt-2" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label items-center">
               Select Category
@@ -74,13 +86,15 @@ function Form() {
               sx={{ height: "3rem" }}
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {data?.categories?.map((items, index) => (
+                <MenuItem key={index} value={items.id}>
+                  {items.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
-        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
+        <Box className="w-full md:w-80 lg:w-56 mt-2" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label" className=" w-full">
               Select Locations
@@ -93,13 +107,15 @@ function Form() {
               sx={{ height: "3rem" }}
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {data?.districts?.map((items, index) => (
+                <MenuItem key={index} value={items.id}>
+                  {items.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
-        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
+        <Box className="w-full md:w-80 lg:w-56  mt-2" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label" className=" w-full">
               Published Date
@@ -112,13 +128,15 @@ function Form() {
               sx={{ height: "3rem" }}
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {data?.districts?.map((items, index) => (
+                <MenuItem key={index} value={items.id}>
+                  {items.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
-        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
+        <Box className="w-full md:w-80 lg:w-56  mt-2" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label" className=" w-full">
               Project Types
@@ -131,13 +149,15 @@ function Form() {
               sx={{ height: "3rem" }}
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {data?.project_types?.map((items, index) => (
+                <MenuItem key={index} value={items.id}>
+                  {items.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
-        <Box className="w-full md:w-80 lg:w-56" sx={{ minWidth: 120 }}>
+        <Box className="w-full md:w-80 lg:w-56  mt-2" sx={{ minWidth: 120 }}>
           <FormControl fullWidth className="bg-white">
             <InputLabel id="simple-select-label" className=" w-full">
               Procruments Types
@@ -150,14 +170,16 @@ function Form() {
               sx={{ height: "3rem" }}
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {data?.procurement_types?.map((items, index) => (
+                <MenuItem key={index} value={items.id}>
+                  {items.name}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
         <Button
-          className="bg-primary h-12 items-center text-sm shadow"
+          className="bg-primary h-12  mt-2 items-center text-sm shadow"
           variant="contained"
         >
           Search Tender
