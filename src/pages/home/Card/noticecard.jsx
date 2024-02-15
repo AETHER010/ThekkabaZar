@@ -28,10 +28,9 @@ const Noticecard = () => {
       <div className="pl-6 mt-3">
         <ul className="flex flex-col list-disc">
           {data?.data?.map((items, index) => (
-            <li>
+            <li key={index}>
               <p
                 className="text-[#035FC8] overflow-hidden line-clamp-2"
-                key={index}
                 value={items.tender}
               >
                 {items.notice}

@@ -4,6 +4,7 @@ import cardSlice from "../reducers/cardSlice";
 import userSlice from "../reducers/authSlice";
 import dropdetails from "../reducers/formSlice";
 import noticeData from "../reducers/noticeSlice";
+import privateWorkSlice from "../reducers/privateWorkSlice";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     users: userSlice,
     dropdetails: dropdetails,
     notice: noticeData,
+    privateWorks: privateWorkSlice,
   },
 });
 

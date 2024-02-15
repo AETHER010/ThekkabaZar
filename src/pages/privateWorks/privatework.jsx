@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PrivateWork from "../../Assets/privateWork.png";
 import TouchAppIcon from "@mui/icons-material/TouchApp";
 import Groups2Icon from "@mui/icons-material/Groups2";
@@ -12,7 +12,56 @@ import LinkIcon from "@mui/icons-material/Link";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const privatework = (props) => {
+import { useDispatch, useSelector } from "react-redux";
+import { postPrivateWork } from "../../reducers/privateWorkSlice";
+import { getPrivateWork } from "../../reducers/privateWorkSlice";
+
+const Privatework = () => {
+  const dispatch = useDispatch();
+  const { data, status, error } = useSelector((state) => state.privateWorks);
+
+  useEffect(() => {
+    dispatch(getPrivateWork());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log(`PrivateWork`, data.data);
+  }, []);
+
+  const [formData, setFormData] = useState({
+    work: "",
+    address: "",
+    company: "",
+    phone_number: "",
+    rate: "",
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = () => {
+    console.log("FormSubmit", formData);
+    dispatch(postPrivateWork(formData))
+      .then(() => {
+        // Reset form fields
+        setFormData({
+          work: "",
+          address: "",
+          company: "",
+          phone_number: "",
+          rate: "",
+        });
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  };
+
   return (
     <div className="my-2 px-3">
       <div>
@@ -51,39 +100,43 @@ const privatework = (props) => {
 
       <div className="flex flex-row">
         <div className="flex flex-col w-2/3">
-          <Card variant="outlined" className="m-2 p-2 shadow-lg">
-            <CardContent>
-              <div className="flex flex-row">
-                <span>
-                  <CalendarMonthIcon />
-                </span>
-                <p>Published Date: 2080-05-12</p>
-              </div>
-              <div className="flex flex-row mt-2">
-                <div className="flex flex-row bg-[#F0F7FF] mr-1 p-2 rounded-lg">
+          {data?.data?.map((items, index) => (
+            <Card key={index} variant="outlined" className="m-2 p-2 shadow-lg">
+              <CardContent>
+                <div className="flex flex-row">
                   <span>
-                    <LocationOnIcon />
+                    <CalendarMonthIcon />
                   </span>
-                  <p className="text-[#185CAB]">Kathmandu</p>
+                  <p>Published Date: 2080-05-12</p>
                 </div>
-                <div className="flex flex-row bg-[#FFF2F0] mr-1 p-2 rounded-lg">
-                  <p className="text-[#FF7A00]">Phone: 9860009939</p>
+                <div className="flex flex-row mt-2">
+                  <div className="flex flex-row bg-[#F0F7FF] mr-1 p-2 rounded-lg">
+                    <span>
+                      <LocationOnIcon />
+                    </span>
+                    <p className="text-[#185CAB]">{items.address}</p>
+                  </div>
+                  <div className="flex flex-row bg-[#FFF2F0] mr-1 p-2 rounded-lg">
+                    <p className="text-[#FF7A00]">
+                      Phone: {items.phone_number}
+                    </p>
+                  </div>
+                  <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
+                    <p className="text-[#0F9E1D]">Rate: {items.rate}</p>
+                  </div>
                 </div>
-                <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
-                  <p className="text-[#0F9E1D]">Rate: 5000</p>
-                </div>
-              </div>
-              <p className="text-black font-bold font-popins text-md mt-3">
-                Fruit Plants And Flower Plants
-              </p>
-              <p className="text-[#565252] font-popins text-md mt-3">
-                vaktapur Nursary and good supplier
-              </p>
-            </CardContent>
-          </Card>
+                <p className="text-black font-bold font-popins text-md mt-3">
+                  {items.work}
+                </p>
+                <p className="text-[#565252] font-popins text-md mt-3">
+                  {items.company}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        <div className="flex flex-col w-1/3 border m-2  rounded-lg shadow-lg">
+        <div className="flex flex-col w-1/3 h-1/2 border m-2  rounded-lg shadow-lg">
           <div className="flex flex-row justify-center p-3">
             <span className="origin-center rotate-45">
               <LinkIcon />
@@ -98,33 +151,52 @@ const privatework = (props) => {
             id="outlined-basic"
             label="Work"
             variant="outlined"
+            name="work"
+            value={formData.work}
+            onChange={handleInputChange}
           />
           <TextField
             className="bg-[#F9FAFB] m-2 rounded-lg"
             id="outlined-basic"
             label="Address"
             variant="outlined"
+            name="address"
+            value={formData.address}
+            onChange={handleInputChange}
           />
           <TextField
             className="bg-[#F9FAFB] m-2 rounded-lg"
             id="outlined-basic"
             label="Company"
             variant="outlined"
+            name="company"
+            value={formData.company}
+            onChange={handleInputChange}
           />
           <TextField
             className="bg-[#F9FAFB] m-2 rounded-lg"
             id="outlined-basic"
             label="Phone Number"
             variant="outlined"
+            name="phone_number"
+            value={formData.phone_number}
+            onChange={handleInputChange}
           />
           <TextField
             className="bg-[#F9FAFB] m-2 rounded-lg"
             id="outlined-basic"
             label="Rate"
             variant="outlined"
+            name="rate"
+            value={formData.rate}
+            onChange={handleInputChange}
           />
           <div className="flex justify-center">
-            <Button className="m-3 px-5" variant="contained">
+            <Button
+              className="m-3 px-5"
+              variant="contained"
+              onClick={handleFormSubmit}
+            >
               Submit Petty
             </Button>
           </div>
@@ -137,4 +209,4 @@ const privatework = (props) => {
   );
 };
 
-export default privatework;
+export default Privatework;

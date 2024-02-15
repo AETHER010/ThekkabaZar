@@ -14,10 +14,24 @@ export const fetchTenderListData = createAsyncThunk(
   }
 );
 
+export const fetchOneTenderData = createAsyncThunk(
+  "data/fetchOneTenderData",
+  async ({ tenderId }) => {
+    console.log(tenderId);
+    const response = await axios.get(
+      `https://thekkabazar.itnepalsolutions.com/tender/apis/tenders/${tenderId}/`
+    );
+    console.log(response);
+    const data = response.data;
+    return data;
+  }
+);
+
 const cardSlice = createSlice({
   name: "card",
   initialState: {
     data: [],
+    one: [],
     status: "idle",
     error: null,
   },
@@ -32,6 +46,17 @@ const cardSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(fetchTenderListData.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchOneTenderData.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchOneTenderData.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.one = action.payload;
+      })
+      .addCase(fetchOneTenderData.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

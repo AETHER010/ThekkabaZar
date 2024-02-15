@@ -14,6 +14,7 @@ import GridViewIcon from "@mui/icons-material/GridView";
 
 import CardActions from "@mui/material/CardActions";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
+import Pagination from "@mui/material/Pagination";
 
 import Orgcard from "./orgcard";
 import Noticecard from "./noticecard";
@@ -21,10 +22,16 @@ import Noticecard from "./noticecard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTenderListData } from "../../../reducers/cardSlice";
 
+import { useNavigate } from "react-router-dom";
+
 const CardComponent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { data, status, error } = useSelector((state) => state.card);
   const [isgrid, setIsGrid] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const bidsPerPage = 10;
 
   useEffect(() => {
     dispatch(fetchTenderListData());
@@ -37,6 +44,14 @@ const CardComponent = () => {
   const handleListIconClick = () => {
     setIsGrid(false);
   };
+
+  const handleChangePage = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  const indexOfLastBid = currentPage * bidsPerPage;
+  const indexOfFirstBid = indexOfLastBid - bidsPerPage;
+  const currentBids = data?.data?.slice(indexOfFirstBid, indexOfLastBid);
 
   return (
     <div className="p-8">
@@ -79,9 +94,13 @@ const CardComponent = () => {
           <div>
             {isgrid ? (
               <div className="flex flex-row">
-                {data?.data?.map((items, index) => (
+                {currentBids?.map((items, index) => (
                   <div key={index} className="m-1">
-                    <Card className="p-2" sx={{ maxWidth: 348 }}>
+                    <Card
+                      className="p-2"
+                      sx={{ maxWidth: 348 }}
+                      onClick={() => navigate(`/details/${items.pk}`)}
+                    >
                       <CardMedia
                         sx={{ height: 140 }}
                         image={items.image}
@@ -101,8 +120,7 @@ const CardComponent = () => {
                           className="text-black font-bold font-popins text-md mt-3"
                           variant="body2"
                         >
-                          Amendment of Capital Asset for Share/Stock at
-                          Kathmandu
+                          {items.title}
                         </Typography>
                         <Typography className="text-[#565252] font-popins text-md mt-3">
                           NIMBA Ace Capital Limited.
@@ -110,14 +128,26 @@ const CardComponent = () => {
                         <div className="flex flex-col mt-2">
                           <div className="flex flex-row">
                             <div className="bg-[#F0F7FF] mr-1 p-2 rounded-lg">
-                              <p className="text-[#185CAB] ">Kathmandu</p>
+                              {items?.district?.map((location, index) => (
+                                <p className="text-[#185CAB]" key={index}>
+                                  {location.name}
+                                </p>
+                              ))}
                             </div>
                             <div className=" bg-[#FFF2F0] ml-3 p-2 rounded-lg">
-                              <p className="text-[#FF7A00] ">Amendment xyzax</p>
+                              {items?.project_type?.map((project, index) => (
+                                <p className="text-[#FF7A00]" key={index}>
+                                  {project.name}
+                                </p>
+                              ))}
                             </div>
                           </div>
                           <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
-                            <p className="text-[#0F9E1D]">Source:Abhiyan</p>
+                            {/* {items.source.map((sorcs, index) => (
+                              <p className="text-[#0F9E1D]" key={index}>
+                                {sorcs.name}
+                              </p>
+                            ))} */}
                           </div>
                         </div>
                       </CardContent>
@@ -137,13 +167,13 @@ const CardComponent = () => {
                 ))}
               </div>
             ) : (
-              <div>
-                {" "}
-                {data?.data?.map((items, index) => (
+              <div className="flex flex-col">
+                {currentBids?.map((items, index) => (
                   <div key={index} className="flex flex-col">
                     <Card
                       variant="outlined"
                       className="flex flex-row mt-2 p-2 shadow-lg"
+                      onClick={() => navigate(`/details/${items.pk}`)}
                     >
                       <CardContent className="w-4/5">
                         <div className="flex flex-row">
@@ -159,18 +189,29 @@ const CardComponent = () => {
                             <span>
                               <LocationOnIcon />
                             </span>
-                            <p className="text-[#185CAB]">Kathmandu</p>
+                            {items?.district?.map((location, index) => (
+                              <p className="text-[#185CAB]" key={index}>
+                                {location.name}
+                              </p>
+                            ))}
                           </div>
                           <div className="flex flex-row bg-[#FFF2F0] mr-1 p-2 rounded-lg">
-                            <p className="text-[#FF7A00]">Phone: 9860009939</p>
+                            {items?.project_type?.map((project, index) => (
+                              <p className="text-[#FF7A00]" key={index}>
+                                {project.name}
+                              </p>
+                            ))}
                           </div>
                           <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
-                            <p className="text-[#0F9E1D]">Rate: 5000</p>
+                            {/* {items?.source?.map((sorcs, index) => (
+                              <p className="text-[#0F9E1D]" key={index}>
+                                {sorcs.name}
+                              </p>
+                            ))} */}
                           </div>
                         </div>
                         <p className="text-black font-bold font-popins text-md mt-3">
-                          Amendment of Capital Asset for Share/Stock at
-                          Kathmandu
+                          {items.title}
                         </p>
                         <p className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2">
                           {items.description}
@@ -192,6 +233,14 @@ const CardComponent = () => {
                 ))}
               </div>
             )}
+            <div className="flex flex-row justify-center mt-7">
+              <Pagination
+                count={Math.ceil(data?.data?.length / bidsPerPage)}
+                page={currentPage}
+                onChange={handleChangePage}
+                color="primary"
+              />
+            </div>
           </div>
         </div>
 

@@ -10,6 +10,7 @@ import Bazar from "./pages/Bazar/bazar";
 import PrivateWorks from "./pages/privateWorks/privatework";
 import Taxvat from "./pages/TaxVat/taxvat";
 import Login from "./pages/login/login";
+import DetailPage from "./pages/home/detailpage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/privateWorks" element={<PrivateWorks />} />
           <Route path="/taxvat" element={<Taxvat />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/details/:id" element={<DetailPage />} />
         </Routes>
         <Footer />
       </div>
