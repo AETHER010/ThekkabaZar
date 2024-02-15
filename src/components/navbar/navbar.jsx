@@ -69,28 +69,48 @@ function Navbar() {
               <CloseIcon style={{ color: "white" }} />
             </Button>
           </div>
-          <Link to="/" className="text-white my-2">
+          <Link to="/" className="text-white my-2" onClick={handleMenuClose}>
             Home
           </Link>
-          <Link to="/results" className="text-white my-2">
+          <Link
+            to="/results"
+            className="text-white my-2"
+            onClick={handleMenuClose}
+          >
             Result
           </Link>
-          <Link to="/pricing" className="text-white my-2">
+          <Link
+            to="/pricing"
+            className="text-white my-2"
+            onClick={handleMenuClose}
+          >
             Pricing
           </Link>
-          <Link to="/bazar" className="text-white my-2">
+          <Link
+            to="/bazar"
+            className="text-white my-2"
+            onClick={handleMenuClose}
+          >
             Bazar
           </Link>
-          <Link to="/privateWorks" className="text-white my-2">
+          <Link
+            to="/privateWorks"
+            className="text-white my-2"
+            onClick={handleMenuClose}
+          >
             Private Works
           </Link>
-          <Link to="/taxvat" className="text-white my-2">
+          <Link
+            to="/taxvat"
+            className="text-white my-2"
+            onClick={handleMenuClose}
+          >
             Tax & VAT Services
           </Link>
         </div>
       )}
 
-      <div className="flex items-center space-x-6 lg:flex hidden">
+      <div className="items-center space-x-6 lg:flex hidden">
         <Button
           className="bg-[#F48023] text-black px-4 py-2 rounded-lg"
           variant="contained"
