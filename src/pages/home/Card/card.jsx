@@ -115,7 +115,6 @@ const CardComponent = () => {
                             Published Date: {items.published_date}
                           </p>
                         </div>
-
                         <Typography
                           className="text-black font-bold font-popins text-md mt-3"
                           variant="body2"
@@ -125,6 +124,7 @@ const CardComponent = () => {
                         <Typography className="text-[#565252] font-popins text-md mt-3">
                           NIMBA Ace Capital Limited.
                         </Typography>
+
                         <div className="flex flex-col mt-2">
                           <div className="flex flex-row">
                             <div className="bg-[#F0F7FF] mr-1 p-2 rounded-lg">

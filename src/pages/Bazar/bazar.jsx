@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,9 +11,19 @@ import Door from "../../Assets/door.png";
 import PlyWood from "../../Assets/plywoods.png";
 import Wires from "../../Assets/wires.png";
 
+import { fetchbazarData } from "../../reducers/bazarSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 export default function Bazar() {
+  const dispatch = useDispatch();
+
+  const { data, status, error } = useSelector((state) => state.bazar);
+
+  useEffect(() => {
+    dispatch(fetchbazarData());
+  }, [dispatch]);
+
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,

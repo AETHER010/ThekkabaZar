@@ -4,6 +4,7 @@ import Noticecard from "./Card/noticecard";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Button from "@mui/material/Button";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOneTenderData } from "../../reducers/cardSlice";
@@ -70,11 +71,18 @@ const Detailpage = () => {
           <h1 className="text-lg font-bold ">Documents</h1>
           <div className="flex flex-row justify-center">
             <img className="w-96 h-96" src={items.image} alt="" />
-            <div className="flex flex-row p-3 justify-between">
-              <Button className="bg-main m-5 rounded-lg" variant="contained">
+            <div className="flex flex-row p-3 justify-center items-center">
+              <Button
+                className="bg-main h-9 m-5 rounded-lg"
+                variant="contained"
+                startIcon={<ArrowDownwardIcon />}
+              >
                 Download Brochure
               </Button>
-              <Button className="bg-main m-5 rounded-lg" variant="contained">
+              <Button
+                className="bg-main h-9 m-5 rounded-lg"
+                variant="contained"
+              >
                 Save Bid
               </Button>
             </div>
