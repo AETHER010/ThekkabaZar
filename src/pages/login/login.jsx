@@ -6,7 +6,28 @@ import LoginPic from "../../Assets/loginPic.png";
 import LockIcon from "@mui/icons-material/Lock";
 import Button from "@mui/material/Button";
 
+import { login } from "../../reducers/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 const Login = () => {
+  const dispatch = useDispatch();
+
+  const usernameRef = React.createRef();
+  const passwordRef = React.createRef();
+
+  const handleLogin = () => {
+    const username = usernameRef.current.value;
+    const password = passwordRef.current.value;
+
+    dispatch(login({ username, password }))
+      .then((response) => {
+        console.log("Login successful:", response);
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      });
+  };
+
   return (
     <div className="flex justify-center min-h-screen mt-9 p-3">
       <div className="flex flex-col items-center m-5 p-5 ">
@@ -29,6 +50,7 @@ const Login = () => {
             InputProps={{
               disableUnderline: true, // Removes the bottom border
             }}
+            inputRef={usernameRef}
           />
         </Box>
         <Box
@@ -44,11 +66,14 @@ const Login = () => {
             InputProps={{
               disableUnderline: true, // Removes the bottom border
             }}
+            type="password"
+            inputRef={passwordRef}
           />
         </Box>
         <Button
           className="rounded-lg p-2 bg-main shadow-lg"
           variant="contained"
+          onClick={handleLogin}
         >
           Login Now
         </Button>

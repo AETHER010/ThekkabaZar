@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import Results from "./pages/result/results";
 import Bazar from "./pages/Bazar/bazar";
+import ProductDetails from "./pages/Bazar/productDetails";
 import PrivateWorks from "./pages/privateWorks/privatework";
 import Taxvat from "./pages/TaxVat/taxvat";
 import Login from "./pages/login/login";
@@ -28,6 +29,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/details/:id" element={<DetailPage />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route
+            path="/bazar/productdetails/:mainCategory"
+            element={<ProductDetails />}
+          />
         </Routes>
         <Footer />
       </div>
