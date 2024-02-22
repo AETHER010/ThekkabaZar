@@ -19,32 +19,43 @@ import { useParams } from "react-router-dom";
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const { mainCategory } = useParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const { productList, status, error, searchQuery, filteredProducts } =
-    useSelector((state) => state.bazar);
+  const { productList, status, error } = useSelector((state) => state.bazar);
 
   useEffect(() => {
     dispatch(fetchproductListData({ mainCategory: mainCategory }));
-  }, [dispatch]);
+  }, [dispatch, mainCategory]);
 
   useEffect(() => {
-    dispatch(updateSearchQuery(""));
-  }, []);
+    handleSearchByName();
+  }, [searchQuery]);
 
   const handlecategorySearch = (category) => {
     dispatch(fetchproductListData({ mainCategory: category }));
+    handleSearchByName();
   };
 
   const handleBusinessTypeSearch = (businessType) => {
     dispatch(fetchproductListData({ businessType: businessType }));
+    handleSearchByName();
   };
 
   const handleLocationSearch = (location) => {
     dispatch(fetchproductListData({ location: location }));
+    handleSearchByName();
   };
 
-  const handleNameSearch = () => {
-    dispatch(updateSearchQuery(searchQuery));
+  const handleSearchByName = () => {
+    if (productList && productList.products) {
+      const filtered = productList.products.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts([productList.products]);
+    }
   };
 
   return (
@@ -62,7 +73,7 @@ const ProductDetails = () => {
           Equipment, Machinery, Tools & Vehicle(50)
         </h1>
         <div className="border-2 flex flex-row rounded-full items-center w-1/4 h-12	">
-          <SearchIcon onClick={handleNameSearch} className="text-2xl ml-2" />
+          <SearchIcon onClick={handleSearchByName} className="text-2xl ml-2" />
           <TextField
             className="w-full"
             id="input-with-sx"
@@ -74,7 +85,7 @@ const ProductDetails = () => {
               },
             }}
             value={searchQuery}
-            onChange={(e) => dispatch(updateSearchQuery(e.target.value))}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </div>
@@ -160,14 +171,14 @@ const ProductDetails = () => {
           </div>
 
           <div>
-            {productList?.products?.map((items, index) => (
+            {filteredProducts?.map((items, index) => (
               <div
                 key={index}
                 className="relative w-full flex flex-row flex-wrap border rounded-lg p-3 m-3"
               >
                 <img
                   className="aspect-[3/2]"
-                  src={items.image}
+                  src=""
                   alt="image32"
                   style={{ width: "200px", height: "220px" }}
                 />

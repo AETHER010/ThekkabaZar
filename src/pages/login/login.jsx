@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -8,24 +8,36 @@ import Button from "@mui/material/Button";
 
 import { login } from "../../reducers/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { toast } from "react-toastify";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isAuthenticated, error } = useSelector((state) => state.users);
 
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      toast.success("Login Successful!");
+      navigate("/");
+    }
+
+    if (error) {
+      console.log(error);
+      toast.error("login failed. Please check your credentials", error);
+    }
+  }, [dispatch, isAuthenticated, error]);
 
   const handleLogin = () => {
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
 
-    dispatch(login({ username, password }))
-      .then((response) => {
-        console.log("Login successful:", response);
-      })
-      .catch((error) => {
-        console.error("Login failed:", error);
-      });
+    dispatch(login({ username, password }));
   };
 
   return (
@@ -44,7 +56,7 @@ const Login = () => {
           <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
           <TextField
             className="lg:w-80 md:w-64 sm:w-52"
-            id="input-with-sx"
+            id="input1"
             label="Username"
             variant="standard"
             InputProps={{
@@ -60,7 +72,7 @@ const Login = () => {
           <LockIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
           <TextField
             className="lg:w-80 md:w-64 sm:w-52"
-            id="input-with-sx"
+            id="input2"
             label="Password"
             variant="standard"
             InputProps={{

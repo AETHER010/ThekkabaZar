@@ -51,10 +51,8 @@ const bazarSlice = createSlice({
   initialState: {
     data: [],
     productList: [],
-    filteredProducts: [],
     status: "idle",
     error: null,
-    searchQuery: "",
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -81,12 +79,6 @@ const bazarSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       });
-    builder.addCase(updateSearchQuery, (state, action) => {
-      state.searchQuery = action.payload;
-      state.filteredProducts = state.productList?.products?.filter((item) =>
-        item.name.toLowerCase().includes(state.searchQuery.toLowerCase())
-      );
-    });
   },
 });
 

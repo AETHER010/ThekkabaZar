@@ -8,7 +8,7 @@ export const login = createAsyncThunk(
       "https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/login/",
       { username, password }
     );
-    const data = response.message;
+    const data = response.data;
     return data;
   }
 );
@@ -16,23 +16,29 @@ export const login = createAsyncThunk(
 const authSlice = createSlice({
   name: "users",
   initialState: {
-    data: "",
+    access_token: "",
+    role: "",
     status: "idle",
     error: null,
+    isAuthenticated: false,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
         state.status = "loading";
+        state.isAuthenticated = false;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload;
+        state.access_token = action.payload.access_token;
+        state.role = action.payload.role;
+        state.isAuthenticated = true;
       })
       .addCase(login.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+        state.isAuthenticated = false;
       });
   },
 });

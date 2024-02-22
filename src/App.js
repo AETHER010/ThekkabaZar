@@ -14,10 +14,19 @@ import Login from "./pages/login/login";
 import DetailPage from "./pages/home/detailpage";
 import AboutUs from "./pages/AboutUs/aboutUs";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+
 function App() {
   return (
     <Router>
       <div className="App">
+        <ToastContainer
+          theme="dark"
+          position="bottom-right"
+          autoClose={800}
+          draggable
+        />
         <Navbar />
         <Routes>
           <Route path="/" exact element={<Home />} />
