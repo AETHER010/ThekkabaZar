@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import GradingIcon from "@mui/icons-material/Grading";
@@ -8,7 +8,10 @@ import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 
-import { fetchproductListData } from "../../reducers/bazarSlice";
+import {
+  fetchproductListData,
+  updateSearchQuery,
+} from "../../reducers/bazarSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "react-router-dom";
@@ -17,11 +20,32 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const { mainCategory } = useParams();
 
-  const { productList, status, error } = useSelector((state) => state.bazar);
+  const { productList, status, error, searchQuery, filteredProducts } =
+    useSelector((state) => state.bazar);
 
   useEffect(() => {
     dispatch(fetchproductListData({ mainCategory: mainCategory }));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(updateSearchQuery(""));
+  }, []);
+
+  const handlecategorySearch = (category) => {
+    dispatch(fetchproductListData({ mainCategory: category }));
+  };
+
+  const handleBusinessTypeSearch = (businessType) => {
+    dispatch(fetchproductListData({ businessType: businessType }));
+  };
+
+  const handleLocationSearch = (location) => {
+    dispatch(fetchproductListData({ location: location }));
+  };
+
+  const handleNameSearch = () => {
+    dispatch(updateSearchQuery(searchQuery));
+  };
 
   return (
     <div>
@@ -38,7 +62,7 @@ const ProductDetails = () => {
           Equipment, Machinery, Tools & Vehicle(50)
         </h1>
         <div className="border-2 flex flex-row rounded-full items-center w-1/4 h-12	">
-          <SearchIcon className="text-2xl ml-2" />
+          <SearchIcon onClick={handleNameSearch} className="text-2xl ml-2" />
           <TextField
             className="w-full"
             id="input-with-sx"
@@ -49,6 +73,8 @@ const ProductDetails = () => {
                 notchedOutline: "border-none",
               },
             }}
+            value={searchQuery}
+            onChange={(e) => dispatch(updateSearchQuery(e.target.value))}
           />
         </div>
       </div>
@@ -69,7 +95,12 @@ const ProductDetails = () => {
             </div>
             {productList?.related_categories?.map((items, index) => (
               <ul key={index} className="flex flex-col list-disc ml-7 mt-3">
-                <li>{items.name}</li>
+                <li
+                  className="cursor-pointer"
+                  onClick={() => handlecategorySearch(items.name)}
+                >
+                  {items.name}
+                </li>
               </ul>
             ))}
           </div>
@@ -86,7 +117,12 @@ const ProductDetails = () => {
             <div>
               {productList?.businesstype?.map((items, index) => (
                 <ul key={index} className="flex flex-col list-disc ml-7 mt-3">
-                  <li>{items.name}</li>
+                  <li
+                    className="cursor-pointer"
+                    onClick={() => handleBusinessTypeSearch(items.name)}
+                  >
+                    {items.name}
+                  </li>
                 </ul>
               ))}
             </div>
@@ -102,7 +138,12 @@ const ProductDetails = () => {
             <div>
               {productList?.location?.map((items, index) => (
                 <ul key={index} className="flex flex-col list-disc ml-7 mt-3">
-                  <li>{items.name}</li>
+                  <li
+                    className="cursor-pointer"
+                    onClick={() => handleLocationSearch(items.name)}
+                  >
+                    {items.name}
+                  </li>
                 </ul>
               ))}
             </div>
@@ -127,7 +168,7 @@ const ProductDetails = () => {
                 <img
                   className="aspect-[3/2]"
                   src={items.image}
-                  alt="image"
+                  alt="image32"
                   style={{ width: "200px", height: "220px" }}
                 />
 

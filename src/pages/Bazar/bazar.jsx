@@ -2,14 +2,7 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from "../../Assets/image2.png";
 import Button from "@mui/material/Button";
-import Paint from "../../Assets/paint.png";
-import Bricks from "../../Assets/Bricks.png";
-import Cement from "../../Assets/cement.png";
-import Door from "../../Assets/door.png";
-import PlyWood from "../../Assets/plywoods.png";
-import Wires from "../../Assets/wires.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -36,8 +29,11 @@ export default function Bazar() {
   };
 
   const navigationDetail = (mainCategory) => {
-    // navigate(`/bazar/productdetails/?mainCategory=${mainCategory}`);
     navigate(`/bazar/productdetails/${encodeURIComponent(mainCategory)}`);
+  };
+
+  const navigationDetailPage = (subcategory) => {
+    navigate(`/bazar/productdetails/${encodeURIComponent(subcategory)}`);
   };
 
   return (
@@ -94,7 +90,8 @@ export default function Bazar() {
       {data?.map((items, index) => (
         <div
           key={index}
-          className="flex lg:flex-row md:flex-row sm:flex-col border rounded-lg shadow-lg p-8 m-6"
+          className="flex lg:flex-row md:flex-row sm:flex-col border rounded-lg shadow-lg p-8 m-6 cursor-pointer"
+          onClick={() => navigationDetail(items.name)}
         >
           <div className="lg:w-2/5 flex flex-col md:w-2/5 sm:w-full">
             <h1 className="text-3xl font-popins font-bold text-main">
@@ -115,7 +112,11 @@ export default function Bazar() {
 
           <div className="lg:w-3/5 sm:w-full flex flex-row flex-wrap justify-center">
             {items.subcategory?.map((subcategory, index) => (
-              <div key={index} className="flex flex-col items-center w-60">
+              <div
+                key={index}
+                className="flex flex-col items-center w-60 cursor-pointer"
+                onClick={() => navigationDetailPage(subcategory.name)}
+              >
                 <h1 className="text-main text-md font-popins mb-4">
                   {subcategory.name}
                 </h1>
