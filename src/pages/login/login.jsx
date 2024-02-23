@@ -23,12 +23,10 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      toast.success("Login Successful!");
       navigate("/");
     }
 
     if (error) {
-      console.log(error);
       toast.error("login failed. Please check your credentials", error);
     }
   }, [dispatch, isAuthenticated, error]);

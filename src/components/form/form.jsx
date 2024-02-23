@@ -11,17 +11,35 @@ import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDropdownData } from "../../reducers/formSlice";
 
+import { fetchTenderListData } from "../../reducers/cardSlice";
+
 function Form() {
   const dispatch = useDispatch();
   const { data, status, error } = useSelector((state) => state.dropdetails);
-  const [age, setAge] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
+  const [location, setLocation] = useState("");
+  const [projectType, setProjectType] = useState("");
+  const [procurementTypes, setProcurementTypes] = useState("");
+  const [date, setDate] = useState("");
 
   useEffect(() => {
     dispatch(fetchDropdownData());
   }, [dispatch]);
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleSearch = () => {
+    console.log(organization, "abdasbjdjk");
+    dispatch(
+      fetchTenderListData({
+        organization_sector: organization,
+        location: location,
+        project_type: projectType,
+        procurement_type: procurementTypes,
+        date: date,
+        category: category,
+      })
+    );
   };
 
   return (
@@ -37,13 +55,13 @@ function Form() {
             <Select
               labelId="simple-select-label"
               id="simple-select"
-              value={age}
-              label="Age"
+              value={organization}
+              label="organization"
               sx={{ height: "3rem" }}
-              onChange={handleChange}
+              onChange={(e) => setOrganization(e.target.value)}
             >
               {data?.organization_sectors?.map((organization, index) => (
-                <MenuItem key={index} value={organization.id}>
+                <MenuItem key={index} value={organization.name}>
                   {organization.name}
                 </MenuItem>
               ))}
@@ -56,6 +74,7 @@ function Form() {
             className="w-64 h-12 bg-white"
             variant="outlined"
             label="Enter Keywords"
+            value={search}
             InputProps={{
               classes: {
                 notchedOutline: "border-none",
@@ -66,6 +85,7 @@ function Form() {
                 </span>
               ),
             }}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
       </div>
@@ -81,13 +101,13 @@ function Form() {
             <Select
               labelId="simple-select-label"
               id="simple-select"
-              value={age}
-              label="Age"
+              value={category}
+              label="category"
               sx={{ height: "3rem" }}
-              onChange={handleChange}
+              onChange={(e) => setCategory(e.target.value)}
             >
               {data?.categories?.map((items, index) => (
-                <MenuItem key={index} value={items.id}>
+                <MenuItem key={index} value={items.name}>
                   {items.name}
                 </MenuItem>
               ))}
@@ -102,13 +122,13 @@ function Form() {
             <Select
               labelId="simple-select-label"
               id="simple-select"
-              value={age}
-              label="Age"
+              value={location}
+              label="location"
               sx={{ height: "3rem" }}
-              onChange={handleChange}
+              onChange={(e) => setLocation(e.target.value)}
             >
               {data?.districts?.map((items, index) => (
-                <MenuItem key={index} value={items.id}>
+                <MenuItem key={index} value={items.name}>
                   {items.name}
                 </MenuItem>
               ))}
@@ -123,13 +143,13 @@ function Form() {
             <Select
               labelId="simple-select-label"
               id="simple-select"
-              value={age}
-              label="Age"
+              value={date}
+              label="date"
               sx={{ height: "3rem" }}
-              onChange={handleChange}
+              onChange={(e) => setDate(e.target.value)}
             >
               {data?.districts?.map((items, index) => (
-                <MenuItem key={index} value={items.id}>
+                <MenuItem key={index} value={items.name}>
                   {items.name}
                 </MenuItem>
               ))}
@@ -144,13 +164,13 @@ function Form() {
             <Select
               labelId="simple-select-label"
               id="simple-select"
-              value={age}
-              label="Age"
+              value={projectType}
+              label="projectType"
               sx={{ height: "3rem" }}
-              onChange={handleChange}
+              onChange={(e) => setProjectType(e.target.value)}
             >
               {data?.project_types?.map((items, index) => (
-                <MenuItem key={index} value={items.id}>
+                <MenuItem key={index} value={items.name}>
                   {items.name}
                 </MenuItem>
               ))}
@@ -165,13 +185,13 @@ function Form() {
             <Select
               labelId="simple-select-label"
               id="simple-select"
-              value={age}
-              label="Age"
+              value={procurementTypes}
+              label="procurementTypes"
               sx={{ height: "3rem" }}
-              onChange={handleChange}
+              onChange={(e) => setProcurementTypes(e.target.value)}
             >
               {data?.procurement_types?.map((items, index) => (
-                <MenuItem key={index} value={items.id}>
+                <MenuItem key={index} value={items.name}>
                   {items.name}
                 </MenuItem>
               ))}
@@ -181,6 +201,7 @@ function Form() {
         <Button
           className="bg-primary h-12  mt-2 items-center text-sm shadow"
           variant="contained"
+          onClick={() => handleSearch()}
         >
           Search Tender
         </Button>

@@ -49,6 +49,14 @@ const CardComponent = () => {
     setCurrentPage(newPage);
   };
 
+  // if (status === "loading") {
+  //   return <p>Loading...</p>;
+  // }
+
+  if (status === "failed") {
+    return <p>Error: {error}</p>;
+  }
+
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
   const currentBids = data?.data?.slice(indexOfFirstBid, indexOfLastBid);
@@ -143,11 +151,7 @@ const CardComponent = () => {
                             </div>
                           </div>
                           <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
-                            {/* {items.source.map((sorcs, index) => (
-                              <p className="text-[#0F9E1D]" key={index}>
-                                {sorcs.name}
-                              </p>
-                            ))} */}
+                            {items.source}
                           </div>
                         </div>
                       </CardContent>
@@ -203,11 +207,7 @@ const CardComponent = () => {
                             ))}
                           </div>
                           <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
-                            {/* {items?.source?.map((sorcs, index) => (
-                              <p className="text-[#0F9E1D]" key={index}>
-                                {sorcs.name}
-                              </p>
-                            ))} */}
+                            {items.source}
                           </div>
                         </div>
                         <p className="text-black font-bold font-popins text-md mt-3">

@@ -107,6 +107,20 @@ function Navbar() {
           >
             Tax & VAT Services
           </Link>
+          <Link
+            to="/login"
+            className="text-white my-2 bg-lime-600 p-3 rounded-md"
+            onClick={handleMenuClose}
+          >
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="text-white my-2 bg-[#F48023] p-3 rounded-lg"
+            onClick={handleMenuClose}
+          >
+            Register
+          </Link>
         </div>
       )}
 
