@@ -11,9 +11,9 @@ import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDropdownData } from "../../reducers/formSlice";
 
-import { fetchTenderListData } from "../../reducers/cardSlice";
+import { fetchresultData } from "../../reducers/resultSlice";
 
-function Form() {
+const Form = () => {
   const dispatch = useDispatch();
   const { data, status, error } = useSelector((state) => state.dropdetails);
   const [organization, setOrganization] = useState("");
@@ -30,7 +30,7 @@ function Form() {
 
   const handleSearch = () => {
     dispatch(
-      fetchTenderListData({
+      fetchresultData({
         organization_sector: organization,
         location: location,
         project_type: projectType,
@@ -207,6 +207,6 @@ function Form() {
       </div>
     </div>
   );
-}
+};
 
 export default Form;

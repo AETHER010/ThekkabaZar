@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Form from "../../components/form/form";
+import Form from "../../components/form/resultForm";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -60,19 +60,7 @@ export default function Results() {
         <div className="flex flex-row">
           <div className="flex flex-col w-3/4">
             <div className="border-b-2 border-[#EA9706] mt-3"></div>
-            <div className="flex flex-row justify-between my-6">
-              <div>
-                <Button
-                  className="mx-2 rounded-3xl"
-                  variant="contained"
-                  startIcon={<AccessTimeIcon />}
-                >
-                  New
-                </Button>
-                <Button className="mx-2" startIcon={<ArrowOutwardIcon />}>
-                  Popular
-                </Button>
-              </div>
+            <div className="flex justify-end my-6">
               <div>
                 <IconButton
                   aria-label="menu"
@@ -95,7 +83,7 @@ export default function Results() {
               {isgrid ? (
                 <div className="flex flex-row">
                   {currentBids?.map((items, index) => (
-                    <div className="m-1">
+                    <div key={index} className="m-1">
                       <Card className="p-2" sx={{ maxWidth: 348 }}>
                         <CardMedia
                           sx={{ height: 140 }}
@@ -143,12 +131,7 @@ export default function Results() {
                               </div>
                             </div>
                             <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
-                              {items.tender.source.name}
-                              {/* {items.source.map((sorcs, index) => (
-                              <p className="text-[#0F9E1D]" key={index}>
-                                {sorcs.name}
-                              </p>
-                            ))} */}
+                              {items.source}
                             </div>
                           </div>
                           <div className="flex justify-center items-center">
@@ -180,7 +163,7 @@ export default function Results() {
               ) : (
                 <div className="flex flex-col">
                   {currentBids?.map((items, index) => (
-                    <div className="flex flex-col">
+                    <div key={index} className="flex flex-col">
                       <Card
                         variant="outlined"
                         className="flex flex-row mt-2 p-2 shadow-lg"
@@ -219,12 +202,7 @@ export default function Results() {
                               </div>
 
                               <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
-                                {items.tender.source.name}
-                                {/* {items?.source?.map((sorcs, index) => (
-                              <p className="text-[#0F9E1D]" key={index}>
-                                {sorcs.name}
-                              </p>
-                            ))} */}
+                                {items.source}
                               </div>
                             </div>
                             <span className="my-5">

@@ -68,19 +68,7 @@ const CardComponent = () => {
       <div className="flex flex-row">
         <div className="flex flex-col w-3/4">
           <div className="border-b-2 border-[#EA9706] mt-3"></div>
-          <div className="flex flex-row justify-between my-6">
-            <div>
-              <Button
-                className="mx-2 rounded-3xl"
-                variant="contained"
-                startIcon={<AccessTimeIcon />}
-              >
-                New
-              </Button>
-              <Button className="mx-2" startIcon={<ArrowOutwardIcon />}>
-                Popular
-              </Button>
-            </div>
+          <div className="flex flex-row justify-end my-6">
             <div>
               <IconButton
                 aria-label="menu"

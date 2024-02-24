@@ -4,9 +4,11 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,6 +16,10 @@ function Navbar() {
 
   const handleMenuClose = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleRegister = () => {
+    navigate("/register");
   };
 
   return (
@@ -129,6 +135,7 @@ function Navbar() {
           className="bg-[#F48023] text-black px-4 py-2 rounded-lg"
           variant="contained"
           startIcon={<AddCircleIcon />}
+          onClick={handleRegister}
         >
           Register
         </Button>

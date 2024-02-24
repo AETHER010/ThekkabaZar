@@ -1,5 +1,5 @@
 // AppRouter.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/home";
 import Price from "./pages/pricelist/price";
@@ -13,11 +13,24 @@ import Taxvat from "./pages/TaxVat/taxvat";
 import Login from "./pages/login/login";
 import DetailPage from "./pages/home/detailpage";
 import AboutUs from "./pages/AboutUs/aboutUs";
+import Register from "./pages/Register/register";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
+import Loading from "./components/loading/loading";
+
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -27,23 +40,30 @@ function App() {
           autoClose={800}
           draggable
         />
-        <Navbar />
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/pricing" element={<Price />} />
-          <Route path="/results" element={<Results />} />
-          <Route path="/bazar" element={<Bazar />} />
-          <Route path="/privateWorks" element={<PrivateWorks />} />
-          <Route path="/taxvat" element={<Taxvat />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/details/:id" element={<DetailPage />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route
-            path="/bazar/productdetails/:mainCategory"
-            element={<ProductDetails />}
-          />
-        </Routes>
-        <Footer />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <Navbar />
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/pricing" element={<Price />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/bazar" element={<Bazar />} />
+              <Route path="/privateWorks" element={<PrivateWorks />} />
+              <Route path="/taxvat" element={<Taxvat />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/details/:id" element={<DetailPage />} />
+              <Route path="/aboutus" element={<AboutUs />} />
+              <Route path="/register" element={<Register />} />
+              <Route
+                path="/bazar/productdetails/:mainCategory"
+                element={<ProductDetails />}
+              />
+            </Routes>
+            <Footer />
+          </>
+        )}
       </div>
     </Router>
   );

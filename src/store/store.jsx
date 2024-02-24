@@ -7,6 +7,7 @@ import noticeData from "../reducers/noticeSlice";
 import privateWorkSlice from "../reducers/privateWorkSlice";
 import resultSlice from "../reducers/resultSlice";
 import bazarSlice from "../reducers/bazarSlice";
+import priceSlice from "../reducers/priceListSlice";
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     privateWorks: privateWorkSlice,
     result: resultSlice,
     bazar: bazarSlice,
+    price: priceSlice,
   },
 });
 

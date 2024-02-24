@@ -13,19 +13,28 @@ export const fetchTenderListData = createAsyncThunk(
     date,
     category,
   } = {}) => {
-    const params = {
-      organization_sector: organization_sector,
-      location: location,
-      project_type: project_type,
-      procurement_type: procurement_type,
-      date: date,
-      category: category,
-    };
+    const params = new URLSearchParams();
 
-    console.log("tenderId", params);
+    if (organization_sector) {
+      params.append("organization_sector", organization_sector);
+    }
+
+    if (location) {
+      params.append("district", location);
+    }
+
+    if (project_type) {
+      params.append("loproject_typeation", project_type);
+    }
+
+    if (procurement_type) {
+      params.append("procurement_type", procurement_type);
+    }
+    if (category) {
+      params.append("category", category);
+    }
     const response = await axios.get(
-      "https://thekkabazar.itnepalsolutions.com/tender/apis/tender/list/",
-      { params }
+      `https://thekkabazar.itnepalsolutions.com/tender/apis/tender/list/?${params.toString()}`
     );
     const data = response.data;
     return data;

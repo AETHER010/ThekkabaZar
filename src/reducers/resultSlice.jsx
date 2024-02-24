@@ -5,9 +5,36 @@ import axios from "axios";
 
 export const fetchresultData = createAsyncThunk(
   "data/fetchresultData",
-  async () => {
+  async ({
+    organization_sector,
+    location,
+    project_type,
+    procurement_type,
+    date,
+    category,
+  } = {}) => {
+    const params = new URLSearchParams();
+
+    if (organization_sector) {
+      params.append("organization_sector", organization_sector);
+    }
+
+    if (location) {
+      params.append("district", location);
+    }
+
+    if (project_type) {
+      params.append("loproject_typeation", project_type);
+    }
+
+    if (procurement_type) {
+      params.append("procurement_type", procurement_type);
+    }
+    if (category) {
+      params.append("category", category);
+    }
     const response = await axios.get(
-      `https://thekkabazar.itnepalsolutions.com/tender/apis/tender-awarded-to/`
+      `https://thekkabazar.itnepalsolutions.com/tender/apis/tender-awarded-to/?${params.toString()}`
     );
     const data = response.data;
     return data;
