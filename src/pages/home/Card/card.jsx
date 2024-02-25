@@ -20,14 +20,15 @@ import Orgcard from "./orgcard";
 import Noticecard from "./noticecard";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTenderListData } from "../../../reducers/cardSlice";
+import { fetchTenderListData, savebid } from "../../../reducers/cardSlice";
 
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CardComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { data, status, error } = useSelector((state) => state.card);
+  const { data, status, error, message } = useSelector((state) => state.card);
   const [isgrid, setIsGrid] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -60,6 +61,12 @@ const CardComponent = () => {
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
   const currentBids = data?.data?.slice(indexOfFirstBid, indexOfLastBid);
+
+  const handleBidSave = (id) => {
+    console.log("saved");
+    dispatch(savebid({ id: id }));
+    toast.success("Bid Saved Successfully");
+  };
 
   return (
     <div className="p-8">
@@ -150,6 +157,7 @@ const CardComponent = () => {
                         <Button
                           className="bg-main m-5 rounded-lg"
                           variant="contained"
+                          onClick={() => handleBidSave(items.pk)}
                         >
                           Save Bid
                         </Button>
@@ -212,6 +220,7 @@ const CardComponent = () => {
                         <Button
                           className="bg-main m-5 rounded-lg"
                           variant="contained"
+                          onClick={() => handleBidSave(items.pk)}
                         >
                           Save Bid
                         </Button>

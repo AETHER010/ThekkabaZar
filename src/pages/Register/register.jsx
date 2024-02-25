@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../reducers/authSlice";
+import { register, getDistrict } from "../../reducers/authSlice";
 import { useNavigate } from "react-router-dom";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const RegisterForm = () => {
   const [activeTab, setActiveTab] = useState("personal");
@@ -23,8 +27,12 @@ const RegisterForm = () => {
   const [panVatfile, setPanVatfile] = useState(null);
 
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.users);
+  const { status, districtData } = useSelector((state) => state.users);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getDistrict());
+  }, [dispatch]);
 
   useEffect(() => {
     if (status === "succeeded") {
@@ -282,7 +290,37 @@ const RegisterForm = () => {
                 />
               </div>
 
-              <div className="mr-4 p-2 flex flex-col  w-full">
+              <div className="mr-4 p-2  w-full">
+                <FormControl
+                  variant="standard"
+                  sx={{
+                    marginTop: 4,
+                    minWidth: 500,
+                    backgroundColor: "#eaeaea",
+                    height: "3.5rem",
+                  }}
+                >
+                  <InputLabel id="demo-simple-select-standard-label">
+                    District
+                  </InputLabel>
+                  <Select
+                    className="mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={district}
+                    label="District"
+                    onChange={(e) => setDistrict(e.target.value)}
+                  >
+                    {districtData?.district?.map((items, index) => (
+                      <MenuItem key={index} value={items.id}>
+                        {items.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </div>
+
+              {/* <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="district">
                   District<span className="text-red-600">*</span>:
                 </label>
@@ -295,7 +333,7 @@ const RegisterForm = () => {
                   value={district}
                   onChange={(e) => setDistrict(e.target.value)}
                 />
-              </div>
+              </div> */}
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="municipality">
                   Municipality<span className="text-red-600">*</span>:

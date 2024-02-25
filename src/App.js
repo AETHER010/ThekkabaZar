@@ -13,7 +13,10 @@ import Taxvat from "./pages/TaxVat/taxvat";
 import Login from "./pages/login/login";
 import DetailPage from "./pages/home/detailpage";
 import AboutUs from "./pages/AboutUs/aboutUs";
+import Profile from "./pages/profile/profile";
 import Register from "./pages/Register/register";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -22,6 +25,7 @@ import Loading from "./components/loading/loading";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const access_token = useSelector((state) => state.users.access_token);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,6 +60,12 @@ function App() {
               <Route path="/details/:id" element={<DetailPage />} />
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/register" element={<Register />} />
+              {/* <PrivateRoute path="/profile" element={<Profile />} /> */}
+              {access_token ? (
+                <Route path="/profile" element={<Profile />} />
+              ) : (
+                <Route path="/" exact element={<Home />} />
+              )}
               <Route
                 path="/bazar/productdetails/:mainCategory"
                 element={<ProductDetails />}

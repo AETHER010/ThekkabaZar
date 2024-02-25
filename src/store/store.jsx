@@ -8,6 +8,7 @@ import privateWorkSlice from "../reducers/privateWorkSlice";
 import resultSlice from "../reducers/resultSlice";
 import bazarSlice from "../reducers/bazarSlice";
 import priceSlice from "../reducers/priceListSlice";
+import profileSlice from "../reducers/profileSlice";
 
 const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
     result: resultSlice,
     bazar: bazarSlice,
     price: priceSlice,
+    profile: profileSlice,
   },
 });
 
