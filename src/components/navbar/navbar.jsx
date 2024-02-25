@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { logout } from "../../reducers/authSlice";
 import { getProfile } from "../../reducers/profileSlice";
+import Logo from "../../Assets/logo.png";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,11 +60,7 @@ function Navbar() {
   return (
     <nav className="bg-white p-4 flex items-center justify-between shadow-lg">
       <div className="flex items-center space-x-9 pl-2">
-        <img
-          src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/05/madara-uchiha-naruto-featured.jpg"
-          alt="Logo"
-          className="h-8 w-8"
-        />
+        <img src={Logo} alt="Logo" className="" />
       </div>
 
       {/* Mobile Menu */}

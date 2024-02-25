@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Button from "@mui/material/Button";
+import carouselImage from "../../Assets/carousel.jpg";
 
 import { useNavigate } from "react-router-dom";
 
@@ -42,40 +43,58 @@ export default function Bazar() {
         <Slider {...settings}>
           <div className="relative">
             <img
-              src="https://placekitten.com/1200/300"
+              src={carouselImage}
               alt="Slider 1"
               className="w-full h-96 object-cover"
             />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center w-full">
-              <h2 className="text-4xl font-bold mb-4">Your Text Here</h2>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                Your Button
+            <div className="absolute top-16 right-0 text-white text-center w-1/2 p-8">
+              <h2 className="text-4xl font-bold mb-4">
+                Unlock Opportunities with Winning Bids!
+              </h2>
+              <p>
+                Expert bid management for guaranteed results. Elevate your
+                business through successful tenders and projects.
+              </p>
+              <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
+                Our Services
               </button>
             </div>
           </div>
           <div className="relative">
             <img
-              src="https://placekitten.com/1200/301"
+              src={carouselImage}
               alt="Slider2"
               className="w-full h-96 object-cover"
             />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center w-full">
-              <h2 className="text-4xl font-bold mb-4">Your Text Here</h2>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                Your Button
+            <div className="absolute top-16 right-0 text-white text-center w-1/2 p-8">
+              <h2 className="text-4xl font-bold mb-4">
+                Unlock Opportunities with Winning Bids!
+              </h2>
+              <p>
+                Expert bid management for guaranteed results. Elevate your
+                business through successful tenders and projects.
+              </p>
+              <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
+                Our Services
               </button>
             </div>
           </div>
           <div className="relative">
             <img
-              src="https://placekitten.com/1200/301"
+              src={carouselImage}
               alt="Slider2"
               className="w-full h-96 object-cover"
             />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center w-full">
-              <h2 className="text-4xl font-bold mb-4">Your Text Here</h2>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                Your Button
+            <div className="absolute top-16 right-0 text-white text-center w-1/2 p-8">
+              <h2 className="text-4xl font-bold mb-4">
+                Unlock Opportunities with Winning Bids!
+              </h2>
+              <p>
+                Expert bid management for guaranteed results. Elevate your
+                business through successful tenders and projects.
+              </p>
+              <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
+                Our Services
               </button>
             </div>
           </div>
