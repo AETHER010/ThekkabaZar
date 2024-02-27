@@ -80,11 +80,11 @@ function Form() {
               },
               endAdornment: (
                 <span style={{ cursor: "pointer" }}>
-                  <SearchIcon />
+                  <SearchIcon onClick={() => dispatch(setSearch(search))} />
                 </span>
               ),
             }}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => dispatch(setSearch(e.target.value))}
           />
         </div>
       </div>
