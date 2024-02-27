@@ -64,7 +64,7 @@ function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <Button onClick={handleMenuToggle} aria-label="Menu">
           <MenuIcon />
         </Button>
@@ -73,7 +73,9 @@ function Navbar() {
       {/* Desktop Menu */}
 
       <div
-        className={`space-x-8 lg:flex hidden ${isMenuOpen ? "flex" : "hidden"}`}
+        className={`space-x-8 lg:flex xl:flex hidden ${
+          isMenuOpen ? "flex" : "hidden"
+        }`}
       >
         <Link to="/" className="text-black" onClick={handleMenuClose}>
           Home
@@ -99,7 +101,7 @@ function Navbar() {
         </Link>
       </div>
       {access_token ? (
-        <div className="hidden lg:block">
+        <div className="hidden xl:block lg:block">
           <Button
             onClick={handleProfileClick}
             aria-label="Profile"
@@ -122,7 +124,7 @@ function Navbar() {
           </Menu>
         </div>
       ) : (
-        <div className="items-center space-x-6 hidden lg:block">
+        <div className="items-center space-x-6 hidden lg:block xl:block">
           <Button
             className="bg-[#F48023] text-black px-4 py-2 rounded-lg"
             variant="contained"
@@ -142,7 +144,7 @@ function Navbar() {
 
       {/* Mobile Menu Links */}
       {isMenuOpen && (
-        <div className="lg:hidden fixed w-72 top-0 right-0 bottom-0 bg-main flex flex-col items-center p-4 z-10">
+        <div className="lg:hidden xl:hidden fixed w-72 top-0 right-0 bottom-0 bg-main flex flex-col items-center p-4 z-10">
           <div className="flex justify-end w-full">
             <Button onClick={handleMenuClose} aria-label="Close">
               <CloseIcon style={{ color: "white" }} />

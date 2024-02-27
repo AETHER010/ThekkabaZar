@@ -211,9 +211,9 @@ const RegisterForm = () => {
 
       {activeTab === "organization" && (
         <div>
-          <form className="flex flex-wrap lg:flex-col md:flex-col sm:flex-col mt-4">
-            <div className="flex lg:flex-row md:flex-row sm:flex-col justify-between">
-              <div className="mr-4 p-2 flex flex-col  w-full">
+          <form className="flex flex-wrap lg:flex-col md:flex-col sm:flex-row xs:flex-row xl:flex-col mt-4">
+            <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row justify-between w-full">
+              <div className="mr-4 p-2 flex flex-col">
                 <label className="text-lg" htmlFor="companyName">
                   Company Name<span className="text-red-600">*</span>:
                 </label>
@@ -243,7 +243,7 @@ const RegisterForm = () => {
                 />
               </div>
             </div>
-            <div className="flex lg:flex-row md:flex-row sm:flex-col justify-between">
+            <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row w-full justify-between">
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="contactNumber">
                   Contact Number<span className="text-red-600">*</span>:
@@ -274,7 +274,7 @@ const RegisterForm = () => {
                 />
               </div>
             </div>
-            <div className="flex lg:flex-row md:flex-row sm:flex-col justify-between">
+            <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row justify-between">
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="providence">
                   Providence<span className="text-red-600">*</span>:
@@ -295,7 +295,7 @@ const RegisterForm = () => {
                   variant="standard"
                   sx={{
                     marginTop: 4,
-                    minWidth: 500,
+                    minWidth: 600,
                     backgroundColor: "#eaeaea",
                     height: "3.5rem",
                   }}
@@ -357,7 +357,7 @@ const RegisterForm = () => {
                 (Pdf, Image Supported.) Please only upload authorized documents,
                 and you will be held responsible.
               </p>
-              <div className="flex flex-row justify-between mt-7">
+              <div className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col justify-between mt-7">
                 <div className="flex flex-col w-full m-1">
                   <label htmlFor="fileUpload" className="text-xl font-popins">
                     Upload PAN/VAT certificate:

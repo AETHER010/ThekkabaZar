@@ -30,7 +30,7 @@ const ProductDetails = () => {
     if (error) {
       return <p className="text-red-600 flex text-center">{error}</p>;
     }
-  }, [dispatch, mainCategory]);
+  }, [dispatch, mainCategory, error]);
 
   useEffect(() => {
     handleSearchByName();
@@ -69,11 +69,11 @@ const ProductDetails = () => {
         <div className="border-b-2 mt-3"></div>
       </div>
 
-      <div className="flex flex-row justify-between p-8">
+      <div className="flex lg:flex-row xl:flex-row md:flex-col sm:flex-col xs:flex-col justify-between p-8">
         <h1 className="text-xl font-popins font-bold">
           Equipment, Machinery, Tools & Vehicle(50)
         </h1>
-        <div className="border-2 flex flex-row rounded-full items-center w-1/4 h-12	">
+        <div className="border-2 flex flex-row rounded-full items-center md:w-full lg:w-1/4 xl:w-1/4 xs:w-full sm:w-full h-12	">
           <SearchIcon onClick={handleSearchByName} className="text-2xl ml-2" />
           <TextField
             className="w-full"
@@ -91,8 +91,8 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <div className="flex flex-row ">
-        <div className="w-1/3 bg-[#F6F9FB] flex flex-col p-5">
+      <div className="flex lg:flex-row xl:flex-row md:flex-col sm:flex-col xs:flex-col">
+        <div className="xl:w-1/3 lg:w-1/3 md:w-full sm:w-full xs:w-full bg-[#F6F9FB] flex flex-col p-5">
           <h1 className="text-lg font-bold text-main">Filter</h1>
 
           <div className="border-b-2 w-full my-3"></div>
@@ -161,7 +161,7 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-        <div className="w-2/3 border-t-2 p-4">
+        <div className="xl:w-2/3 lg:w-2/3 md:w-full sm:w-full xs:w-full border-t-2 p-4">
           <div className="flex flex-row mt-3">
             <span className="ml-2">
               <PlaylistAddCheckIcon sx={{ fontSize: 40 }} />
@@ -175,7 +175,7 @@ const ProductDetails = () => {
             {filteredProducts?.map((items, index) => (
               <div
                 key={index}
-                className="relative w-full flex flex-row flex-wrap border rounded-lg p-3 m-3"
+                className="relative w-full flex xl:flex-row lg:flex-row md:flex-col xs:flex-col sm:flex-col  flex-wrap border rounded-lg p-3 m-3"
               >
                 <img
                   className="aspect-[3/2]"

@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center min-h-screen mt-9 p-3">
+    <div className="flex justify-center h-[80vh] mt-9 p-3 xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col">
       <div className="flex flex-col items-center m-5 p-5 ">
         <h1 className="text-black font-extrabold lg:text-2xl font-popins md:text-xl sm:text-sm">
           LOGIN
@@ -88,7 +88,7 @@ const Login = () => {
           Login Now
         </Button>
       </div>
-      <div>
+      <div className="flex justify-center">
         <img src={LoginPic} alt="" className="w-96 h-96" />
       </div>
     </div>

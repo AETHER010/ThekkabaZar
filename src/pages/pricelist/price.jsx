@@ -37,7 +37,7 @@ const Price = () => {
           application
         </p>
       </div>
-      <div className="flex justify-center m-4">
+      <div className="flex lg:flex-row xl:flex-row md:flex-col sm:flex-col xs:flex-col justify-center m-4">
         {data?.plans?.map((items, index) => (
           <Card
             key={index}

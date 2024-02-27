@@ -62,7 +62,6 @@ const CardComponent = () => {
   }, [data]);
 
   useEffect(() => {
-    console.log("sadvfkjasdf");
     searchDataList();
   }, [search]);
 
@@ -89,6 +88,7 @@ const CardComponent = () => {
 
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);
+    searchDataList();
   };
 
   // if (status === "loading") {
@@ -104,18 +104,19 @@ const CardComponent = () => {
     dispatch(savebid({ id: id }));
     toast.success("Bid Saved Successfully");
   };
-
-  const searchDataList = () => {
-    setFilteredBids(
-      data?.data?.filter((item) =>
-        item.title.toLowerCase().includes(search.toLowerCase())
-      ) || [data.data]
-    );
-  };
-
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
-  const currentBids = data?.data.slice(indexOfFirstBid, indexOfLastBid);
+
+  const searchDataList = () => {
+    if (data?.data) {
+      const filteredData = data.data.filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
+      );
+      setFilteredBids(filteredData.slice(indexOfFirstBid, indexOfLastBid));
+    }
+  };
+
+  // const currentBids = data?.data?.slice(indexOfFirstBid, indexOfLastBid);
 
   // const bidsToDisplay = search === "" ? filteredBids : currentBids;
 
@@ -332,7 +333,7 @@ const CardComponent = () => {
             <div>
               {isgrid ? (
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xs:grid-cols-1 xl:grid-cols-3 gap-4">
-                  {currentBids?.map((items, index) => (
+                  {filteredBids?.map((items, index) => (
                     <div key={index} className="m-1">
                       <Card
                         className="p-2 h-[500px]"
@@ -403,7 +404,7 @@ const CardComponent = () => {
                 </div>
               ) : (
                 <div className="flex flex-col">
-                  {currentBids?.map((items, index) => (
+                  {filteredBids?.map((items, index) => (
                     <div key={index} className="flex flex-col flex-wrap w-full">
                       <Card
                         variant="outlined"

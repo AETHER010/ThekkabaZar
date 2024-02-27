@@ -98,8 +98,8 @@ const Privatework = () => {
         </div>
       </div>
 
-      <div className="flex flex-row">
-        <div className="flex flex-col w-2/3">
+      <div className="flex xl:flex-row lg:flex-row sm:flex-col xs:flex-col md:flex-col">
+        <div className="flex flex-col xl:w-2/3 lg:w-2/3 md:w-full sm:w-full xs:w-full">
           {data?.data?.map((items, index) => (
             <Card key={index} variant="outlined" className="m-2 p-2 shadow-lg">
               <CardContent>
@@ -136,7 +136,7 @@ const Privatework = () => {
           ))}
         </div>
 
-        <div className="flex flex-col w-1/3 h-1/2 border m-2  rounded-lg shadow-lg">
+        <div className="flex flex-col xl:w-1/3 lg:w-1/3 md:w-full sm:w-full xs:w-full h-1/2 border m-2  rounded-lg shadow-lg">
           <div className="flex flex-row justify-center p-3">
             <span className="origin-center rotate-45">
               <LinkIcon />
