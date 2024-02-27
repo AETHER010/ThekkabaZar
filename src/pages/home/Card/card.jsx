@@ -105,6 +105,9 @@ const CardComponent = () => {
     toast.success("Bid Saved Successfully");
   };
 
+  const indexOfLastBid = currentPage * bidsPerPage;
+  const indexOfFirstBid = indexOfLastBid - bidsPerPage;
+
   const searchDataList = () => {
     if (data?.data) {
       const filteredData = data.data.filter((item) =>

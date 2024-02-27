@@ -61,7 +61,7 @@ export default function Results() {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredBids(data?.data || []);
+    setFilteredBids(data?.data);
   }, [data]);
 
   const handleSearch = () => {
@@ -86,26 +86,23 @@ export default function Results() {
 
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);
+    searchDataList();
   };
 
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
-  const currentBids = filteredBids?.slice(indexOfFirstBid, indexOfLastBid);
+  // const currentBids = filteredBids?.slice(indexOfFirstBid, indexOfLastBid);
 
   const handleSearchData = (e) => {
     setSearch(e);
   };
 
   const searchDataList = () => {
-    console.log("Search", data.data);
-    if (search) {
-      const filteredList = data?.data?.filter((item) =>
-        item.awarded_to.toLowerCase().includes(search.toLowerCase())
+    if (data?.data) {
+      const filteredList = data.data.filter((item) =>
+        item.tender.title.toLowerCase().includes(search.toLowerCase())
       );
-      console.log("sdajsdvj", filteredList);
-      setFilteredBids(filteredList);
-    } else {
-      setFilteredBids(data?.data || []);
+      setFilteredBids(filteredList.slice(indexOfFirstBid, indexOfLastBid));
     }
   };
 
@@ -324,7 +321,7 @@ export default function Results() {
             <div>
               {isgrid ? (
                 <div className="flex flex-row">
-                  {currentBids?.map((items, index) => (
+                  {filteredBids?.map((items, index) => (
                     <div key={index} className="m-1">
                       <Card className="p-2" sx={{ maxWidth: 348 }}>
                         <CardMedia
@@ -404,7 +401,7 @@ export default function Results() {
                 </div>
               ) : (
                 <div className="flex flex-col">
-                  {currentBids?.map((items, index) => (
+                  {filteredBids?.map((items, index) => (
                     <div key={index} className="flex flex-col">
                       <Card
                         variant="outlined"
