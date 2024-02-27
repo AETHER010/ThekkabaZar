@@ -5,14 +5,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: "#0B5CA5",
-        lightblue: "#b4d3f0",
+        main: "#0D76B8",
+        lightblue: "#F1FAFE",
         orange: "#F45115",
         slateblue: "#E7F4FC",
       },
       fontFamily: {
-        popins: ["popins", "Proxima Nova", "sans-serif"],
+        sans: ["Poppins", "Proxima Nova", "sans-serif"], // Set Poppins as the default sans-serif font
       },
+      // fontWeight: {
+      //   'medium': 500, // Set font weight to Medium (500)
+      // },
       screens: {
         sm: "428px",
         md: "768px",

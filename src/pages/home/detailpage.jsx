@@ -64,7 +64,7 @@ const Detailpage = () => {
 
         <div className="flex flex-col">
           <h1 className="text-lg font-bold font-popins m-1">{items.title}</h1>
-          <p className="text-md font-popins">{items.description}</p>
+          <p className="text-md font-popin" dangerouslySetInnerHTML={{ __html: items.description }} />
         </div>
 
         <div className="flex flex-col mt-8">
