@@ -444,34 +444,49 @@ const CardComponent = () => {
                           <p className="text-black font-bold font-popins text-md mt-3">
                             {items.title}
                           </p>
-                          <p className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2">
-                            {items.description}
-                          </p>
-                        </CardContent>
-                        <CardActions className="w-1/5 flex lg:flex-col xl:flx-col md:flex-col sm:flex-row xs:flex-row sm:justify-center xs:justify-center border-l-2 p-3  xs:w-full sm:w-full">
-                          <span className="my-5">
-                            <FileCopyIcon sx={{ color: "#0375B7" }} />
-                          </span>
-                          <Button
-                            className="bg-main m-5 rounded-lg "
-                            variant="contained"
-                            onClick={() => handleBidSave(items.pk)}
-                          >
-                            Save Bid
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <div className="flex flex-row justify-center mt-7">
-                <Pagination
-                  count={Math.ceil(data?.data?.length / bidsPerPage)}
-                  page={currentPage}
-                  onChange={handleChangePage}
-                  color="primary"
-                />
+                        </div>
+                        <div className="flex flex-row mt-2">
+                          <div className="flex flex-row bg-[#F0F7FF] mr-1 p-2 rounded-lg">
+                            <span>
+                              <LocationOnIcon />
+                            </span>
+                            {items?.district?.map((location, index) => (
+                              <p className="text-[#185CAB]" key={index}>
+                                {location.name}
+                              </p>
+                            ))}
+                          </div>
+                          <div className="flex flex-row bg-[#FFF2F0] mr-1 p-2 rounded-lg">
+                            {items?.project_type?.map((project, index) => (
+                              <p className="text-[#FF7A00]" key={index}>
+                                {project.name}
+                              </p>
+                            ))}
+                          </div>
+                          <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
+                            {items.source}
+                          </div>
+                        </div>
+                        <p className="text-black font-bold font-popins text-md mt-3">
+                          {items.title}
+                        </p>
+                        <p className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2" dangerouslySetInnerHTML={{ __html: items.description }} />
+                      </CardContent>
+                      <CardActions className="w-1/5 flex flex-col border-l-2 p-3">
+                        <span className="my-5">
+                          <FileCopyIcon sx={{ color: "#0375B7" }} />
+                        </span>
+                        <Button
+                          className="bg-main m-5 rounded-lg"
+                          variant="contained"
+                          onClick={() => handleBidSave(items.pk)}
+                        >
+                          Save Bid
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

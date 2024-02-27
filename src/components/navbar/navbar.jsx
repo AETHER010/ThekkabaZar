@@ -37,7 +37,10 @@ function Navbar() {
   const handleRegister = () => {
     navigate("/register");
   };
-
+  const handelLogin = () => {
+    navigate("/login");
+  };
+  
   const handleProfileClick = (event) => {
     setProfileAnchorEl(event.currentTarget);
   };
@@ -60,7 +63,7 @@ function Navbar() {
   return (
     <nav className="bg-white p-4 flex items-center justify-between shadow-lg">
       <div className="flex items-center space-x-9 pl-2">
-        <img src={Logo} alt="Logo" className="" />
+        <img src={Logo} alt="Logo" className="max-w-[100px]" />
       </div>
 
       {/* Mobile Menu */}
@@ -75,70 +78,73 @@ function Navbar() {
       <div
         className={`space-x-8 lg:flex hidden ${isMenuOpen ? "flex" : "hidden"}`}
       >
-        <Link to="/" className="text-black" onClick={handleMenuClose}>
+        <Link to="/" className="flex items-center text-black text-xl" onClick={handleMenuClose}>
           Home
         </Link>
-        <Link to="/results" className="text-black" onClick={handleMenuClose}>
+
+        <Link to="/results" className="flex items-center text-black text-xl" onClick={handleMenuClose}>
           Result
         </Link>
-        <Link to="/pricing" className="text-black" onClick={handleMenuClose}>
+        <Link to="/pricing" className="flex items-center text-black text-xl" onClick={handleMenuClose}>
           Pricing
         </Link>
-        <Link to="/bazar" className="text-black" onClick={handleMenuClose}>
+        <Link to="/bazar" className="flex items-center text-black text-xl" onClick={handleMenuClose}>
           Bazar
         </Link>
         <Link
           to="/privateWorks"
-          className="text-black"
+          className="flex items-center text-black text-xl"
           onClick={handleMenuClose}
         >
           Private Works
         </Link>
-        <Link to="/taxvat" className="text-black" onClick={handleMenuClose}>
+        <Link to="/taxvat" className="flex items-center text-black text-xl" onClick={handleMenuClose}>
           Tax & VAT Services
         </Link>
+        {access_token ? (
+          <div className="hidden lg:block">
+            <Button
+              onClick={handleProfileClick}
+              aria-label="Profile"
+              className="text-black text-xl mr-4 p-3 text-xl"
+              startIcon={<AccountCircleIcon className="text-xl" />}
+            >
+              {data.username}
+            </Button>
+            <Menu
+              anchorEl={profileAnchorEl}
+              open={Boolean(profileAnchorEl)}
+              onClose={handleProfileClose}
+            >
+              <MenuItem onClick={handleProfileClose}>
+                <Link to="/profile" className="text-black text-xl">
+                  My Profile
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </Menu>
+          </div>
+        ) : (
+          <div className="items-center space-x-6 hidden lg:block">
+            <Button
+              className="bg-[#F48023] text-white px-4 py-2 rounded-lg"
+              variant="contained"
+              startIcon={<AddCircleIcon />}
+              onClick={handleRegister}
+            >
+              Register
+            </Button>
+            <Button
+              to="/login"
+              className="text-white bg-lime-600 px-4 py-2 rounded-lg"
+              variant="contained"
+              onClick={handelLogin}
+            >Login
+              </Button>
+          </div>
+        )}
       </div>
-      {access_token ? (
-        <div className="hidden lg:block">
-          <Button
-            onClick={handleProfileClick}
-            aria-label="Profile"
-            className="text-black mr-4 p-3 text-xl"
-            startIcon={<AccountCircleIcon className="text-xl" />}
-          >
-            {data.username}
-          </Button>
-          <Menu
-            anchorEl={profileAnchorEl}
-            open={Boolean(profileAnchorEl)}
-            onClose={handleProfileClose}
-          >
-            <MenuItem onClick={handleProfileClose}>
-              <Link to="/profile" className="text-black">
-                My Profile
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
-          </Menu>
-        </div>
-      ) : (
-        <div className="items-center space-x-6 hidden lg:block">
-          <Button
-            className="bg-[#F48023] text-black px-4 py-2 rounded-lg"
-            variant="contained"
-            startIcon={<AddCircleIcon />}
-            onClick={handleRegister}
-          >
-            Register
-          </Button>
-          <Link
-            to="/login"
-            className="text-black bg-lime-600 px-4 py-2 rounded-lg"
-          >
-            Login
-          </Link>
-        </div>
-      )}
+
 
       {/* Mobile Menu Links */}
       {isMenuOpen && (

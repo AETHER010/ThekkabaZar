@@ -42,7 +42,7 @@ function Form() {
   };
 
   return (
-    <div className=" mx-8 p-5 bg-lightblue shadow-lg border-1">
+    <div className=" mx-8 p-5 shadow-lg border-1" style={{backgroundColor: "#F1FAFF"}}>
       <h1 className="text-4xl m-3 font-medium text-cyan-600">Filter</h1>
 
       <div className="flex items-center space-x-4 p-3">
