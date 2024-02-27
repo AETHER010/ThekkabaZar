@@ -5,17 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: "#0D76B8",
-        lightblue: "#F1FAFE",
+        main: "#0B5CA5",
+        lightblue: "#b4d3f0",
         orange: "#F45115",
         slateblue: "#E7F4FC",
       },
       fontFamily: {
-        sans: ["Poppins", "Proxima Nova", "sans-serif"], // Set Poppins as the default sans-serif font
+        popins: ["popins", "Proxima Nova", "sans-serif"],
       },
-      // fontWeight: {
-      //   'medium': 500, // Set font weight to Medium (500)
-      // },
       screens: {
         xs: { max: "429px" }, // Extra small screens (max width: 429px)
         sm: { min: "430px", max: "767px" }, // Small screens (min width: 430px, max width: 767px)
