@@ -33,29 +33,26 @@ const ProductDetails = () => {
   }, [dispatch, mainCategory, error]);
 
   useEffect(() => {
-    handleSearchByName();
-  }, [searchQuery]);
+    setFilteredProducts(productList.products);
+  }, [productList]);
 
   const handlecategorySearch = (category) => {
     dispatch(fetchproductListData({ mainCategory: category }));
-    handleSearchByName();
   };
 
   const handleBusinessTypeSearch = (businessType) => {
     dispatch(fetchproductListData({ businessType: businessType }));
-    handleSearchByName();
   };
 
   const handleLocationSearch = (location) => {
     dispatch(fetchproductListData({ location: location }));
-    handleSearchByName();
   };
 
   const handleSearchByName = () => {
     setFilteredProducts(
       productList?.products?.filter((item) =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
-      ) || [productList.products]
+      ) || []
     );
   };
 
