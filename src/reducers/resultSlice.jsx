@@ -41,10 +41,23 @@ export const fetchresultData = createAsyncThunk(
   }
 );
 
+export const fetchOneResultData = createAsyncThunk(
+  "data/fetchOneResultData",
+  async ({ tenderId }) => {
+    const response = await axios.get(
+      `https://thekkabazar.itnepalsolutions.com/tender/apis/tender-awarded-to/${tenderId}/`
+    );
+
+    const data = response.data;
+    return data;
+  }
+);
+
 const resultSlice = createSlice({
   name: "card",
   initialState: {
     data: [],
+    one: [],
     status: "idle",
     error: null,
   },
@@ -59,6 +72,17 @@ const resultSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(fetchresultData.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchOneResultData.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchOneResultData.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.one = action.payload;
+      })
+      .addCase(fetchOneResultData.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

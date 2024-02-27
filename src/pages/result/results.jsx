@@ -31,9 +31,11 @@ import { fetchresultData } from "../../reducers/resultSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchDropdownData } from "../../reducers/formSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Results() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isgrid, setIsGrid] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const bidsPerPage = 10;
@@ -323,7 +325,13 @@ export default function Results() {
                 <div className="flex flex-row">
                   {filteredBids?.map((items, index) => (
                     <div key={index} className="m-1">
-                      <Card className="p-2" sx={{ maxWidth: 348 }}>
+                      <Card
+                        className="p-2"
+                        sx={{ maxWidth: 348 }}
+                        onClick={() =>
+                          navigate(`/resultdetails/${items.tender.pk}`)
+                        }
+                      >
                         <CardMedia
                           sx={{ height: 140 }}
                           image={items.tender.image}
@@ -406,6 +414,9 @@ export default function Results() {
                       <Card
                         variant="outlined"
                         className="flex flex-row mt-2 p-2 shadow-lg"
+                        onClick={() =>
+                          navigate(`/resultdetails/${items.tender.pk}`)
+                        }
                       >
                         <CardContent className="w-full">
                           <div className="flex flex-row">

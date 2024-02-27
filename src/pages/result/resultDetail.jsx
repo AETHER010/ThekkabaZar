@@ -1,23 +1,23 @@
 import React, { useEffect } from "react";
-import OrgCard from "./Card/orgcard";
-import Noticecard from "./Card/noticecard";
+import OrgCard from "../home/Card/orgcard";
+import Noticecard from "../home/Card/noticecard";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Button from "@mui/material/Button";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOneTenderData } from "../../reducers/cardSlice";
+import { fetchOneResultData } from "../../reducers/resultSlice";
 import { useParams } from "react-router-dom";
 
-const Detailpage = () => {
+const ResultDetailpage = () => {
   const dispatch = useDispatch();
-  const { one, status, error } = useSelector((state) => state.card);
+  const { one, status, error } = useSelector((state) => state.result);
   const tenderId = useParams();
 
   useEffect(() => {
     const id = tenderId.id;
-    dispatch(fetchOneTenderData({ tenderId: id }));
+    dispatch(fetchOneResultData({ tenderId: id }));
   }, [dispatch, tenderId]);
 
   const items = one;
@@ -66,6 +66,13 @@ const Detailpage = () => {
           />
         </div>
 
+        <h1>
+          Tender Awarded to :{" "}
+          <span className="font-popins text-xl font-bold">
+            {items.tender_awarded_to.awarded_to}
+          </span>
+        </h1>
+
         <div className="flex flex-col mt-8">
           <h1 className="text-lg font-bold ">Documents</h1>
           <div className="flex flex-row justify-center">
@@ -97,4 +104,4 @@ const Detailpage = () => {
   );
 };
 
-export default Detailpage;
+export default ResultDetailpage;

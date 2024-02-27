@@ -117,8 +117,12 @@ export default function Bazar() {
               {items.name}
             </h1>
 
-            <div className="flex flex-col justify-center items-center p-4">
-              <img src={items.image} alt="ntg" />
+            <div className="flex flex-col justify-center items-center p-4 ">
+              <img
+                className=" h-[350px] w-[368px]"
+                src={items.image}
+                alt="ntg"
+              />
               <Button
                 className="w-56 m-3"
                 variant="contained"
@@ -129,7 +133,7 @@ export default function Bazar() {
             </div>
           </div>
 
-          <div className="lg:w-3/5 sm:w-full flex flex-row flex-wrap justify-center">
+          <div className="lg:w-3/5 sm:w-full flex flex-row flex-wrap justify-center ml-3">
             {items.subcategory?.map((subcategory, index) => (
               <div
                 key={index}

@@ -15,6 +15,7 @@ import DetailPage from "./pages/home/detailpage";
 import AboutUs from "./pages/AboutUs/aboutUs";
 import Profile from "./pages/profile/profile";
 import Register from "./pages/Register/register";
+import ResultDetailpage from "./pages/result/resultDetail";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -70,6 +71,7 @@ function App() {
                 path="/bazar/productdetails/:mainCategory"
                 element={<ProductDetails />}
               />
+              <Route path="/resultdetails/:id" element={<ResultDetailpage />} />
             </Routes>
             <Footer />
           </>
