@@ -31,6 +31,7 @@ import { fetchresultData } from "../../reducers/resultSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchDropdownData } from "../../reducers/formSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Results() {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ export default function Results() {
   useEffect(() => {
     setFilteredBids(data?.data);
   }, [data]);
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     dispatch(
@@ -216,25 +218,20 @@ export default function Results() {
             sx={{ minWidth: 120 }}
           >
             <FormControl fullWidth className="bg-white">
-              <InputLabel id="simple-select-label" className=" w-full">
-                Published Date
-              </InputLabel>
-              <Select
-                labelId="simple-select-label"
-                id="simple-select"
-                value={date}
-                label="date"
+              <TextField
+                id="date"
+                label="Published Date"
+                type="date"
+                defaultValue={date} // Assuming date is a string in the format "YYYY-MM-DD"
                 sx={{ height: "3rem" }}
                 onChange={(e) => setDate(e.target.value)}
-              >
-                {dropdowndata?.districts?.map((items, index) => (
-                  <MenuItem key={index} value={items.name}>
-                    {items.name}
-                  </MenuItem>
-                ))}
-              </Select>
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
             </FormControl>
           </Box>
+
           <Box
             className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
             sx={{ minWidth: 120 }}
@@ -323,7 +320,11 @@ export default function Results() {
                 <div className="flex flex-row">
                   {filteredBids?.map((items, index) => (
                     <div key={index} className="m-1">
-                      <Card className="p-2" sx={{ maxWidth: 348 }}>
+                      <Card
+                        className="p-2" sx={{ maxWidth: 348 }}
+                        onClick={() => navigate(`/details/${items.tender.pk}`)}
+
+                      >
                         <CardMedia
                           sx={{ height: 140 }}
                           image={items.tender.image}
@@ -406,7 +407,10 @@ export default function Results() {
                       <Card
                         variant="outlined"
                         className="flex flex-row mt-2 p-2 shadow-lg"
+                        onClick={() => navigate(`/details/${items.tender.pk}`)}
+
                       >
+
                         <CardContent className="w-full">
                           <div className="flex flex-row">
                             <span>

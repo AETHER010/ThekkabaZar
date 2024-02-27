@@ -229,25 +229,21 @@ const CardComponent = () => {
             sx={{ minWidth: 120 }}
           >
             <FormControl fullWidth className="bg-white">
-              <InputLabel id="simple-select-label" className=" w-full">
-                Published Date
-              </InputLabel>
-              <Select
-                labelId="simple-select-label"
-                id="simple-select"
-                value={date}
-                label="date"
+
+              <TextField
+                id="date"
+                label="Date"
+                type="date"
+                defaultValue={date} // Assuming date is a string in the format "YYYY-MM-DD"
                 sx={{ height: "3rem" }}
                 onChange={(e) => setDate(e.target.value)}
-              >
-                {dropdowndata?.districts?.map((items, index) => (
-                  <MenuItem key={index} value={items.name}>
-                    {items.name}
-                  </MenuItem>
-                ))}
-              </Select>
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
             </FormControl>
           </Box>
+
           <Box
             className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
             sx={{ minWidth: 120 }}
@@ -305,7 +301,6 @@ const CardComponent = () => {
           </Button>
         </div>
       </div>
-      );
       <div className="p-8">
         <h1 className="text-lg font-bold">All Bids</h1>
 
