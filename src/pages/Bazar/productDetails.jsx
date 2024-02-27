@@ -26,6 +26,10 @@ const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchproductListData({ mainCategory: mainCategory }));
+
+    if (error) {
+      return <p className="text-red-600 flex text-center">{error}</p>;
+    }
   }, [dispatch, mainCategory]);
 
   useEffect(() => {
@@ -48,14 +52,11 @@ const ProductDetails = () => {
   };
 
   const handleSearchByName = () => {
-    if (productList && productList.products) {
-      const filtered = productList.products.filter((item) =>
+    setFilteredProducts(
+      productList?.products?.filter((item) =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    } else {
-      setFilteredProducts([productList.products]);
-    }
+      ) || [productList.products]
+    );
   };
 
   return (

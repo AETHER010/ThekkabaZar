@@ -81,7 +81,7 @@ const Home = () => {
           </div>
         </Slider>
       </div>
-      <Form />
+
       <Card />
     </div>
   );

@@ -16,7 +16,7 @@ export const fetchDropdownData = createAsyncThunk(
 const dropDownSlice = createSlice({
   name: "data",
   initialState: {
-    data: [],
+    dropdowndata: [],
     status: "idle",
     error: null,
   },
@@ -28,7 +28,7 @@ const dropDownSlice = createSlice({
       })
       .addCase(fetchDropdownData.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload;
+        state.dropdowndata = action.payload;
       })
       .addCase(fetchDropdownData.rejected, (state, action) => {
         state.status = "failed";

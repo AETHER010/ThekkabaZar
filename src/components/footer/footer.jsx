@@ -5,8 +5,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 export default function Footer() {
   return (
-    <footer className="max-container bg-main">
-      <div className="flex flex-wrap md:flex-row max-lg:flex-col max-lg:text-sm ">
+    <footer className="max-container bg-main  w-full">
+      <div className="flex flex-wrap md:flex-row max-lg:flex-col max-lg:text-sm justify-between ">
         <div className="border-b-2"></div>
         <div className="flex flex-col items-start m-5 p-4">
           <h1 className="text-lg text-white ">Contact Us</h1>
@@ -53,7 +53,7 @@ export default function Footer() {
           <p className="text-white m-3">Refund Policy</p>
         </div>
 
-        <div className="flex flex-col border border-slate-400 rounded-lg bg-sky-600 m-5 p-5">
+        <div className="flex flex-col border border-slate-400 rounded-lg bg-sky-600 mr-8 mt-5 p-5">
           <h1 className="text=lg text-white font-popins font-semibold	subpixel-antialiased">
             Subscribe Newsletter
           </h1>
@@ -72,6 +72,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
+
       <div className="flex justify-between">
         <p className="text-white text-popins">
           © Copyright Bolpatra Nepal. All Rights Reserved
