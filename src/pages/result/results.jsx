@@ -110,7 +110,7 @@ export default function Results() {
   // console.log("ajfbkajsd", bidsToDisplay);
 
   return (
-    <div>
+    <div className="mt-[2rem]">
       <div className=" mx-8 p-5 bg-lightblue shadow-lg border-1">
         <h1 className="text-4xl m-3 font-medium text-cyan-600">Filter</h1>
 
@@ -370,7 +370,7 @@ export default function Results() {
                               </div>
                             </div>
                             <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
-                              {items.source}
+                              {items.tender.source}
                             </div>
                           </div>
                           <div className="flex justify-center items-center">
@@ -441,7 +441,7 @@ export default function Results() {
                               </div>
 
                               <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
-                                {items.source}
+                                {items.tender.source}
                               </div>
                             </div>
                             <span className="my-5">
@@ -452,7 +452,12 @@ export default function Results() {
                             {items.tender.title}
                           </p>
                           <p className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2">
-                            {items.tender.description}
+                            <p
+                              className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2"
+                              dangerouslySetInnerHTML={{
+                                __html: items.tender.description,
+                              }}
+                            />
                           </p>
 
                           <div className="border-b-2 my-6"></div>

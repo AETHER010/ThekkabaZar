@@ -5,14 +5,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: "#0B5CA5",
-        lightblue: "#b4d3f0",
+        main: "#0D76B8",
+        lightblue: "#F1FAFE",
         orange: "#F45115",
         slateblue: "#E7F4FC",
       },
       fontFamily: {
-        popins: ["popins", "Proxima Nova", "sans-serif"],
+        sans: ["Poppins", "Proxima Nova", "sans-serif"], // Set Poppins as the default sans-serif font
       },
+
       screens: {
         xs: { max: "429px" }, // Extra small screens (max width: 429px)
         sm: { min: "430px", max: "767px" }, // Small screens (min width: 430px, max width: 767px)

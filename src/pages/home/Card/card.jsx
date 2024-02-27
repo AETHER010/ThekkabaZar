@@ -446,9 +446,12 @@ const CardComponent = () => {
                           <p className="text-black font-bold font-popins text-md mt-3">
                             {items.title}
                           </p>
-                          <p className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2">
-                            {items.description}
-                          </p>
+                          <p
+                            className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2"
+                            dangerouslySetInnerHTML={{
+                              __html: items.description,
+                            }}
+                          />
                         </CardContent>
                         <CardActions className="w-1/5 flex lg:flex-col xl:flx-col md:flex-col sm:flex-row xs:flex-row sm:justify-center xs:justify-center border-l-2 p-3  xs:w-full sm:w-full">
                           <span className="my-5">

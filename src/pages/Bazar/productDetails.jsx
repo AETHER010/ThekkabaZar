@@ -176,7 +176,7 @@ const ProductDetails = () => {
               >
                 <img
                   className="aspect-[3/2]"
-                  src=""
+                  src={items.image}
                   alt="image32"
                   style={{ width: "200px", height: "220px" }}
                 />
