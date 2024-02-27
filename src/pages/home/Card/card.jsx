@@ -104,8 +104,6 @@ const CardComponent = () => {
     dispatch(savebid({ id: id }));
     toast.success("Bid Saved Successfully");
   };
-  const indexOfLastBid = currentPage * bidsPerPage;
-  const indexOfFirstBid = indexOfLastBid - bidsPerPage;
 
   const searchDataList = () => {
     if (data?.data) {

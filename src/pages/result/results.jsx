@@ -166,7 +166,10 @@ export default function Results() {
         <div className="border-b-2 m-5"></div>
 
         <div className="flex flex-wrap p-3 justify-evenly">
-          <Box className="w-full md:w-80 lg:w-56 mt-2" sx={{ minWidth: 120 }}>
+          <Box
+            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
+            sx={{ minWidth: 120 }}
+          >
             <FormControl fullWidth className="bg-white">
               <InputLabel id="simple-select-label items-center">
                 Select Category
@@ -187,7 +190,10 @@ export default function Results() {
               </Select>
             </FormControl>
           </Box>
-          <Box className="w-full md:w-80 lg:w-56 mt-2" sx={{ minWidth: 120 }}>
+          <Box
+            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
+            sx={{ minWidth: 120 }}
+          >
             <FormControl fullWidth className="bg-white">
               <InputLabel id="simple-select-label" className=" w-full">
                 Select Locations
@@ -208,7 +214,10 @@ export default function Results() {
               </Select>
             </FormControl>
           </Box>
-          <Box className="w-full md:w-80 lg:w-56  mt-2" sx={{ minWidth: 120 }}>
+          <Box
+            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
+            sx={{ minWidth: 120 }}
+          >
             <FormControl fullWidth className="bg-white">
               <InputLabel id="simple-select-label" className=" w-full">
                 Published Date
@@ -229,7 +238,10 @@ export default function Results() {
               </Select>
             </FormControl>
           </Box>
-          <Box className="w-full md:w-80 lg:w-56  mt-2" sx={{ minWidth: 120 }}>
+          <Box
+            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
+            sx={{ minWidth: 120 }}
+          >
             <FormControl fullWidth className="bg-white">
               <InputLabel id="simple-select-label" className=" w-full">
                 Project Types
@@ -250,7 +262,10 @@ export default function Results() {
               </Select>
             </FormControl>
           </Box>
-          <Box className="w-full md:w-80 lg:w-56  mt-2" sx={{ minWidth: 120 }}>
+          <Box
+            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
+            sx={{ minWidth: 120 }}
+          >
             <FormControl fullWidth className="bg-white">
               <InputLabel id="simple-select-label" className=" w-full">
                 Procruments Types
