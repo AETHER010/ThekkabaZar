@@ -74,7 +74,7 @@ export default function Footer() {
       </div>
       <div className="flex justify-between items-center bg-white" style={{ height: "90px", width: "100%", paddingLeft: "43px", paddingRight: "45px" }}>
         <p className="text-black text-popins">
-          © Copyright Bolpatra Nepal. All Rights Reserved
+          © Copyright Thekkabazar. All Rights Reserved
         </p>
         <p className="text-black text-popins">
           Designed by: <span style={{ color: "#DE2228" }}>IT </span><span style={{ color: "#214192" }}>Nepal</span> <span style={{ color: "#DE2228" }}>Solutions</span>
