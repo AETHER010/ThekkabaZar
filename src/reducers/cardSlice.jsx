@@ -12,6 +12,7 @@ export const fetchTenderListData = createAsyncThunk(
     procurement_type,
     date,
     category,
+    page,
   } = {}) => {
     const params = new URLSearchParams();
 
@@ -32,6 +33,9 @@ export const fetchTenderListData = createAsyncThunk(
     }
     if (category) {
       params.append("category", category);
+    }
+    if (page) {
+      params.append("page", page);
     }
     const response = await axios.get(
       `https://thekkabazar.itnepalsolutions.com/tender/apis/tender/list/?${params.toString()}`

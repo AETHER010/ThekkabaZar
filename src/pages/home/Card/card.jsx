@@ -76,6 +76,12 @@ const CardComponent = () => {
         category: category,
       })
     );
+    setOrganization("");
+    setCategory("");
+    setLocation("");
+    setProjectType("");
+    setProcurementTypes("");
+    setDate("");
   };
 
   const handlegridview = () => {
@@ -86,8 +92,28 @@ const CardComponent = () => {
     setIsGrid(false);
   };
 
-  const handleChangePage = (event, newPage) => {
+  const searchDataList = () => {
+    if (data?.data) {
+      const filteredData = data.data.filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
+      );
+
+      setFilteredBids(filteredData.slice(indexOfFirstBid, indexOfLastBid));
+    }
+  };
+
+  const handleChangePage = (newPage) => {
+    if (newPage < 1) {
+      // Avoid going to negative pages
+      return;
+    }
+
     setCurrentPage(newPage);
+    dispatch(
+      fetchTenderListData({
+        page: newPage,
+      })
+    );
     searchDataList();
   };
 
@@ -104,18 +130,8 @@ const CardComponent = () => {
     dispatch(savebid({ id: id }));
     toast.success("Bid Saved Successfully");
   };
-
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
-
-  const searchDataList = () => {
-    if (data?.data) {
-      const filteredData = data.data.filter((item) =>
-        item.title.toLowerCase().includes(search.toLowerCase())
-      );
-      setFilteredBids(filteredData.slice(indexOfFirstBid, indexOfLastBid));
-    }
-  };
 
   // const currentBids = data?.data?.slice(indexOfFirstBid, indexOfLastBid);
 
@@ -229,7 +245,6 @@ const CardComponent = () => {
             sx={{ minWidth: 120 }}
           >
             <FormControl fullWidth className="bg-white">
-
               <TextField
                 id="date"
                 label="Date"
@@ -467,9 +482,9 @@ const CardComponent = () => {
               )}
               <div className="flex flex-row justify-center mt-7">
                 <Pagination
-                  count={Math.ceil(data?.data?.length / bidsPerPage)}
+                  count={Math.ceil(data?.count / bidsPerPage)}
                   page={currentPage}
-                  onChange={handleChangePage}
+                  onChange={(event, page) => handleChangePage(page)}
                   color="primary"
                 />
               </div>

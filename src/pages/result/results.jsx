@@ -77,6 +77,12 @@ export default function Results() {
         category: category,
       })
     );
+    setOrganization("");
+    setCategory("");
+    setLocation("");
+    setProjectType("");
+    setProcurementTypes("");
+    setDate("");
   };
 
   const handlegridview = () => {
@@ -84,11 +90,6 @@ export default function Results() {
   };
   const handleListIconClick = () => {
     setIsGrid(false);
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setCurrentPage(newPage);
-    searchDataList();
   };
 
   const indexOfLastBid = currentPage * bidsPerPage;
@@ -108,6 +109,16 @@ export default function Results() {
     }
   };
 
+  const handleChangePage = (newPage) => {
+    if (newPage < 1) {
+      // Avoid going to negative pages
+      return;
+    }
+    setCurrentPage(newPage);
+    dispatch(fetchresultData({ page: newPage }));
+    searchDataList();
+  };
+
   // const bidsToDisplay = isSearch ? filteredBids : currentBids;
   // console.log("ajfbkajsd", bidsToDisplay);
 
@@ -116,8 +127,11 @@ export default function Results() {
       <div className=" mx-8 p-5 bg-lightblue shadow-lg border-1">
         <h1 className="text-4xl m-3 font-medium text-cyan-600">Filter</h1>
 
-        <div className="flex items-center space-x-4 p-3">
-          <Box className="w-72" sx={{ minWidth: 120 }}>
+        <div className="flex flex-wrap lg:flex-row md:flex-row sm:flex-col sm:w-full xs:flex-col xl:flex-row space-x-4 p-3">
+          <Box
+            className="lg:w-72 md:w-72 sm:w-full mt-2 xl:w-72"
+            sx={{ minWidth: 120 }}
+          >
             <FormControl fullWidth className="bg-white content-center">
               <InputLabel id="simple-select-label" className=" w-full">
                 Select Organization
@@ -143,7 +157,7 @@ export default function Results() {
 
           <div className="h-12">
             <TextField
-              className="w-64 h-12 bg-white"
+              className="lg:w-72 md:w-72 h-12 mt-2 bg-white sm:my-2 lg:ml-2 md:ml-2 sm:w-full rounded-lg"
               variant="outlined"
               label="Enter Keywords"
               value={search}
@@ -293,8 +307,8 @@ export default function Results() {
       <div className="p-8">
         <h1 className="text-lg font-bold">All Bids</h1>
 
-        <div className="flex flex-row">
-          <div className="flex flex-col w-3/4">
+        <div className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col">
+          <div className="flex flex-col lg:w-3/4 xl:w-3/4 md:w-full sm:w-full xs:w-full">
             <div className="border-b-2 border-[#EA9706] mt-3"></div>
             <div className="flex justify-end my-6">
               <div>
@@ -489,16 +503,16 @@ export default function Results() {
               )}
               <div className="flex flex-row justify-center mt-7">
                 <Pagination
-                  count={Math.ceil(data?.data?.length / bidsPerPage)}
+                  count={Math.ceil(data?.count / bidsPerPage)}
                   page={currentPage}
-                  onChange={handleChangePage}
+                  onChange={(event, page) => handleChangePage(page)}
                   color="primary"
                 />
               </div>
             </div>
           </div>
 
-          <div className="w-1/4">
+          <div className="lg:w-1/4 xl:w-1/4 md:w-full sm:w-full xs:-full">
             <Orgcard />
 
             <Noticecard />

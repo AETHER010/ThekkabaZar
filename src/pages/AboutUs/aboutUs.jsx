@@ -10,6 +10,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import locationimage from "../../Assets/loactionImage.png";
 
+import TaxVat from "../TaxVat/taxvat";
+
 const AboutUs = () => {
   return (
     <div>
@@ -45,6 +47,10 @@ const AboutUs = () => {
         </div>
       </div>
 
+      <div>
+        <TaxVat />
+      </div>
+
       <div className="px-3 pt-5 bg-[#F9F9F9]">
         <h1 className="text-md md:text-xl text-main font-popins font-extrabold ml-7">
           Our Team
@@ -53,42 +59,42 @@ const AboutUs = () => {
           Meet Our Team
         </h1>
         <div className="flex flex-row flex-wrap justify-center m-2">
-          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
+          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] xl:h-96 xl:w-96 lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
             <div className="absolute bottom-0 left-0 text-center p-4">
               <h2 className="text-white font-bold text-lg">himesh bhandari</h2>
               <h2 className="text-white">Full Stack Developer</h2>
             </div>
           </div>
 
-          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
+          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] xl:h-96 xl:w-96 lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
             <div className="absolute bottom-0 left-0 text-center p-4">
               <h2 className="text-white font-bold text-lg">himesh bhandari</h2>
               <h2 className="text-white">Full Stack Developer</h2>
             </div>
           </div>
 
-          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
+          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] xl:h-96 xl:w-96 lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
             <div className="absolute bottom-0 left-0 text-center p-4">
               <h2 className="text-white font-bold text-lg">himesh bhandari</h2>
               <h2 className="text-white">Full Stack Developer</h2>
             </div>
           </div>
 
-          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
+          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] xl:h-96 xl:w-96 lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
             <div className="absolute bottom-0 left-0 text-center p-4">
               <h2 className="text-white font-bold text-lg">himesh bhandari</h2>
               <h2 className="text-white">Full Stack Developer</h2>
             </div>
           </div>
 
-          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
+          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] xl:h-96 xl:w-96 lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
             <div className="absolute bottom-0 left-0 text-center p-4">
               <h2 className="text-white font-bold text-lg">himesh bhandari</h2>
               <h2 className="text-white">Full Stack Developer</h2>
             </div>
           </div>
 
-          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
+          <div className="relative bg-[url(https://img.freepik.com/premium-photo/cute-handsome-anime-boy-blue-light_675932-435.jpg)] xl:h-96 xl:w-96 lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-64 sm:w-64 bg-no-repeat bg-cover shadow-lg mx-10 mt-8">
             <div className="absolute bottom-0 left-0 text-center p-4">
               <h2 className="text-white font-bold text-lg">himesh bhandari</h2>
               <h2 className="text-white">Full Stack Developer</h2>

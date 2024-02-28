@@ -2,13 +2,14 @@ import React from "react";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer className="max-container bg-main">
-      <div className="flex flex-wrap md:flex-row max-lg:flex-col max-lg:text-sm ">
+      <div className="flex flex-wrap md:flex-row max-lg:flex-col max-lg:text-sm justify-between">
         <div className="border-b-2"></div>
-        <div className="flex flex-col items-start m-5 p-4">
+        <div className="flex flex-col items-start m-5 p-4 bg-slate-600">
           <h1 className="text-lg text-white ">Contact Us</h1>
           <div className="flex">
             <span className="text-white mt-3 mb-3">
@@ -23,26 +24,27 @@ export default function Footer() {
             <p className="text-white mt-3 mb-3">rajan.aryal195@gmail.com</p>
           </div>
           <div className="flex">
-            <span className="text-white mt-3 mb-3">
+            <span className="text-white my-3">
               <LocationOnIcon />
             </span>
-            <p className="text-white mt-3 mb-3">
-              Buddhanagar, Kathmandu Nepal
-
-            </p>
+            <p className="text-white mt-3 mb-3">Buddhanagar, Kathmandu Nepal</p>
           </div>
         </div>
 
-        <div className="flex flex-col items-start m-5 p-5 ">
+        <div className="flex flex-col items-start m-5 p-5 bg-slate-900">
           <h1 className="text-lg text-white ">Company</h1>
 
-          <p className="text-white mt-3 mb-3">About Us</p>
+          <Link to="/aboutus" className="text-white mt-3 mb-3">
+            About Us
+          </Link>
 
-          <p className="text-white mt-3 mb-3">Our Services</p>
+          <Link to="/aboutus" className="text-white mt-3 mb-3">
+            Our Services
+          </Link>
 
           <p className="text-white mt-3 mb-3">Terms & Conditions</p>
         </div>
-        <div className="flex flex-col items-start m-5 p-5">
+        <div className="flex flex-col items-start m-5 p-5 bg-gray-950">
           <h1 className="text-lg text-white ">Our Services</h1>
 
           <p className="text-white mt-3 mb-3">Privacy Policy</p>
@@ -72,14 +74,24 @@ export default function Footer() {
           </p>
         </div>
       </div>
-      <div className="flex justify-between items-center bg-white" style={{ height: "90px", width: "100%", paddingLeft: "43px", paddingRight: "45px" }}>
+      <div
+        className="flex justify-between items-center bg-white"
+        style={{
+          height: "90px",
+          width: "100%",
+          paddingLeft: "43px",
+          paddingRight: "45px",
+        }}
+      >
         <p className="text-black text-popins">
           © Copyright Thekkabazar. All Rights Reserved
         </p>
         <p className="text-black text-popins">
-          Designed by: <span style={{ color: "#DE2228" }}>IT </span><span style={{ color: "#214192" }}>Nepal</span> <span style={{ color: "#DE2228" }}>Solutions</span>
+          Designed by: <span style={{ color: "#DE2228" }}>IT </span>
+          <span style={{ color: "#214192" }}>Nepal</span>{" "}
+          <span style={{ color: "#DE2228" }}>Solutions</span>
         </p>
       </div>
-    </footer >
+    </footer>
   );
 }
