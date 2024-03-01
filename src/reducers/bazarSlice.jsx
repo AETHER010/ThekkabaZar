@@ -21,6 +21,8 @@ export const fetchproductListData = createAsyncThunk(
   async ({ mainCategory, businessType, location, subcategory }) => {
     const params = new URLSearchParams();
 
+    console.log({ mainCategory, businessType, location, subcategory });
+
     if (mainCategory) {
       params.append("maincategory", mainCategory);
     }

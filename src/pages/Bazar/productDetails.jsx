@@ -31,7 +31,7 @@ const ProductDetails = () => {
   useEffect(() => {
     // dispatch(fetchproductListData({ mainCategory: mainCategory }));
 
-    const isMainCategory = productList.related_categories.some(
+    const isMainCategory = productList?.related_categories?.some(
       (item) => item.name === mainCategory
     );
 
@@ -40,7 +40,7 @@ const ProductDetails = () => {
     // Determine the fetch action based on whether it's a main category or subcategory
     const fetchAction = isMainCategory
       ? fetchproductListData({ mainCategory: mainCategory })
-      : fetchproductListData({ subCategory: mainCategory });
+      : fetchproductListData({ subcategory: mainCategory });
 
     // Dispatch the fetch action
     dispatch(fetchAction);
