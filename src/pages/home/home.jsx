@@ -8,6 +8,10 @@ import Card from "./Card/card";
 import carouselImage from "../../Assets/carousel.jpg";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const settings = {
     // dots: true,
     infinite: true,

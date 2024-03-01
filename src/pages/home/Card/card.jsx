@@ -51,6 +51,7 @@ const CardComponent = () => {
   const bidsPerPage = 10;
 
   const [filteredBids, setFilteredBids] = useState([]);
+  const [isSearch, setIsSearch] = useState(false);
 
   useEffect(() => {
     dispatch(fetchTenderListData());
@@ -93,6 +94,11 @@ const CardComponent = () => {
   };
 
   const searchDataList = () => {
+    if (search.trim() !== "") {
+      setIsSearch(true);
+      // Your other search logic here
+    }
+
     if (data?.data) {
       const filteredData = data.data.filter((item) =>
         item.title.toLowerCase().includes(search.toLowerCase())
@@ -489,7 +495,12 @@ const CardComponent = () => {
               )}
               <div className="flex flex-row justify-center mt-7">
                 <Pagination
-                  count={Math.ceil(data?.count / bidsPerPage)}
+                  // count={Math.ceil(filteredBids?.length / bidsPerPage)}
+                  count={
+                    isSearch
+                      ? data.data.length / bidsPerPage
+                      : data?.total_pages
+                  }
                   page={currentPage}
                   onChange={(event, page) => handleChangePage(page)}
                   color="primary"

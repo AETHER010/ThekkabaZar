@@ -52,7 +52,6 @@ export default function Results() {
   const [filteredBids, setFilteredBids] = useState([]);
 
   const { data, status, error } = useSelector((state) => state.result);
-  const [bidsToDisplay, setBidsToDisplay] = useState([]);
 
   useEffect(() => {
     dispatch(fetchresultData());
@@ -65,6 +64,10 @@ export default function Results() {
   useEffect(() => {
     setFilteredBids(data?.data);
   }, [data]);
+
+  // useEffect(() => {
+  //   searchDataList();
+  // }, [search]);
 
   const handleSearch = () => {
     dispatch(
@@ -503,9 +506,9 @@ export default function Results() {
               )}
               <div className="flex flex-row justify-center mt-7">
                 <Pagination
-                  count={Math.ceil(data?.count / bidsPerPage)}
+                  count={search ? filteredBids.length : data?.total_pages}
                   page={currentPage}
-                  onChange={(event, page) => handleChangePage(page)}
+                  onChange={(page) => handleChangePage(page)}
                   color="primary"
                 />
               </div>
