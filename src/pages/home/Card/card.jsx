@@ -179,6 +179,11 @@ const CardComponent = () => {
               classes: {
                 notchedOutline: "border-none",
               },
+              onKeyDown: (e) => {
+                if (e.key === "Enter") {
+                  searchDataList(); // Call the function when Enter key is pressed
+                }
+              },
               endAdornment: (
                 <span style={{ cursor: "pointer" }}>
                   <SearchIcon />
@@ -420,9 +425,11 @@ const CardComponent = () => {
                       <Card
                         variant="outlined"
                         className="flex lg:flex-row md:flex-row sm:flex-col xs:flex-col xl:flex-row mt-2 p-2 shadow-lg w-full"
-                        onClick={() => navigate(`/details/${items.pk}`)}
                       >
-                        <CardContent className="w-4/5">
+                        <CardContent
+                          className="w-4/5"
+                          onClick={() => navigate(`/details/${items.pk}`)}
+                        >
                           <div className="flex flex-row">
                             <span>
                               <CalendarMonthIcon />

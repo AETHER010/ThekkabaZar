@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="max-container bg-main">
       <div className="flex flex-wrap md:flex-row max-lg:flex-col max-lg:text-sm justify-between">
         <div className="border-b-2"></div>
-        <div className="flex flex-col items-start m-5 p-4 bg-slate-600">
+        <div className="flex flex-col items-start m-5 p-4 ">
           <h1 className="text-lg text-white ">Contact Us</h1>
           <div className="flex">
             <span className="text-white mt-3 mb-3">
@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start m-5 p-5 bg-slate-900">
+        <div className="flex flex-col items-start m-5 p-5 ">
           <h1 className="text-lg text-white ">Company</h1>
 
           <Link to="/aboutus" className="text-white mt-3 mb-3">
@@ -44,7 +44,7 @@ export default function Footer() {
 
           <p className="text-white mt-3 mb-3">Terms & Conditions</p>
         </div>
-        <div className="flex flex-col items-start m-5 p-5 bg-gray-950">
+        <div className="flex flex-col items-start m-5 p-5 ">
           <h1 className="text-lg text-white ">Our Services</h1>
 
           <p className="text-white mt-3 mb-3">Privacy Policy</p>

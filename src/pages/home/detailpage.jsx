@@ -20,6 +20,10 @@ const Detailpage = () => {
     dispatch(fetchOneTenderData({ tenderId: id }));
   }, [dispatch, tenderId]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const items = one;
 
   return (

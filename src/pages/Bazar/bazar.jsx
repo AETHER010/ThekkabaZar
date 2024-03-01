@@ -110,9 +110,11 @@ export default function Bazar() {
         <div
           key={index}
           className="flex lg:flex-row md:flex-row sm:flex-col border rounded-lg shadow-lg p-8 m-6 cursor-pointer"
-          onClick={() => navigationDetail(items.name)}
         >
-          <div className="lg:w-2/5 flex flex-col md:w-2/5 sm:w-full">
+          <div
+            className="lg:w-2/5 flex flex-col md:w-2/5 sm:w-full"
+            onClick={() => navigationDetail(items.name)}
+          >
             <h1 className="text-3xl font-popins font-bold text-main">
               {items.name}
             </h1>

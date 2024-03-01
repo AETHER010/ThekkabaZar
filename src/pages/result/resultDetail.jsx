@@ -16,6 +16,10 @@ const ResultDetailpage = () => {
   const tenderId = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const id = tenderId.id;
     dispatch(fetchOneResultData({ tenderId: id }));
   }, [dispatch, tenderId]);
@@ -65,13 +69,6 @@ const ResultDetailpage = () => {
             dangerouslySetInnerHTML={{ __html: items.description }}
           />
         </div>
-
-        <h1>
-          Tender Awarded to :{" "}
-          <span className="font-popins text-xl font-bold">
-            {items.tender_awarded_to.awarded_to}
-          </span>
-        </h1>
 
         <div className="flex flex-col mt-8">
           <h1 className="text-lg font-bold ">Documents</h1>

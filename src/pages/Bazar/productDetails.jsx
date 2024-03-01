@@ -25,7 +25,25 @@ const ProductDetails = () => {
   const { productList, status, error } = useSelector((state) => state.bazar);
 
   useEffect(() => {
-    dispatch(fetchproductListData({ mainCategory: mainCategory }));
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    // dispatch(fetchproductListData({ mainCategory: mainCategory }));
+
+    const isMainCategory = productList.related_categories.some(
+      (item) => item.name === mainCategory
+    );
+
+    console.log(isMainCategory);
+
+    // Determine the fetch action based on whether it's a main category or subcategory
+    const fetchAction = isMainCategory
+      ? fetchproductListData({ mainCategory: mainCategory })
+      : fetchproductListData({ subCategory: mainCategory });
+
+    // Dispatch the fetch action
+    dispatch(fetchAction);
 
     if (error) {
       return <p className="text-red-600 flex text-center">{error}</p>;
@@ -80,6 +98,11 @@ const ProductDetails = () => {
             InputProps={{
               classes: {
                 notchedOutline: "border-none",
+              },
+              onKeyDown: (e) => {
+                if (e.key === "Enter") {
+                  handleSearchByName(); // Call the function when Enter key is pressed
+                }
               },
             }}
             value={searchQuery}
