@@ -136,7 +136,7 @@ const CardComponent = () => {
   // }
 
   if (status === "failed") {
-    return <p>Error: {error}</p>;
+    return <p className="text-red-500 text-4xl text-center">Error: {error}</p>;
   }
 
   const handleBidSave = (id) => {
