@@ -10,9 +10,8 @@ export const getProfile = createAsyncThunk(
         Authorization: `Bearer ${access_token}`,
       },
     };
-
     const response = await axios.get(
-      `https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/view/profile/`,
+      `https://thekkabazar.com/accounts/apis/usermanagement/view/profile/`,
       config
     );
     const data = response.data;
@@ -30,7 +29,7 @@ export const changePassword = createAsyncThunk(
     };
 
     const response = await axios.post(
-      `https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/changepassword/`,
+      `https://thekkabazar.com/accounts/apis/usermanagement/changepassword/`,
       { old_password, new_password, confirm_password },
       config
     );
@@ -58,7 +57,7 @@ export const updateProfile = createAsyncThunk(
     };
 
     const response = await axios.put(
-      `https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/update/profile/`,
+      `https://thekkabazar.com/accounts/apis/usermanagement/update/profile/`,
       {
         fullname,
         company_name,
@@ -84,7 +83,7 @@ export const getUserInterest = createAsyncThunk(
       },
     };
     const response = await axios.get(
-      `https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/intrest/`,
+      `https://thekkabazar.com/accounts/apis/usermanagement/intrest/`,
       config
     );
     return response.data;
