@@ -9,6 +9,7 @@ import resultSlice from "../reducers/resultSlice";
 import bazarSlice from "../reducers/bazarSlice";
 import priceSlice from "../reducers/priceListSlice";
 import profileSlice from "../reducers/profileSlice";
+import aboutusSlice from "../reducers/aboutusSlice";
 
 const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ const store = configureStore({
     bazar: bazarSlice,
     price: priceSlice,
     profile: profileSlice,
+    aboutus: aboutusSlice,
   },
 });
 

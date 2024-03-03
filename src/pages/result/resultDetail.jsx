@@ -9,6 +9,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOneResultData } from "../../reducers/resultSlice";
 import { useParams } from "react-router-dom";
+import html2pdf from "html2pdf.js";
 
 const ResultDetailpage = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,33 @@ const ResultDetailpage = () => {
   }, [dispatch, tenderId]);
 
   const items = one;
+
+  const handleDownloadBrochure = () => {
+    // Get the HTML content of the title and description
+    const htmlContent = `
+    <h1 style="font-size: 28px; font-weight: bold;">${items.title}</h1>
+    <p>${items.description}</p>
+
+    <p style="margin-top: 5px font-size: 28px; font-weight: bold;">Image</p>
+    <img>src=${items.image}</img>
+  `;
+
+    // Create a new HTML element with the content
+    const pdfContainer = document.createElement("div");
+    pdfContainer.innerHTML = htmlContent;
+
+    // Set the styles or classes if needed
+    // pdfContainer.style = "your styles here";
+
+    // Generate the PDF
+    html2pdf(pdfContainer, {
+      margin: 10,
+      filename: "brochure.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    });
+  };
 
   return (
     <div className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col">
@@ -79,6 +107,7 @@ const ResultDetailpage = () => {
                 className="bg-main h-9 m-5 rounded-lg"
                 variant="contained"
                 startIcon={<ArrowDownwardIcon />}
+                onClick={handleDownloadBrochure}
               >
                 Download Brochure
               </Button>

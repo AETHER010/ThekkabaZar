@@ -192,53 +192,61 @@ const ProductDetails = () => {
           </div>
 
           <div>
-            {filteredProducts?.map((items, index) => (
-              <div
-                key={index}
-                className="relative w-full flex xl:flex-row lg:flex-row md:flex-col xs:flex-col sm:flex-col  flex-wrap border rounded-lg p-3 m-3"
-              >
-                <img
-                  className="aspect-[3/2]"
-                  src={items.image}
-                  alt="image32"
-                  style={{ width: "200px", height: "220px" }}
-                />
+            {filteredProducts && filteredProducts.length > 0 ? (
+              filteredProducts?.map((items, index) => (
+                <div
+                  key={index}
+                  className="relative w-full flex xl:flex-row lg:flex-row md:flex-col xs:flex-col sm:flex-col  flex-wrap border rounded-lg p-3 m-3"
+                >
+                  <img
+                    className="aspect-[3/2]"
+                    src={items.image}
+                    alt="image32"
+                    style={{ width: "200px", height: "220px" }}
+                  />
 
-                <div className="flex flex-col ml-4">
-                  <h1 className="text-lg text-main font-bold">{items.name}</h1>
-                  <h1>Name: {items.name}</h1>
-                  <h1>Brand: {items.brand}</h1>
-                  <h1>Price: {items.price}</h1>
-                </div>
-
-                <div className="border rounded-lg bg-[#FFEFD7] absolute right-4 top-0 p-2 m-3 w-1/3">
-                  <h1 className="text-lg text-red-500 ">
-                    Supplier INformation
-                  </h1>
-
-                  <div className="border-b-2 w-full mt-2">
-                    <div className="border-b-4 w-9 border-red-600"> </div>
+                  <div className="flex flex-col ml-4">
+                    <h1 className="text-lg text-main font-bold">
+                      {items.name}
+                    </h1>
+                    <h1>Name: {items.name}</h1>
+                    <h1>Brand: {items.brand}</h1>
+                    <h1>Price: {items.price}</h1>
                   </div>
-                  <div className="mt-2">
-                    <h1 className="text-lg">{items.suppliername}</h1>
-                    <div className="flex flex-row mt-3">
-                      <span>
-                        <LocationOnIcon />
-                      </span>
-                      <h1 className="font-popins ml-3">{items.city}</h1>
+
+                  <div className="border rounded-lg bg-[#FFEFD7] absolute right-4 top-0 p-2 m-3 w-1/3">
+                    <h1 className="text-lg text-red-500 ">
+                      Supplier INformation
+                    </h1>
+
+                    <div className="border-b-2 w-full mt-2">
+                      <div className="border-b-4 w-9 border-red-600"> </div>
                     </div>
-                    <div className="flex flex-row mt-3">
-                      <span>
-                        <PhoneIcon />
-                      </span>
-                      <h1 className="font-popins ml-3">
-                        {items.mobile_number}
-                      </h1>
+                    <div className="mt-2">
+                      <h1 className="text-lg">{items.suppliername}</h1>
+                      <div className="flex flex-row mt-3">
+                        <span>
+                          <LocationOnIcon />
+                        </span>
+                        <h1 className="font-popins ml-3">{items.city}</h1>
+                      </div>
+                      <div className="flex flex-row mt-3">
+                        <span>
+                          <PhoneIcon />
+                        </span>
+                        <h1 className="font-popins ml-3">
+                          {items.mobile_number}
+                        </h1>
+                      </div>
                     </div>
                   </div>
                 </div>
+              ))
+            ) : (
+              <div className="text-center mt-4 text-gray-500">
+                No results found.
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>

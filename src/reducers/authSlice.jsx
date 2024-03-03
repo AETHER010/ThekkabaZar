@@ -26,16 +26,15 @@ export const register = createAsyncThunk(
     password2,
     phone_number,
     company_name,
-    office_name,
-    office_contact_number,
-    district,
-    website_url,
-    municipality,
-    providence,
-    pan_vat_certificate,
-    company_registration_certificate,
+    // office_name,
+    // office_contact_number,
+    // district,
+    // website_url,
+    // municipality,
+    // providence,
+    // pan_vat_certificate,
+    // company_registration_certificate,
   }) => {
-    console.log("Register", username, password, email, password2, phone_number);
     const response = await axios.post(
       "https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/create/user/",
       {
@@ -46,14 +45,14 @@ export const register = createAsyncThunk(
         password2,
         phone_number,
         company_name,
-        office_name,
-        office_contact_number,
-        district,
-        website_url,
-        municipality,
-        providence,
-        pan_vat_certificate,
-        company_registration_certificate,
+        // office_name,
+        // office_contact_number,
+        // district,
+        // website_url,
+        // municipality,
+        // providence,
+        // pan_vat_certificate,
+        // company_registration_certificate,
       }
     );
     const data = response.data;

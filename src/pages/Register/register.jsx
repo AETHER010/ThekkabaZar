@@ -17,14 +17,14 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [company, setCompany] = useState("");
-  const [officialName, setOfficialName] = useState("");
-  const [officialNumber, setOfficialNumber] = useState("");
-  const [websiteUrl, setWebsiteUrl] = useState("");
-  const [providence, setProvidence] = useState("");
-  const [district, setDistrict] = useState("");
-  const [municipality, setmunicipality] = useState("");
-  const [registrationFile, setRegistrationFile] = useState(null);
-  const [panVatfile, setPanVatfile] = useState(null);
+  // const [officialName, setOfficialName] = useState("");
+  // const [officialNumber, setOfficialNumber] = useState("");
+  // const [websiteUrl, setWebsiteUrl] = useState("");
+  // const [providence, setProvidence] = useState("");
+  // const [district, setDistrict] = useState("");
+  // const [municipality, setmunicipality] = useState("");
+  // const [registrationFile, setRegistrationFile] = useState(null);
+  // const [panVatfile, setPanVatfile] = useState(null);
 
   const dispatch = useDispatch();
   const { status, districtData } = useSelector((state) => state.users);
@@ -54,27 +54,27 @@ const RegisterForm = () => {
         password2: confirmpassword,
         phone_number: contactNumber,
         company_name: company,
-        office_name: officialName,
-        office_contact_number: officialNumber,
-        district: district,
-        website_url: websiteUrl,
-        municipality: municipality,
-        providence: providence,
-        pan_vat_certificate: panVatfile,
-        company_registration_certificate: registrationFile,
+        // office_name: officialName,
+        // office_contact_number: officialNumber,
+        // district: district,
+        // website_url: websiteUrl,
+        // municipality: municipality,
+        // providence: providence,
+        // pan_vat_certificate: panVatfile,
+        // company_registration_certificate: registrationFile,
       })
     );
   };
 
-  const handleFileRegisterationChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setRegistrationFile(selectedFile);
-  };
+  // const handleFileRegisterationChange = (e) => {
+  //   const selectedFile = e.target.files[0];
+  //   setRegistrationFile(selectedFile);
+  // };
 
-  const handleFilePanVatChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setPanVatfile(selectedFile);
-  };
+  // const handleFilePanVatChange = (e) => {
+  //   const selectedFile = e.target.files[0];
+  //   setPanVatfile(selectedFile);
+  // };
 
   return (
     <div className="container mx-auto  my-8 border p-2">
@@ -85,11 +85,11 @@ const RegisterForm = () => {
               ? "text-blue-500 bg-[#F7F7F7] border-t-4 border-main p-3 ml-8"
               : ""
           }`}
-          onClick={() => handleTabChange("personal")}
+          // onClick={() => handleTabChange("personal")}
         >
           Personal Details
         </h2>
-        <h2
+        {/* <h2
           className={`cursor-pointer p-3 ml-8${
             activeTab === "organization"
               ? "text-blue-500 bg-[#F7F7F7] border-t-4 border-main p-3 ml-8"
@@ -98,7 +98,7 @@ const RegisterForm = () => {
           onClick={() => handleTabChange("organization")}
         >
           Organization Details
-        </h2>
+        </h2> */}
       </div>
 
       <div className="border-b-2"></div>
@@ -197,19 +197,30 @@ const RegisterForm = () => {
                 />
               </div>
             </div>
+            <div className="mr-4 p-2 flex flex-col">
+              <label className="text-lg" htmlFor="companyName">
+                Company Name<span className="text-red-600">*</span>:
+              </label>
+              <input
+                className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                type="text"
+                id="companyName"
+                name="companyName"
+                placeholder="XYZ..."
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+              />
+            </div>
             <div className="mt-6 flex justify-center items-center">
-              <Button
-                variant="contained"
-                onClick={() => handleTabChange("organization")}
-              >
-                Next
+              <Button variant="contained" onClick={handleSubmit}>
+                Submit
               </Button>
             </div>
           </form>
         </div>
       )}
 
-      {activeTab === "organization" && (
+      {/* {activeTab === "organization" && (
         <div>
           <form className="flex flex-wrap lg:flex-col md:flex-col sm:flex-row xs:flex-row xl:flex-col mt-4">
             <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row justify-between w-full">
@@ -319,21 +330,6 @@ const RegisterForm = () => {
                   </Select>
                 </FormControl>
               </div>
-
-              {/* <div className="mr-4 p-2 flex flex-col  w-full">
-                <label className="text-lg" htmlFor="district">
-                  District<span className="text-red-600">*</span>:
-                </label>
-                <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
-                  type="text"
-                  id="district"
-                  name="district"
-                  placeholder="XYZ..."
-                  value={district}
-                  onChange={(e) => setDistrict(e.target.value)}
-                />
-              </div> */}
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="municipality">
                   Municipality<span className="text-red-600">*</span>:
@@ -398,7 +394,7 @@ const RegisterForm = () => {
             </div>
           </form>
         </div>
-      )}
+      )} */}
 
       {/* <div className="mt-6 flex justify-center items-center">
         <button

@@ -67,6 +67,8 @@ const CardComponent = () => {
   }, [search]);
 
   const handleSearch = () => {
+    setIsSearch(true);
+
     dispatch(
       fetchTenderListData({
         organization_sector: organization,
@@ -77,12 +79,18 @@ const CardComponent = () => {
         category: category,
       })
     );
-    setOrganization("");
-    setCategory("");
-    setLocation("");
-    setProjectType("");
-    setProcurementTypes("");
-    setDate("");
+
+    if (isSearch === true) {
+      setIsSearch(false);
+    }
+    if (isSearch === false) {
+      setOrganization("");
+      setCategory("");
+      setLocation("");
+      setProjectType("");
+      setProcurementTypes("");
+      setDate("");
+    }
   };
 
   const handlegridview = () => {
@@ -94,10 +102,10 @@ const CardComponent = () => {
   };
 
   const searchDataList = () => {
-    if (search.trim() !== "") {
-      setIsSearch(true);
-      // Your other search logic here
-    }
+    // if (search.trim() !== "") {
+    //   setIsSearch(true);
+    //   // Your other search logic here
+    // }
 
     if (data?.data) {
       const filteredData = data.data.filter((item) =>
@@ -253,7 +261,7 @@ const CardComponent = () => {
           </Box>
           <Box
             className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
-            sx={{ minWidth: 120 }}
+            sx={{ minWidth: 120, height: "3rem" }}
           >
             <FormControl fullWidth className="bg-white">
               <TextField
@@ -261,10 +269,11 @@ const CardComponent = () => {
                 label="Date"
                 type="date"
                 defaultValue={date} // Assuming date is a string in the format "YYYY-MM-DD"
-                sx={{ height: "3rem" }}
+                // sx={{ height: "3rem" }}
                 onChange={(e) => setDate(e.target.value)}
                 InputLabelProps={{
                   shrink: true,
+                  notchedOutline: "border-none",
                 }}
               />
             </FormControl>
@@ -323,18 +332,16 @@ const CardComponent = () => {
             variant="contained"
             onClick={() => handleSearch()}
           >
-            Search Tender
+            {isSearch ? "clear Search" : "Search Tender"}
           </Button>
         </div>
       </div>
       <div className="p-8">
-        <h1 className="text-lg font-bold">All Bids</h1>
-
         <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row w-full">
           <div className="flex flex-col lg:w-3/4 md:w-full sm:w-full xs:w-full xl:w-3/4">
-            <div className="border-b-2 border-[#EA9706] mt-3"></div>
-            <div className="flex flex-row justify-end my-6">
-              <div>
+            <div className="flex flex-row justify-between">
+              <h1 className="text-lg font-bold mt-2 pl-2">All Bids</h1>
+              <div className="flex flex-row justify-end">
                 <IconButton
                   aria-label="menu"
                   onClick={handleListIconClick}
@@ -351,146 +358,164 @@ const CardComponent = () => {
                 </IconButton>
               </div>
             </div>
+            <div className="border-b-2 border-[#EA9706] my-3"></div>
 
             <div>
               {isgrid ? (
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xs:grid-cols-1 xl:grid-cols-3 gap-4">
-                  {filteredBids?.map((items, index) => (
-                    <div key={index} className="m-1">
-                      <Card
-                        className="p-2 h-[500px]"
-                        sx={{ maxWidth: 348 }}
-                        onClick={() => navigate(`/details/${items.pk}`)}
-                      >
-                        <CardMedia
-                          sx={{ height: 140 }}
-                          image={items.image}
-                          title="bids"
-                        />
-                        <CardContent>
-                          <div className="flex flex-row ">
-                            <span>
-                              <CalendarMonthIcon />
-                            </span>
-                            <p className="pt-1 ml-2 text-sm">
-                              Published Date: {items.published_date}
-                            </p>
-                          </div>
-                          <Typography
-                            className="text-black font-bold font-popins text-md mt-3 overflow-hidden line-clamp-2"
-                            variant="body2"
-                          >
-                            {items.title}
-                          </Typography>
-                          <Typography className="text-[#565252] font-popins text-md mt-3">
-                            NIMBA Ace Capital Limited.
-                          </Typography>
+                  {filteredBids && filteredBids.length > 0 ? (
+                    filteredBids?.map((items, index) => (
+                      <div key={index} className="m-1">
+                        <Card className="p-2 h-[500px]" sx={{ maxWidth: 348 }}>
+                          <CardMedia
+                            sx={{ height: 140 }}
+                            image={items.image}
+                            title="bids"
+                          />
+                          <CardContent>
+                            <div className="flex flex-row ">
+                              <span>
+                                <CalendarMonthIcon />
+                              </span>
+                              <p className="pt-1 ml-2 text-sm">
+                                Published Date: {items.published_date}
+                              </p>
+                            </div>
+                            <Typography
+                              className="text-black font-bold font-popins text-md mt-3 overflow-hidden line-clamp-2 cursor-pointer"
+                              variant="body2"
+                              onClick={() => navigate(`/details/${items.pk}`)}
+                            >
+                              {items.title}
+                            </Typography>
+                            <Typography className="text-[#565252] font-popins text-md mt-3">
+                              NIMBA Ace Capital Limited.
+                            </Typography>
 
-                          <div className="flex flex-col mt-2">
+                            <div className="flex flex-col mt-2">
+                              <div className="flex flex-row">
+                                <div className="bg-[#F0F7FF] mr-1 p-2 rounded-lg">
+                                  {items?.district?.map((location, index) => (
+                                    <p className="text-[#185CAB]" key={index}>
+                                      {location.name}
+                                    </p>
+                                  ))}
+                                </div>
+                                <div className=" bg-[#FFF2F0] ml-3 p-2 rounded-lg">
+                                  {items?.project_type?.map(
+                                    (project, index) => (
+                                      <p className="text-[#FF7A00]" key={index}>
+                                        {project.name}
+                                      </p>
+                                    )
+                                  )}
+                                </div>
+                              </div>
+                              <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
+                                {items.source}
+                              </div>
+                            </div>
+                          </CardContent>
+                          <CardActions className="flex flex-row border-t-2 p-3 justify-between mt-auto m-2 bottom-0">
+                            <span className="my-5">
+                              <FileCopyIcon sx={{ color: "#0375B7" }} />
+                            </span>
+                            <Button
+                              className="bg-main m-5 rounded-lg"
+                              variant="contained"
+                              onClick={() => handleBidSave(items.pk)}
+                            >
+                              Save Bid
+                            </Button>
+                          </CardActions>
+                        </Card>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-center mt-4 text-gray-500">
+                      No results found.
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="flex flex-col">
+                  {filteredBids && filteredBids.length > 0 ? (
+                    filteredBids?.map((items, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-col flex-wrap w-full"
+                      >
+                        <Card
+                          variant="outlined"
+                          className="flex lg:flex-row md:flex-row sm:flex-col xs:flex-col xl:flex-row mt-2 p-2 shadow-lg w-full"
+                        >
+                          <CardContent
+                            className="w-4/5"
+                            onClick={() => navigate(`/details/${items.pk}`)}
+                          >
                             <div className="flex flex-row">
-                              <div className="bg-[#F0F7FF] mr-1 p-2 rounded-lg">
+                              <span>
+                                <CalendarMonthIcon />
+                              </span>
+                              <p className="pt-1 ml-2 text-sm">
+                                Published Date: {items.published_date}
+                              </p>
+                            </div>
+                            <div className="flex flex-row mt-2">
+                              <div className="flex flex-row bg-[#F0F7FF] mr-1 p-2 rounded-lg">
+                                <span>
+                                  <LocationOnIcon />
+                                </span>
                                 {items?.district?.map((location, index) => (
                                   <p className="text-[#185CAB]" key={index}>
                                     {location.name}
                                   </p>
                                 ))}
                               </div>
-                              <div className=" bg-[#FFF2F0] ml-3 p-2 rounded-lg">
+                              <div className="flex flex-row bg-[#FFF2F0] mr-1 p-2 rounded-lg">
                                 {items?.project_type?.map((project, index) => (
                                   <p className="text-[#FF7A00]" key={index}>
                                     {project.name}
                                   </p>
                                 ))}
                               </div>
+                              <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
+                                {items.source}
+                              </div>
                             </div>
-                            <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
-                              {items.source}
-                            </div>
-                          </div>
-                        </CardContent>
-                        <CardActions className="flex flex-row border-t-2 p-3 justify-between mt-auto m-2 bottom-0">
-                          <span className="my-5">
-                            <FileCopyIcon sx={{ color: "#0375B7" }} />
-                          </span>
-                          <Button
-                            className="bg-main m-5 rounded-lg"
-                            variant="contained"
-                            onClick={() => handleBidSave(items.pk)}
-                          >
-                            Save Bid
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="flex flex-col">
-                  {filteredBids?.map((items, index) => (
-                    <div key={index} className="flex flex-col flex-wrap w-full">
-                      <Card
-                        variant="outlined"
-                        className="flex lg:flex-row md:flex-row sm:flex-col xs:flex-col xl:flex-row mt-2 p-2 shadow-lg w-full"
-                      >
-                        <CardContent
-                          className="w-4/5"
-                          onClick={() => navigate(`/details/${items.pk}`)}
-                        >
-                          <div className="flex flex-row">
-                            <span>
-                              <CalendarMonthIcon />
-                            </span>
-                            <p className="pt-1 ml-2 text-sm">
-                              Published Date: {items.published_date}
+                            <p
+                              className="text-black font-bold font-popins text-md mt-3 cursor-pointer"
+                              onClick={() => navigate(`/details/${items.pk}`)}
+                            >
+                              {items.title}
                             </p>
-                          </div>
-                          <div className="flex flex-row mt-2">
-                            <div className="flex flex-row bg-[#F0F7FF] mr-1 p-2 rounded-lg">
-                              <span>
-                                <LocationOnIcon />
-                              </span>
-                              {items?.district?.map((location, index) => (
-                                <p className="text-[#185CAB]" key={index}>
-                                  {location.name}
-                                </p>
-                              ))}
-                            </div>
-                            <div className="flex flex-row bg-[#FFF2F0] mr-1 p-2 rounded-lg">
-                              {items?.project_type?.map((project, index) => (
-                                <p className="text-[#FF7A00]" key={index}>
-                                  {project.name}
-                                </p>
-                              ))}
-                            </div>
-                            <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
-                              {items.source}
-                            </div>
-                          </div>
-                          <p className="text-black font-bold font-popins text-md mt-3">
-                            {items.title}
-                          </p>
-                          <p
-                            className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2"
-                            dangerouslySetInnerHTML={{
-                              __html: items.description,
-                            }}
-                          />
-                        </CardContent>
-                        <CardActions className="w-1/5 flex lg:flex-col xl:flx-col md:flex-col sm:flex-row xs:flex-row sm:justify-center xs:justify-center border-l-2 p-3  xs:w-full sm:w-full">
-                          <span className="my-5">
-                            <FileCopyIcon sx={{ color: "#0375B7" }} />
-                          </span>
-                          <Button
-                            className="bg-main m-5 rounded-lg "
-                            variant="contained"
-                            onClick={() => handleBidSave(items.pk)}
-                          >
-                            Save Bid
-                          </Button>
-                        </CardActions>
-                      </Card>
+                            <p
+                              className="text-[#565252] font-popins text-md mt-3 overflow-hidden line-clamp-2"
+                              dangerouslySetInnerHTML={{
+                                __html: items.description,
+                              }}
+                            />
+                          </CardContent>
+                          <CardActions className="w-1/5 flex lg:flex-col xl:flx-col md:flex-col sm:flex-row xs:flex-row sm:justify-center xs:justify-center border-l-2 p-3  xs:w-full sm:w-full">
+                            <span className="my-5">
+                              <FileCopyIcon sx={{ color: "#0375B7" }} />
+                            </span>
+                            <Button
+                              className="bg-main m-5 rounded-lg "
+                              variant="contained"
+                              onClick={() => handleBidSave(items.pk)}
+                            >
+                              Save Bid
+                            </Button>
+                          </CardActions>
+                        </Card>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-center mt-4 text-gray-500">
+                      No results found.
                     </div>
-                  ))}
+                  )}
                 </div>
               )}
               <div className="flex flex-row justify-center mt-7">
