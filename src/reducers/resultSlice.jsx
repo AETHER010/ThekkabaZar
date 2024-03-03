@@ -36,7 +36,7 @@ export const fetchresultData = createAsyncThunk(
       params.append("page", page);
     }
     const response = await axios.get(
-      `https://thekkabazar.com/tender/apis/tender-awarded-to/?${params.toString()}`
+      `https://product.thekkabazar.com/tender/apis/tender-awarded-to/?${params.toString()}`
     );
     const data = response.data;
     return data;
@@ -46,7 +46,7 @@ export const fetchOneResultData = createAsyncThunk(
   "data/fetchOneResultData",
   async ({ tenderId }) => {
     const response = await axios.get(
-      `https://thekkabazar.com/tender/apis/tender-awarded-to/${tenderId}/`
+      `https://product.thekkabazar.com/tender/apis/tender-awarded-to/${tenderId}/`
     );
 
     const data = response.data;
