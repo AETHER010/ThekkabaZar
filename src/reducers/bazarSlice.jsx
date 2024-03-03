@@ -7,7 +7,7 @@ export const fetchbazarData = createAsyncThunk(
   "data/fetchbazarData",
   async () => {
     const response = await axios.get(
-      "https://thekkabazar.itnepalsolutions.com/products/apis/products/category/list/"
+      "https://thekkabazar.com/products/apis/products/category/list/"
     );
     const data = response.data;
     return data.data;
@@ -40,7 +40,7 @@ export const fetchproductListData = createAsyncThunk(
     }
 
     const response = await axios.get(
-      `https://thekkabazar.itnepalsolutions.com/products/apis/products/list/?${params.toString()}`
+      `https://thekkabazar.com/products/apis/products/list/?${params.toString()}`
     );
 
     const data = response.data;

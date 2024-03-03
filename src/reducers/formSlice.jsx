@@ -6,7 +6,7 @@ export const fetchDropdownData = createAsyncThunk(
   "data/fetchDropdownData",
   async () => {
     const response = await axios.get(
-      "https://thekkabazar.itnepalsolutions.com/tender/apis/master/list/"
+      "https://thekkabazar.com/tender/apis/master/list/"
     );
     const data = response.data;
     return data.data;

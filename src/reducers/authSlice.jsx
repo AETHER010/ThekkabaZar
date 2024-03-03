@@ -7,7 +7,7 @@ export const login = createAsyncThunk(
   "data/login",
   async ({ username, password }) => {
     const response = await axios.post(
-      "https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/login/",
+      "https://thekkabazar.com/accounts/apis/usermanagement/login/",
       { username, password }
     );
     const data = response.data;
@@ -37,7 +37,7 @@ export const register = createAsyncThunk(
   }) => {
     console.log("Register", username, password, email, password2, phone_number);
     const response = await axios.post(
-      "https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/create/user/",
+      "https://thekkabazar.com/accounts/apis/usermanagement/create/user/",
       {
         username,
         fullname,
@@ -64,7 +64,7 @@ export const register = createAsyncThunk(
 
 export const getDistrict = createAsyncThunk("data/getDistrict", async () => {
   const response = await axios.get(
-    "https://thekkabazar.itnepalsolutions.com/accounts/apis/usermanagement/create/user/"
+    "https://thekkabazar.com/accounts/apis/usermanagement/create/user/"
   );
   const data = response.data;
   return data;
