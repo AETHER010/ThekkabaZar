@@ -4,7 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -60,10 +60,14 @@ function Navbar() {
     handleMenuClose();
   };
 
+  const handleHomenav = () => {
+    navigate("/");
+  }
+
   return (
     <nav className="bg-white p-4 flex items-center justify-between shadow-lg">
       <div className="flex items-center space-x-9 pl-2">
-        <img src={Logo} alt="Logo" className="max-w-[100px]" />
+        <img src={Logo} alt="Logo" className="max-w-[100px] cursor-pointer" onClick={handleHomenav} />
       </div>
 
       {/* Mobile Menu */}
@@ -78,51 +82,55 @@ function Navbar() {
       <div
         className={`space-x-8 lg:flex xl:flex hidden ${
           isMenuOpen ? "flex" : "hidden"
-        }`}
+          
+        }`} 
+        style={{color:"#0C76B8"}}
       >
-        <Link
+        <NavLink
           to="/"
-          className="flex items-center text-black text-xl"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
           Home
-        </Link>
+        </NavLink>
 
-        <Link
-          to="/results"
-          className="flex items-center text-black text-xl"
+        <NavLink
+          to="/taxvat"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
-          Result
-        </Link>
-        <Link
-          to="/pricing"
-          className="flex items-center text-black text-xl"
-          onClick={handleMenuClose}
-        >
-          Pricing
-        </Link>
-        <Link
+          Business & TAX Services
+        </NavLink>
+        <NavLink
           to="/bazar"
-          className="flex items-center text-black text-xl"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
           Bazar
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/privateWorks"
-          className="flex items-center text-black text-xl"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
           Private Works
-        </Link>
-        <Link
-          to="/taxvat"
-          className="flex items-center text-black text-xl"
+        </NavLink>
+        <NavLink
+          to="/results"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
-          Tax & VAT Services
-        </Link>
+          Result
+        </NavLink>
+        <NavLink
+          to="/pricing"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
+          onClick={handleMenuClose}
+        >
+          Pricing
+        </NavLink>
+        
+        
         {access_token ? (
           <div className="hidden lg:block xl:block">
             <Button
@@ -139,9 +147,9 @@ function Navbar() {
               onClose={handleProfileClose}
             >
               <MenuItem onClick={handleProfileClose}>
-                <Link to="/profile" className="text-black text-xl">
+                <NavLink to="/profile" className="text-black text-xl">
                   My Profile
-                </Link>
+                </NavLink>
               </MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
@@ -168,7 +176,7 @@ function Navbar() {
         )}
       </div>
 
-      {/* Mobile Menu Links */}
+      {/* Mobile Menu NavLinks */}
       {isMenuOpen && (
         <div className="lg:hidden fixed w-72 top-0 right-0 bottom-0 bg-main flex flex-col items-center p-4 z-10">
           <div className="flex justify-end w-full">
@@ -176,53 +184,53 @@ function Navbar() {
               <CloseIcon style={{ color: "white" }} />
             </Button>
           </div>
-          <Link to="/" className="text-white my-2" onClick={handleMenuClose}>
+          <NavLink to="/" className="text-white my-2" onClick={handleMenuClose}>
             Home
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/results"
             className="text-white my-2"
             onClick={handleMenuClose}
           >
             Result
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/pricing"
             className="text-white my-2"
             onClick={handleMenuClose}
           >
             Pricing
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/bazar"
             className="text-white my-2"
             onClick={handleMenuClose}
           >
             Bazar
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/privateWorks"
             className="text-white my-2"
             onClick={handleMenuClose}
           >
             Private Works
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/taxvat"
             className="text-white my-2"
             onClick={handleMenuClose}
           >
             Tax & VAT Services
-          </Link>
+          </NavLink>
           {access_token ? (
             <div className="flex flex-col">
-              <Link
+              <NavLink
                 to="/profile"
                 className="text-white"
                 onClick={handleMenuClose}
               >
                 My Profile
-              </Link>
+              </NavLink>
 
               <Button
                 onClick={handleLogout}
@@ -233,20 +241,20 @@ function Navbar() {
             </div>
           ) : (
             <div className="flex flex-col">
-              <Link
+              <NavLink
                 to="/login"
                 className="text-white my-2 bg-lime-600 p-3 rounded-md"
                 onClick={handleMenuClose}
               >
                 Login
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="/register"
                 className="text-white my-2 bg-[#F48023] p-3 rounded-lg"
                 onClick={handleMenuClose}
               >
                 Register
-              </Link>
+              </NavLink>
             </div>
           )}
         </div>

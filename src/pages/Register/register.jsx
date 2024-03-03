@@ -79,16 +79,14 @@ const RegisterForm = () => {
   return (
     <div className="container mx-auto  my-8 border p-2">
       <div className="flex items-center mb-3 p-5">
-        <h2
-          className={`cursor-pointer p-3 ml-8${
-            activeTab === "personal"
-              ? "text-blue-500 bg-[#F7F7F7] border-t-4 border-main p-3 ml-8"
-              : ""
+        <h1
+          className={`cursor-pointer p-3 text-2xl${
+            activeTab === "personal" ? "" : ""
           }`}
           // onClick={() => handleTabChange("personal")}
         >
           Personal Details
-        </h2>
+        </h1>
         {/* <h2
           className={`cursor-pointer p-3 ml-8${
             activeTab === "organization"
@@ -109,10 +107,10 @@ const RegisterForm = () => {
             <div className="flex justify-between lg:flex-row md:flex-row sm:flex-col">
               <div className="mr-4 p-2 flex flex-col w-full">
                 <label className="text-lg" htmlFor="fullName">
-                  Full Name<span className="text-red-600">*</span>:
+                  Full Name<span className="text-red-600"></span>:
                 </label>
                 <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
                   type="text"
                   id="fullName"
                   name="fullName"
@@ -124,10 +122,10 @@ const RegisterForm = () => {
 
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="username">
-                  User Name<span className="text-red-600">*</span>:
+                  User Name<span className="text-red-600"></span>:
                 </label>
                 <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
                   type="text"
                   id="username"
                   name="username"
@@ -140,10 +138,10 @@ const RegisterForm = () => {
             <div className="flex lg:flex-row md:flex-row sm:flex-col">
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="email">
-                  Email Address<span className="text-red-600">*</span>:
+                  Email Address<span className="text-red-600"></span>:
                 </label>
                 <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                  className="bg-[#eaeaea] mt-2 p-2 h-12 w-[15rem] rounded-lg border border-gray-300"
                   type="text"
                   id="email"
                   name="email"
@@ -157,7 +155,7 @@ const RegisterForm = () => {
                   Contact Number:
                 </label>
                 <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
                   type="text"
                   id="contact"
                   name="contact"
@@ -170,10 +168,10 @@ const RegisterForm = () => {
             <div className="flex lg:flex-row md:flex-row sm:flex-col">
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="password">
-                  Password<span className="text-red-600">*</span>:
+                  Password<span className="text-red-600"></span>:
                 </label>
                 <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
                   type="password"
                   id="password"
                   name="password"
@@ -184,16 +182,30 @@ const RegisterForm = () => {
               </div>
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="confirmpassword">
-                  Confirm Password<span className="text-red-600">*</span>:
+                  Confirm Password<span className="text-red-600"></span>:
                 </label>
                 <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
                   type="password"
                   id="confirmpassword"
                   name="confirmpassword"
                   placeholder="*********"
                   value={confirmpassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
+              <div className="mr-4 p-2 flex flex-col w-full">
+                <label className="text-lg" htmlFor="companyName">
+                  Company Name<span className="text-red-600"></span>:
+                </label>
+                <input
+                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
+                  type="text"
+                  id="companyName"
+                  name="companyName"
+                  placeholder="Ram Thapa"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
                 />
               </div>
             </div>
@@ -226,7 +238,7 @@ const RegisterForm = () => {
             <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row justify-between w-full">
               <div className="mr-4 p-2 flex flex-col">
                 <label className="text-lg" htmlFor="companyName">
-                  Company Name<span className="text-red-600">*</span>:
+                  Company Name<span className="text-red-600"></span>:
                 </label>
                 <input
                   className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
@@ -241,7 +253,7 @@ const RegisterForm = () => {
 
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="officialName">
-                  Official Name<span className="text-red-600">*</span>:
+                  Official Name<span className="text-red-600"></span>:
                 </label>
                 <input
                   className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
@@ -257,7 +269,7 @@ const RegisterForm = () => {
             <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row w-full justify-between">
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="contactNumber">
-                  Contact Number<span className="text-red-600">*</span>:
+                  Contact Number<span className="text-red-600"></span>:
                 </label>
                 <input
                   className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
@@ -288,7 +300,7 @@ const RegisterForm = () => {
             <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row justify-between">
               <div className="mr-4 p-2 flex flex-col  w-full">
                 <label className="text-lg" htmlFor="providence">
-                  Providence<span className="text-red-600">*</span>:
+                  Providence<span className="text-red-600"></span>:
                 </label>
                 <input
                   className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
@@ -370,7 +382,7 @@ const RegisterForm = () => {
                 <div className="flex flex-col w-full m-1">
                   <label htmlFor="fileUpload" className="text-xl font-popins">
                     Upload Company Registration Certificate (Front)
-                    <span className="text-red-600">*</span>
+                    <span className="text-red-600"></span>
                   </label>
                   <input
                     className="w-full border p-3 mt-2"

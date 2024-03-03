@@ -16,9 +16,8 @@ import AboutUs from "./pages/AboutUs/aboutUs";
 import Profile from "./pages/profile/profile";
 import Register from "./pages/Register/register";
 import ResultDetailpage from "./pages/result/resultDetail";
-import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import ScrollToTopOnNavigate from "./scroll";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -50,6 +49,7 @@ function App() {
         ) : (
           <>
             <Navbar />
+            <ScrollToTopOnNavigate />
             <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/pricing" element={<Price />} />
