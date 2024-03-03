@@ -109,7 +109,7 @@ export default function Results() {
 
   const searchDataList = () => {
     if (data?.data) {
-      const filteredList = data.data.filter((item) =>
+      const filteredList = data?.data?.filter((item) =>
         item.tender.title.toLowerCase().includes(search.toLowerCase())
       );
       setFilteredBids(filteredList.slice(indexOfFirstBid, indexOfLastBid));

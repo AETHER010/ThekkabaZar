@@ -108,7 +108,7 @@ const CardComponent = () => {
     // }
 
     if (data?.data) {
-      const filteredData = data.data.filter((item) =>
+      const filteredData = data?.data?.filter((item) =>
         item.title.toLowerCase().includes(search.toLowerCase())
       );
 
@@ -387,9 +387,6 @@ const CardComponent = () => {
                               onClick={() => navigate(`/details/${items.pk}`)}
                             >
                               {items.title}
-                            </Typography>
-                            <Typography className="text-[#565252] font-popins text-md mt-3">
-                              NIMBA Ace Capital Limited.
                             </Typography>
 
                             <div className="flex flex-col mt-2">
