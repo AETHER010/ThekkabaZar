@@ -69,7 +69,7 @@ export default function Footer() {
             <input
               type="text"
               placeholder="Enter your email address"
-              className=" p-2 rounded-full w-full focus:border-none outline-none"
+              className=" p-2 ml-2 rounded-full w-full focus:border-none outline-none"
             />
             <button className="bg-orange text-white p-2 w-44 text-lg rounded-full ">
               Submit
