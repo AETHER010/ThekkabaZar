@@ -89,7 +89,7 @@ const ProductDetails = () => {
           Equipment, Machinery, Tools & Vehicle(50)
         </h1>
         <div className="border-2 flex flex-row rounded-full items-center md:w-full lg:w-1/4 xl:w-1/4 xs:w-full sm:w-full h-12	">
-          <SearchIcon onClick={handleSearchByName} className="text-2xl ml-2" />
+          
           <TextField
             className="w-full"
             id="input-with-sx"
@@ -108,6 +108,20 @@ const ProductDetails = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
+          <div className="flex items-center">
+          <div className="border-r border-gray-400 h-6 mr-2"></div>
+          <SearchIcon
+            onClick={handleSearchByName}
+            className="text-4xl cursor-pointer mr-1"
+            style={{
+              color: '#0C76B8', // Set your desired color
+              fontSize: '2rem', // Set your desired font size
+              fontWeight: 'bold', // Set the font weight to bold
+              
+              
+            }}
+          />
+        </div>
         </div>
       </div>
 

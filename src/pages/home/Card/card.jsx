@@ -328,13 +328,13 @@ const CardComponent = () => {
         </div>
       </div>
       <div className="p-8">
-        <h1 className="text-lg font-bold">All Bids</h1>
+        
 
         <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col xl:flex-row w-full">
           <div className="flex flex-col lg:w-3/4 md:w-full sm:w-full xs:w-full xl:w-3/4">
-            <div className="border-b-2 border-[#EA9706] mt-3"></div>
-            <div className="flex flex-row justify-end my-6">
-              <div>
+          <div className="flex flex-row justify-between">
+              <h1 className="text-lg font-bold mt-2 pl-2">All Bids</h1>
+              <div className="flex flex-row justify-end">
                 <IconButton
                   aria-label="menu"
                   onClick={handleListIconClick}
@@ -351,6 +351,8 @@ const CardComponent = () => {
                 </IconButton>
               </div>
             </div>
+            <div className="border-b-2 border-[#EA9706] mt-3"></div>
+            
 
             <div>
               {isgrid ? (

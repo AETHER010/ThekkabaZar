@@ -4,7 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import MenuIcon from "@mui/icons-material/Menu";
-import { NavNavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -60,10 +60,14 @@ function Navbar() {
     handleMenuClose();
   };
 
+  const handleHomenav = () => {
+    navigate("/");
+  }
+
   return (
     <nav className="bg-white p-4 flex items-center justify-between shadow-lg">
       <div className="flex items-center space-x-9 pl-2">
-        <img src={Logo} alt="Logo" className="max-w-[100px]" />
+        <img src={Logo} alt="Logo" className="max-w-[100px] cursor-pointer" onClick={handleHomenav} />
       </div>
 
       {/* Mobile Menu */}
@@ -78,51 +82,55 @@ function Navbar() {
       <div
         className={`space-x-8 lg:flex xl:flex hidden ${
           isMenuOpen ? "flex" : "hidden"
-        }`}
+          
+        }`} 
+        style={{color:"#0C76B8"}}
       >
         <NavLink
           to="/"
-          className="flex items-center text-black text-xl"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
           Home
         </NavLink>
 
         <NavLink
-          to="/results"
-          className="flex items-center text-black text-xl"
+          to="/taxvat"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
-          Result
-        </NavLink>
-        <NavLink
-          to="/pricing"
-          className="flex items-center text-black text-xl"
-          onClick={handleMenuClose}
-        >
-          Pricing
+          Business & TAX Services
         </NavLink>
         <NavLink
           to="/bazar"
-          className="flex items-center text-black text-xl"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
           Bazar
         </NavLink>
         <NavLink
           to="/privateWorks"
-          className="flex items-center text-black text-xl"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
           Private Works
         </NavLink>
         <NavLink
-          to="/taxvat"
-          className="flex items-center text-black text-xl"
+          to="/results"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
           onClick={handleMenuClose}
         >
-          Tax & VAT Services
+          Result
         </NavLink>
+        <NavLink
+          to="/pricing"
+          className="flex items-center text-xl active:text-[#E76311] focus:text-[#E76311]"
+          onClick={handleMenuClose}
+        >
+          Pricing
+        </NavLink>
+        
+        
         {access_token ? (
           <div className="hidden lg:block xl:block">
             <Button
