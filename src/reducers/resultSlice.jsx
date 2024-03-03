@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
 import axios from "axios";
-
 export const fetchresultData = createAsyncThunk(
   "data/fetchresultData",
   async ({
@@ -38,25 +36,23 @@ export const fetchresultData = createAsyncThunk(
       params.append("page", page);
     }
     const response = await axios.get(
-      `https://thekkabazar.itnepalsolutions.com/tender/apis/tender-awarded-to/?${params.toString()}`
+      `https://thekkabazar.com/tender/apis/tender-awarded-to/?${params.toString()}`
     );
     const data = response.data;
     return data;
   }
 );
-
 export const fetchOneResultData = createAsyncThunk(
   "data/fetchOneResultData",
   async ({ tenderId }) => {
     const response = await axios.get(
-      `https://thekkabazar.itnepalsolutions.com/tender/apis/tender-awarded-to/${tenderId}/`
+      `https://thekkabazar.com/tender/apis/tender-awarded-to/${tenderId}/`
     );
 
     const data = response.data;
     return data;
   }
 );
-
 const resultSlice = createSlice({
   name: "card",
   initialState: {
@@ -92,5 +88,4 @@ const resultSlice = createSlice({
       });
   },
 });
-
 export default resultSlice.reducer;
