@@ -1,90 +1,174 @@
-import React from "react";
-import Card from "@mui/material/Card";
-
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+import React, { useRef, useEffect } from "react";
 
 import Typography from "@mui/material/Typography";
-
+import { motion, useInView, useAnimation } from "framer-motion";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import carouselImage from "../../Assets/carousel.jpg";
+import PlagiarismOutlinedIcon from "@mui/icons-material/PlagiarismOutlined";
+import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
+import "./taxvat.css";
+import LocalPrintshopOutlinedIcon from "@mui/icons-material/LocalPrintshopOutlined";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 export default function Taxvat() {
+  const ref = useRef(null);
+  const ref2 = useRef(null);
+
+  const isInView = useInView(ref, { once: true });
+  const isInView2 = useInView(ref2, { once: true });
+
+  const controls = useAnimation();
+  const controls2 = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+    if (isInView2) {
+      controls2.start("visible");
+    }
+  }, [isInView, isInView2, controls, controls2]);
+
+  const settings = {
+    // dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
+
   return (
     <div>
-      <div className="flex flex-col items-center p-5 m-5 ">
-        <h1 className="text-3xl text-black font-bold md:text-3xl lg:text-4xl  mb-3">
-          We avail our multi-valued services
-        </h1>
-        <p className="whitespace-normal text-sm md:text-sm lg:text-sm w-1/2 text-center">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s. Lorem Ipsum is simply dummy text of the printing and
-          typesetting industry. Lorem Ipsum has been the industry's standard
-          dummy text ever since the 1500s
-        </p>
-      </div>
-      <div className="flex flex-wrap justify-center items-center p-5 m-5">
-        <Card className="m-3" sx={{ maxWidth: 345 }}>
-          <CardMedia
-            sx={{ height: 180 }}
-            image="https://online.hbs.edu/Style%20Library/api/resize.aspx?imgpath=/PublishingImages/overhead-view-of-business-strategy-meeting.jpg&w=1200&h=630"
-            title="green iguana"
-          />
-          <CardContent>
-            <Typography
-              className="text-center"
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
-              Lizard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card className="m-3" sx={{ maxWidth: 345 }}>
-          <CardMedia
-            sx={{ height: 180 }}
-            image="https://online.hbs.edu/Style%20Library/api/resize.aspx?imgpath=/PublishingImages/overhead-view-of-business-strategy-meeting.jpg&w=1200&h=630"
-            title="green iguana"
-          />
-          <CardContent>
-            <Typography
-              className="text-center"
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
-              Lizard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card className="m-3" sx={{ maxWidth: 345 }}>
-          <CardMedia
-            sx={{ height: 180 }}
-            image="https://online.hbs.edu/Style%20Library/api/resize.aspx?imgpath=/PublishingImages/overhead-view-of-business-strategy-meeting.jpg&w=1200&h=630"
-            title="green iguana"
-          />
-          <CardContent>
-            <Typography
-              className="text-center"
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
-              Lizard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </Card>
+      <Slider {...settings}>
+        <div className="relative flex">
+          <img src={carouselImage} alt="Slider 1" className="w-full h-96" />
+
+          <div className="absolute lg:top-16 xl:top-16 md:top-2 sm:top-2 xs:top-2 right-0 text-white text-center w-1/2 p-8">
+            <h2 className="lg:text-4xl xl:text-4xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+              Unlock Opportunities with Winning Bids!
+            </h2>
+            <p>
+              Expert bid management for guaranteed results. Elevate your
+              business through successful tenders and projects.
+            </p>
+            <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
+              Our Services
+            </button>
+          </div>
+        </div>
+        <div className="relative">
+          <img src={carouselImage} alt="Slider2" className="w-full h-96 " />
+          <div className="absolute lg:top-16 xl:top-16 md:top-2 sm:top-2 xs:top-2 right-0 text-white text-center w-1/2 p-8">
+            <h2 className="lg:text-4xl xl:text-4xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+              Unlock Opportunities with Winning Bids!
+            </h2>
+            <p>
+              Expert bid management for guaranteed results. Elevate your
+              business through successful tenders and projects.
+            </p>
+            <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
+              Our Services
+            </button>
+          </div>
+        </div>
+        <div className="relative">
+          <img src={carouselImage} alt="Slider2" className="w-full h-96 " />
+          <div className="absolute lg:top-16 xl:top-16 md:top-2 sm:top-2 xs:top-2 right-0 text-white text-center w-1/2 p-8">
+            <h2 className="lg:text-4xl xl:text-4xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+              Unlock Opportunities with Winning Bids!
+            </h2>
+            <p>
+              Expert bid management for guaranteed results. Elevate your
+              business through successful tenders and projects.
+            </p>
+            <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
+              Our Services
+            </button>
+          </div>
+        </div>
+      </Slider>
+      <div className="Card-container">
+        <div className="Card">
+          <div>
+            <PlagiarismOutlinedIcon sx={{ color: "#F45115", fontSize: 50 }} />
+          </div>
+          <h1 className="lg:text-2xl xl:text-2xl md:text-lg sm:text-lg xs:text-md font-bold my-4">
+            Legal Business Activity
+          </h1>
+          <p className="text-md font-popins">
+            We bring the right people together to challenge established thinking
+            and drive transform in 2024
+          </p>
+        </div>
+        <div className="Card">
+          <div>
+            <HandshakeOutlinedIcon sx={{ color: "#F45115", fontSize: 50 }} />
+          </div>
+          <h1 className="lg:text-2xl xl:text-2xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+            Corporate Partner
+          </h1>
+          <p>
+            We bring the right people together to challenge established thinking
+            and drive transform in 2024
+          </p>
+        </div>
+        <div className="Card">
+          <div>
+            <LocalPrintshopOutlinedIcon
+              sx={{ color: "#F45115", fontSize: 50 }}
+            />
+          </div>
+          <h1 className="lg:text-2xl xl:text-2xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+            Tax Consultant Service
+          </h1>
+          <p>
+            We bring the right people together to challenge established thinking
+            and drive transform in 2024
+          </p>
+        </div>
+        <div className="Card">
+          <div>
+            <GroupsOutlinedIcon sx={{ color: "#F45115", fontSize: 50 }} />
+          </div>
+          <h1 className="lg:text-2xl xl:text-2xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+            Community Legal Activity
+          </h1>
+          <p>
+            We bring the right people together to challenge established thinking
+            and drive transform in 2024
+          </p>
+        </div>
+        <div className="Card">
+          <div>
+            <AccountBalanceWalletOutlinedIcon
+              sx={{ color: "#F45115", fontSize: 50 }}
+            />
+          </div>
+          <h1 className="lg:text-2xl xl:text-2xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+            Foundation Legal Activity
+          </h1>
+          <p>
+            We bring the right people together to challenge established thinking
+            and drive transform in 2024
+          </p>
+        </div>
+        <div className="Card">
+          <div>
+            <GppGoodOutlinedIcon sx={{ color: "#F45115", fontSize: 50 }} />
+          </div>
+          <h1 className="lg:text-2xl xl:text-2xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+            Corporation Legal Brand
+          </h1>
+          <p>
+            We bring the right people together to challenge established thinking
+            and drive transform in 2024
+          </p>
+        </div>
       </div>
     </div>
   );
