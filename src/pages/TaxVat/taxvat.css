@@ -1,0 +1,45 @@
+.Card-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Card {
+  background-color: #e8edea;
+  position: relative;
+  padding: 50px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 400px;
+  height: 350px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: background-position 0.3s ease, color 0.3s ease;
+}
+
+.Card:hover {
+  background-image: url("../../Assets/legalActivity.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease-in-out;
+  background-position: 0% 100%;
+  color: #464444;
+}
+
+@keyframes background-position {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
