@@ -38,7 +38,7 @@ export const fetchTenderListData = createAsyncThunk(
       params.append("page", page);
     }
     const response = await axios.get(
-      `https://thekkabazar.com/tender/apis/tender/list/?${params.toString()}`
+      `https://product.thekkabazar.com/tender/apis/tender/list/?${params.toString()}`
     );
     const data = response.data;
     return data;
@@ -49,7 +49,7 @@ export const fetchOneTenderData = createAsyncThunk(
   "data/fetchOneTenderData",
   async ({ tenderId }) => {
     const response = await axios.get(
-      `https://thekkabazar.com/tender/apis/tenders/${tenderId}/`
+      `https://product.thekkabazar.com/tender/apis/tenders/${tenderId}/`
     );
     console.log(response);
     const data = response.data;
@@ -59,7 +59,7 @@ export const fetchOneTenderData = createAsyncThunk(
 
 export const savebid = createAsyncThunk("data/savebid", async ({ id }) => {
   const response = await axios.get(
-    `https://thekkabazar.com/tender/apis/tenders/${id}/`
+    `https://product.thekkabazar.com/tender/apis/tenders/${id}/`
   );
   console.log(response);
   const data = response.data;

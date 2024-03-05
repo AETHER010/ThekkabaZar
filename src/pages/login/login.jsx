@@ -5,11 +5,10 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import LoginPic from "../../Assets/loginPic.png";
 import LockIcon from "@mui/icons-material/Lock";
 import Button from "@mui/material/Button";
-
 import { login } from "../../reducers/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import "./login.css";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -25,11 +24,7 @@ const Login = () => {
     if (isAuthenticated) {
       navigate("/");
     }
-
-    if (error) {
-      toast.error("login failed. Please check your credentials", error);
-    }
-  }, [dispatch, isAuthenticated, error]);
+  }, [dispatch, isAuthenticated, navigate]);
 
   const handleLogin = () => {
     const username = usernameRef.current.value;
@@ -39,18 +34,15 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center h-[80vh] mt-9 p-3 xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col">
-      <div className="flex flex-col items-center m-5 p-5 ">
+    <div className="login-container flex justify-center items-center h-[88vh] p-3 xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col">
+      <div className="glassmorphism-login flex flex-col items-center m-5 p-5 sm:w-full xs:w-full md:w-full">
         <h1 className="text-black font-extrabold lg:text-2xl font-popins md:text-xl sm:text-sm">
           LOGIN
         </h1>
         <p className="font-popins lg:text-sm md:text-sm sm:text-sm">
           Login to continue to access all features
         </p>
-        <Box
-          className="bg-slateblue rounded-lg p-2"
-          sx={{ display: "flex", alignItems: "flex-end", my: 2 }}
-        >
+        <Box className="glassmorphism-input" sx={{ my: 2 }}>
           <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
           <TextField
             className="lg:w-80 md:w-64 sm:w-52"
@@ -63,10 +55,7 @@ const Login = () => {
             inputRef={usernameRef}
           />
         </Box>
-        <Box
-          className="bg-slateblue rounded-lg p-2"
-          sx={{ display: "flex", alignItems: "flex-end", my: 2 }}
-        >
+        <Box className="glassmorphism-input" sx={{ my: 2 }}>
           <LockIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
           <TextField
             className="lg:w-80 md:w-64 sm:w-52"
@@ -81,15 +70,12 @@ const Login = () => {
           />
         </Box>
         <Button
-          className="rounded-lg p-2 bg-main shadow-lg"
+          className="glassmorphism-button"
           variant="contained"
           onClick={handleLogin}
         >
           Login Now
         </Button>
-      </div>
-      <div className="flex justify-center">
-        <img src={LoginPic} alt="" className="w-96 h-96" />
       </div>
     </div>
   );
