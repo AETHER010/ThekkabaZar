@@ -7,7 +7,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import Button from "@mui/material/Button";
 import { login } from "../../reducers/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import { toast } from "react-toastify";
 
@@ -76,6 +76,15 @@ const Login = () => {
         >
           Login Now
         </Button>
+        <p className="mt-5 text-lg">
+          New here?{" "}
+          <Link
+            to="/register"
+            className="text-red-500 text-lg cursor-pointer hover:underline font-bold"
+          >
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

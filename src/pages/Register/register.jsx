@@ -8,6 +8,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
+import "./register.css";
+
 const RegisterForm = () => {
   const [activeTab, setActiveTab] = useState("personal");
   const [username, setUsername] = useState("");
@@ -77,8 +79,8 @@ const RegisterForm = () => {
   // };
 
   return (
-    <div className="container mx-auto  my-8 border p-2">
-      <div className="flex items-center mb-3 p-5">
+    <div className="register-container">
+      {/* <div className="flex items-center mb-3 p-5">
         <h1
           className={`cursor-pointer p-3 text-2xl${
             activeTab === "personal" ? "" : ""
@@ -97,140 +99,133 @@ const RegisterForm = () => {
         >
           Organization Details
         </h2> */}
-      </div>
+      {/* </div> */}
 
-      <div className="border-b-2"></div>
+      {/* <div className="border-b-2"></div> */}
 
-      {activeTab === "personal" && (
-        <div>
-          <form className="flex flex-wrap lg:flex-col md:flex-col sm:flex-col mt-4">
-            <div className="flex justify-between lg:flex-row md:flex-row sm:flex-col">
-              <div className="mr-4 p-2 flex flex-col w-full">
-                <label className="text-lg" htmlFor="fullName">
-                  Full Name<span className="text-red-600"></span>:
-                </label>
-                <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  placeholder="Ram Thapa"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                />
-              </div>
-
-              <div className="mr-4 p-2 flex flex-col  w-full">
-                <label className="text-lg" htmlFor="username">
-                  User Name<span className="text-red-600"></span>:
-                </label>
-                <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
-                  type="text"
-                  id="username"
-                  name="username"
-                  placeholder="ramthapa"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="flex lg:flex-row md:flex-row sm:flex-col">
-              <div className="mr-4 p-2 flex flex-col  w-full">
-                <label className="text-lg" htmlFor="email">
-                  Email Address<span className="text-red-600"></span>:
-                </label>
-                <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-12 w-[15rem] rounded-lg border border-gray-300"
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="ram.Thapa@gmail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="mr-4 p-2 flex flex-col  w-full">
-                <label className="text-lg" htmlFor="contact">
-                  Contact Number:
-                </label>
-                <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
-                  type="text"
-                  id="contact"
-                  name="contact"
-                  placeholder="9876565656"
-                  value={contactNumber}
-                  onChange={(e) => setContactNumber(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="flex lg:flex-row md:flex-row sm:flex-col">
-              <div className="mr-4 p-2 flex flex-col  w-full">
-                <label className="text-lg" htmlFor="password">
-                  Password<span className="text-red-600"></span>:
-                </label>
-                <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="*********"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="mr-4 p-2 flex flex-col  w-full">
-                <label className="text-lg" htmlFor="confirmpassword">
-                  Confirm Password<span className="text-red-600"></span>:
-                </label>
-                <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
-                  type="password"
-                  id="confirmpassword"
-                  name="confirmpassword"
-                  placeholder="*********"
-                  value={confirmpassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </div>
-              <div className="mr-4 p-2 flex flex-col w-full">
-                <label className="text-lg" htmlFor="companyName">
-                  Company Name<span className="text-red-600"></span>:
-                </label>
-                <input
-                  className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
-                  type="text"
-                  id="companyName"
-                  name="companyName"
-                  placeholder="Ram Thapa"
-                  value={company}
-                  onChange={(e) => setCompany(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="mr-4 p-2 flex flex-col">
-              <label className="text-lg" htmlFor="companyName">
-                Company Name<span className="text-red-600">*</span>:
+      <div className="register-form xs:w-full sm:w-full">
+        <h1 className="cursor-pointer text-2xl font-popins font-bold">
+          Personal Details
+        </h1>
+        <div className="border-b-2 border-slate-900 mt-3 w-full"></div>
+        <form className="flex flex-wrap xl:flex-col lg:flex-col md:flex-col sm:flex-col mt-4">
+          <div className="flex justify-between xl:flex-row lg:flex-row md:flex-col xs:flex-col sm:flex-col">
+            <div className="mr-4 p-2 flex flex-col w-full">
+              <label className="text-lg" htmlFor="fullName">
+                Full Name<span className="text-red-600"></span>:
               </label>
               <input
-                className="bg-[#eaeaea] mt-2 p-2 h-14 rounded-lg border border-gray-300"
+                className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Ram Thapa"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
+            </div>
+
+            <div className="mr-4 p-2 flex flex-col  w-full">
+              <label className="text-lg" htmlFor="username">
+                User Name<span className="text-red-600"></span>:
+              </label>
+              <input
+                className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
+                type="text"
+                id="username"
+                name="username"
+                placeholder="ramthapa"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col">
+            <div className="mr-4 p-2 flex flex-col  w-full">
+              <label className="text-lg" htmlFor="email">
+                Email Address<span className="text-red-600"></span>:
+              </label>
+              <input
+                className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
+                type="text"
+                id="email"
+                name="email"
+                placeholder="ram.Thapa@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="mr-4 p-2 flex flex-col  w-full">
+              <label className="text-lg" htmlFor="contact">
+                Contact Number:
+              </label>
+              <input
+                className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
+                type="text"
+                id="contact"
+                name="contact"
+                placeholder="9876565656"
+                value={contactNumber}
+                onChange={(e) => setContactNumber(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col">
+            <div className="mr-4 p-2 flex flex-col  w-full">
+              <label className="text-lg" htmlFor="password">
+                Password<span className="text-red-600"></span>:
+              </label>
+              <input
+                className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="*********"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="mr-4 p-2 flex flex-col  w-full">
+              <label className="text-lg" htmlFor="confirmpassword">
+                Confirm Password<span className="text-red-600"></span>:
+              </label>
+              <input
+                className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
+                type="password"
+                id="confirmpassword"
+                name="confirmpassword"
+                placeholder="*********"
+                value={confirmpassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+            <div className="mr-4 p-2 flex flex-col w-full">
+              <label className="text-lg" htmlFor="companyName">
+                Company Name<span className="text-red-600"></span>:
+              </label>
+              <input
+                className="bg-[#eaeaea] mt-2 p-2 h-12 rounded-lg border border-gray-300"
                 type="text"
                 id="companyName"
                 name="companyName"
-                placeholder="XYZ..."
+                placeholder="Ram Thapa"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
               />
             </div>
-            <div className="mt-6 flex justify-center items-center">
-              <Button variant="contained" onClick={handleSubmit}>
-                Submit
-              </Button>
-            </div>
-          </form>
-        </div>
-      )}
+          </div>
+
+          <div className="mt-6 flex justify-center items-center">
+            <Button
+              variant="contained"
+              sx={{ height: 50, width: 150 }}
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
+          </div>
+        </form>
+      </div>
 
       {/* {activeTab === "organization" && (
         <div>

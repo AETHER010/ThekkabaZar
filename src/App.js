@@ -59,7 +59,7 @@ function App() {
               <Route path="/taxvat" element={<Taxvat />} />
               <Route path="/login" element={<Login />} />
               <Route path="/details/:id" element={<DetailPage />} />
-              <Route path="/aboutus" element={<AboutUs />} />
+              {/* <Route path="/aboutus" element={<AboutUs />} /> */}
               <Route path="/register" element={<Register />} />
               {/* <PrivateRoute path="/profile" element={<Profile />} /> */}
               {access_token ? (

@@ -4,7 +4,7 @@
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 40px;
   margin-bottom: 10px;
 }
 
@@ -19,7 +19,24 @@
   height: 350px;
   border-radius: 30px;
   overflow: hidden;
-  transition: background-position 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.Card:hover .overlay {
+  height: 100%;
+  z-index: -1;
 }
 
 .Card:hover {
@@ -27,9 +44,220 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  transition: background-image 0.3s ease-in-out;
-  background-position: 0% 100%;
-  color: #464444;
+  transition: background-image 0.3s ease, transform 0.3s ease;
+  transform: scale(1.03);
+  /* color: #ffffff; */
+}
+
+.Card:hover .items-container {
+  opacity: 100%;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.Card2 {
+  background-color: #e8edea;
+  position: relative;
+  padding: 50px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 400px;
+  height: 350px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.overlay2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.Card2:hover .overlay2 {
+  height: 100%;
+  z-index: -1;
+}
+
+.Card2:hover {
+  background-image: url("../../Assets/partnerShipImage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+  transform: scale(1.03);
+  color: #ffffff;
+}
+
+.Card3 {
+  background-color: #e8edea;
+  position: relative;
+  padding: 50px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 400px;
+  height: 350px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.Card3:hover {
+  background-image: url("../../Assets/taxColsulate.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+  transform: scale(1.03);
+  color: #ffffff;
+}
+
+.overlay3 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.Card3:hover .overlay3 {
+  height: 100%;
+  z-index: -1;
+}
+
+.Card4 {
+  background-color: #e8edea;
+  position: relative;
+  padding: 50px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 400px;
+  height: 350px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.Card4:hover {
+  background-image: url("../../Assets/communitylegalActivity.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+  transform: scale(1.03);
+  color: #ffffff;
+}
+
+.overlay4 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.Card4:hover .overlay4 {
+  height: 100%;
+  z-index: -1;
+}
+
+.Card5 {
+  background-color: #e8edea;
+  position: relative;
+  padding: 50px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 400px;
+  height: 350px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.Card5:hover {
+  background-image: url("../../Assets/foundation.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+  transform: scale(1.03);
+  color: #ffffff;
+}
+
+.overlay5 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.Card5:hover .overlay5 {
+  height: 100%;
+  z-index: -1;
+}
+
+.Card6 {
+  background-color: #e8edea;
+  position: relative;
+  padding: 50px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 400px;
+  height: 350px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.Card6:hover {
+  background-image: url("../../Assets/carporate.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+  transform: scale(1.03);
+  color: #ffffff;
+}
+
+.overlay6 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.Card6:hover .overlay6 {
+  height: 100%;
+  z-index: -1;
 }
 
 @keyframes background-position {
@@ -40,4 +268,45 @@
   100% {
     transform: scale(1.4);
   }
+}
+
+.about-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../Assets/aboutimage.png"); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutCard {
+  position: absolute;
+  bottom: -70px; /* Adjust the negative value to control how much of the card is outside the container */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Adjust background color and opacity */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: Add a box shadow */
+  text-align: center;
+  width: 90%; /* Adjust the width as needed */
+}
+
+.aboutCard::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 15px 15px 15px; /* Adjust the size of the curved edge */
+  border-color: transparent transparent rgba(255, 255, 255, 0.8) transparent; /* Match the background color */
 }

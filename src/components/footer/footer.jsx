@@ -49,7 +49,7 @@ export default function Footer() {
           </Link>
 
           <Link
-            to="/aboutus"
+            to="/bazar"
             className="text-white mt-3 mb-3"
             style={{
               textDecoration: "none",
@@ -59,10 +59,53 @@ export default function Footer() {
             onMouseOver={(e) => (e.target.style.color = "black")}
             onMouseOut={(e) => (e.target.style.color = "white")}
           >
-            Our Services
+            Bazar
           </Link>
 
-          <p
+          <Link
+            to="/privateworks"
+            className="text-white mt-3 mb-3"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              transition: "color 0.3s",
+            }}
+            onMouseOver={(e) => (e.target.style.color = "black")}
+            onMouseOut={(e) => (e.target.style.color = "white")}
+          >
+            Private Works
+          </Link>
+
+          <Link
+            to="/results"
+            className="text-white mt-3 mb-3"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              transition: "color 0.3s",
+            }}
+            onMouseOver={(e) => (e.target.style.color = "black")}
+            onMouseOut={(e) => (e.target.style.color = "white")}
+          >
+            Results
+          </Link>
+
+          <Link
+            to="/pricing"
+            className="text-white mt-3 mb-3"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              transition: "color 0.3s",
+            }}
+            onMouseOver={(e) => (e.target.style.color = "black")}
+            onMouseOut={(e) => (e.target.style.color = "white")}
+          >
+            Pricing
+          </Link>
+
+          <Link
+            to="/taxvat"
             className="text-white mt-3 mb-3"
             style={{
               textDecoration: "none",
@@ -73,7 +116,7 @@ export default function Footer() {
             onMouseOut={(e) => (e.target.style.color = "white")}
           >
             Terms & Conditions
-          </p>
+          </Link>
         </div>
         <div className="flex flex-col items-start m-5 p-5 ">
           <h1 className="text-lg text-[#E7600D] ">Our Services</h1>

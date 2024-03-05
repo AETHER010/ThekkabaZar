@@ -28,7 +28,6 @@ const ResultDetailpage = () => {
   const items = one;
 
   const handleDownloadBrochure = () => {
-    // Get the HTML content of the title and description
     const htmlContent = `
     <h1 style="font-size: 28px; font-weight: bold;">${items.title}</h1>
     <p>${items.description}</p>
@@ -37,12 +36,8 @@ const ResultDetailpage = () => {
     <img>src=${items.image}</img>
   `;
 
-    // Create a new HTML element with the content
     const pdfContainer = document.createElement("div");
     pdfContainer.innerHTML = htmlContent;
-
-    // Set the styles or classes if needed
-    // pdfContainer.style = "your styles here";
 
     // Generate the PDF
     html2pdf(pdfContainer, {
