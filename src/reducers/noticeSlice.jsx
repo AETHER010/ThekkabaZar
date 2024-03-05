@@ -6,7 +6,7 @@ export const fetchNoticeData = createAsyncThunk(
   "data/fetchNoticeData",
   async () => {
     const response = await axios.get(
-      "https://thekkabazar.com/tender/apis/tender-notice/"
+      "https://product.thekkabazar.com/tender/apis/tender-notice/"
     );
     const data = response.data;
     return data;
