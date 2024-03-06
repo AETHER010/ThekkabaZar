@@ -66,11 +66,23 @@ export const savebid = createAsyncThunk("data/savebid", async ({ id }) => {
   return data;
 });
 
+// export const fetchTableData = createAsyncThunk(
+//   "data/fetchTableData",
+//   async () => {
+//     const response = await axios.get(
+//       "https://product.thekkabazar.com/tender/apis/tender/list/"
+//     );
+//     const data = response.data;
+//     return data;
+//   }
+// );
+
 const cardSlice = createSlice({
   name: "card",
   initialState: {
     data: [],
     one: [],
+    // tableData: [],
     status: "idle",
     error: null,
     message: "",
@@ -111,6 +123,16 @@ const cardSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       });
+    // .addCase(fetchTableData.pending, (state) => {
+    //   state.status = "loading";
+    // })
+    // .addCase(fetchTableData.fulfilled, (state, action) => {
+    //   state.status = "succeeded";
+    //   state.tableData = action.payload;
+    // })
+    // .addCase(fetchTableData.rejected, (state, action) => {
+    //   state.status = "failed";
+    // });
   },
 });
 

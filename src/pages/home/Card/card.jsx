@@ -52,6 +52,7 @@ const CardComponent = () => {
 
   const [filteredBids, setFilteredBids] = useState([]);
   const [isSearch, setIsSearch] = useState(false);
+  const [selectedBid, setSelectedBid] = useState(null);
 
   useEffect(() => {
     dispatch(fetchTenderListData());
@@ -146,6 +147,10 @@ const CardComponent = () => {
   };
   const indexOfLastBid = currentPage * bidsPerPage;
   const indexOfFirstBid = indexOfLastBid - bidsPerPage;
+
+  const handleImageClick = (image) => {
+    setSelectedBid(image);
+  };
 
   // const currentBids = data?.data?.slice(indexOfFirstBid, indexOfLastBid);
 
@@ -361,6 +366,27 @@ const CardComponent = () => {
             <div className="border-b-2 border-[#EA9706] my-3"></div>
 
             <div>
+              {selectedBid && (
+                <div
+                  onClick={() => setSelectedBid(null)}
+                  className="fixed z-10 top-0 left-0 w-full h-full bg-gray-600 bg-opacity-75 flex justify-center items-center"
+                >
+                  <img
+                    src={selectedBid}
+                    alt="Selected Bid"
+                    className="max-w-full max-h-full"
+                  />
+                  {/* <button
+                    className="absolute top-2 right-2 bg-red-500 p-2 text-white rounded"
+                    onClick={() => setSelectedBid(null)}
+                  >
+                    Close
+                  </button> */}
+                </div>
+              )}
+            </div>
+
+            <div>
               {isgrid ? (
                 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xs:grid-cols-1 xl:grid-cols-3 gap-4">
                   {filteredBids && filteredBids.length > 0 ? (
@@ -415,7 +441,10 @@ const CardComponent = () => {
                           </CardContent>
                           <CardActions className="flex flex-row border-t-2 p-3 justify-between mt-auto m-2 bottom-0">
                             <span className="my-5">
-                              <FileCopyIcon sx={{ color: "#0375B7" }} />
+                              <FileCopyIcon
+                                sx={{ color: "#0375B7" }}
+                                onClick={() => setSelectedBid(items.image)}
+                              />
                             </span>
                             <Button
                               className="bg-main m-5 rounded-lg"
@@ -492,7 +521,10 @@ const CardComponent = () => {
                           </CardContent>
                           <CardActions className="w-1/5 flex lg:flex-col xl:flx-col md:flex-col sm:flex-row xs:flex-row sm:justify-center xs:justify-center border-l-2 p-3  xs:w-full sm:w-full">
                             <span className="my-5">
-                              <FileCopyIcon sx={{ color: "#0375B7" }} />
+                              <FileCopyIcon
+                                sx={{ color: "#0375B7" }}
+                                onClick={() => setSelectedBid(items.image)}
+                              />
                             </span>
                             <Button
                               className="bg-main m-5 rounded-lg "

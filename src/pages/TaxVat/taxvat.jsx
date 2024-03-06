@@ -153,9 +153,6 @@ export default function Taxvat() {
       </div>
 
       <div className="Card-container">
-        <h1 className="text-3xl font-popins font-bold absolute">
-          Our Services
-        </h1>
         <div className="Card">
           <div>
             <PlagiarismOutlinedIcon sx={{ color: "#F45115", fontSize: 50 }} />
