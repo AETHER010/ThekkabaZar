@@ -51,7 +51,7 @@ export default function Taxvat() {
 
   return (
     <div className="p-8">
-      <Slider {...settings}>
+      {/* <Slider {...settings}>
         <div className="relative flex">
           <img src={carouselImage} alt="Slider 1" className="w-full h-96" />
 
@@ -98,7 +98,7 @@ export default function Taxvat() {
             </button>
           </div>
         </div>
-      </Slider>
+      </Slider> */}
 
       <div className="flex xl:flex-row lg:flex-row sm:flex-col md:flex-col xs:flex-col mt-[5rem]">
         <motion.div

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { BASE_URL } from './urls.jsx'; // Correct the path if needed
 
 export const getProfile = createAsyncThunk(
   "data/getProfile",
@@ -11,7 +12,7 @@ export const getProfile = createAsyncThunk(
       },
     };
     const response = await axios.get(
-      `https://product.thekkabazar.com/accounts/apis/usermanagement/view/profile/`,
+      `${BASE_URL}/accounts/apis/usermanagement/view/profile/`,
       config
     );
     const data = response.data;
@@ -29,7 +30,7 @@ export const changePassword = createAsyncThunk(
     };
 
     const response = await axios.post(
-      `https://product.thekkabazar.com/accounts/apis/usermanagement/changepassword/`,
+      `${BASE_URL}/accounts/apis/usermanagement/changepassword/`,
       { old_password, new_password, confirm_password },
       config
     );
@@ -57,7 +58,7 @@ export const updateProfile = createAsyncThunk(
     };
 
     const response = await axios.put(
-      `https://product.thekkabazar.com/accounts/apis/usermanagement/update/profile/`,
+      `${BASE_URL}/accounts/apis/usermanagement/update/profile/`,
       {
         fullname,
         company_name,
@@ -83,7 +84,7 @@ export const getUserInterest = createAsyncThunk(
       },
     };
     const response = await axios.get(
-      `https://product.thekkabazar.com/accounts/apis/usermanagement/intrest/`,
+      `${BASE_URL}/accounts/apis/usermanagement/intrest/`,
       config
     );
     return response.data;

@@ -129,11 +129,11 @@ export default function Footer() {
           <p className="text-white mt-3 mb-3">Refund Policy</p>
         </div>
 
-        <div className="flex flex-col border border-slate-400 rounded-lg bg-sky-600 m-5 p-5">
+        <div className="flex flex-col border border-slate-400 rounded-lg bg-sky-600 m-10 p-5 h-[200px] justify-center ">
           <h1 className="text=lg text-white font-popins font-semibold	subpixel-antialiased">
             Subscribe Newsletter
           </h1>
-          <div className="flex items-center m-4 rounded-full bg-white">
+          <div className="flex items-center mt-4 rounded-full bg-white">
             <input
               type="text"
               placeholder="Enter your email address"

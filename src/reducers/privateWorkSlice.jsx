@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { BASE_URL } from './urls.jsx'; // Correct the path if needed
 
 import axios from "axios";
 
@@ -8,7 +9,7 @@ export const postPrivateWork = createAsyncThunk(
   async ({ work, address, company, phone_number, rate }) => {
     try {
       const response = await axios.post(
-        "https://product.thekkabazar.com/subcontract/apis/private-works/",
+        `${BASE_URL}/subcontract/apis/private-works/`,
         { work, address, company, phone_number, rate }
       );
       const data = response.data;
@@ -25,7 +26,7 @@ export const getPrivateWork = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        "https://product.thekkabazar.com/subcontract/apis/private-works/"
+        `${BASE_URL}/subcontract/apis/private-works/`
       );
       const data = response.data;
       // console.log("atasdausdg", data);

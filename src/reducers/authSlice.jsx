@@ -2,12 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { BASE_URL } from './urls.jsx'; // Importing API_URL from your url.jsx file
 
 export const login = createAsyncThunk(
   "data/login",
   async ({ username, password }) => {
     const response = await axios.post(
-      "https://thekkabazar.com/accounts/apis/usermanagement/login/",
+      `${BASE_URL}/accounts/apis/usermanagement/login/`,
       { username, password }
     );
     const data = response.data;
@@ -26,17 +27,18 @@ export const register = createAsyncThunk(
     password2,
     phone_number,
     company_name,
-    // office_name,
-    // office_contact_number,
-    // district,
-    // website_url,
-    // municipality,
-    // providence,
-    // pan_vat_certificate,
-    // company_registration_certificate,
+    office_name,
+    office_contact_number,
+    district,
+    website_url,
+    municipality,
+    providence,
+    pan_vat_certificate,
+    company_registration_certificate,
   }) => {
+    console.log("Register", username, password, email, password2, phone_number);
     const response = await axios.post(
-      "https://thekkabazar.com/accounts/apis/usermanagement/create/user/",
+      `${BASE_URL}/accounts/apis/usermanagement/create/user/`,
       {
         username,
         fullname,
@@ -45,14 +47,14 @@ export const register = createAsyncThunk(
         password2,
         phone_number,
         company_name,
-        // office_name,
-        // office_contact_number,
-        // district,
-        // website_url,
-        // municipality,
-        // providence,
-        // pan_vat_certificate,
-        // company_registration_certificate,
+        office_name,
+        office_contact_number,
+        district,
+        website_url,
+        municipality,
+        providence,
+        pan_vat_certificate,
+        company_registration_certificate,
       }
     );
     const data = response.data;
@@ -63,7 +65,7 @@ export const register = createAsyncThunk(
 
 export const getDistrict = createAsyncThunk("data/getDistrict", async () => {
   const response = await axios.get(
-    "https://thekkabazar.com/accounts/apis/usermanagement/create/user/"
+    `${BASE_URL}/accounts/apis/usermanagement/create/user/`
   );
   const data = response.data;
   return data;

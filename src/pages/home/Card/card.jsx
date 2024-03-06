@@ -392,13 +392,13 @@ const CardComponent = () => {
                   {filteredBids && filteredBids.length > 0 ? (
                     filteredBids?.map((items, index) => (
                       <div key={index} className="m-1">
-                        <Card className="p-2 h-[500px]" sx={{ maxWidth: 348 }}>
+                        <Card className="p-2" sx={{ maxWidth: 348 }}>
                           <CardMedia
                             sx={{ height: 140 }}
                             image={items.image}
                             title="bids"
                           />
-                          <CardContent>
+                          <CardContent >
                             <div className="flex flex-row ">
                               <span>
                                 <CalendarMonthIcon />
@@ -410,7 +410,6 @@ const CardComponent = () => {
                             <Typography
                               className="text-black font-bold font-popins text-md mt-3 overflow-hidden line-clamp-2 cursor-pointer"
                               variant="body2"
-                              onClick={() => navigate(`/details/${items.pk}`)}
                             >
                               {items.title}
                             </Typography>
@@ -434,8 +433,8 @@ const CardComponent = () => {
                                   )}
                                 </div>
                               </div>
-                              <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
-                                {items.source}
+                              <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-full flex justify-center">
+                                <span className="font-bold">Source:</span> &nbsp;{items.source}
                               </div>
                             </div>
                           </CardContent>
@@ -475,7 +474,8 @@ const CardComponent = () => {
                           variant="outlined"
                           className="flex lg:flex-row md:flex-row sm:flex-col xs:flex-col xl:flex-row mt-2 p-2 shadow-lg w-full"
                         >
-                          <CardContent className="w-4/5">
+
+                          <CardContent className="w-4/5" onClick={() => window.open(`/details/${items.pk}`, '_blank')}>
                             <div className="flex flex-row">
                               <span>
                                 <CalendarMonthIcon />
@@ -484,8 +484,8 @@ const CardComponent = () => {
                                 Published Date: {items.published_date}
                               </p>
                             </div>
-                            <div className="flex flex-row mt-2">
-                              <div className="flex flex-row bg-[#F0F7FF] mr-1 p-2 rounded-lg">
+                            <div className="flex flex-row mt-2 ">
+                              <div className="flex flex-row bg-[#F0F7FF] mr-1 p-1.5 rounded-lg">
                                 <span>
                                   <LocationOnIcon />
                                 </span>
@@ -495,20 +495,19 @@ const CardComponent = () => {
                                   </p>
                                 ))}
                               </div>
-                              <div className="flex flex-row bg-[#FFF2F0] mr-1 p-2 rounded-lg">
+                              <div className="flex flex-row bg-[#FFF2F0] mr-1 p-1.5 rounded-lg">
                                 {items?.project_type?.map((project, index) => (
                                   <p className="text-[#FF7A00]" key={index}>
                                     {project.name}
                                   </p>
                                 ))}
                               </div>
-                              <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
-                                {items.source}
+                              <div className="flex flex-row bg-[#E2FBE4] mr-1 p-1.5 rounded-lg">
+                                <span className="font-bold">Source:</span> &nbsp;{items.source}
                               </div>
                             </div>
                             <p
                               className="text-black font-bold font-popins text-md mt-3 cursor-pointer"
-                              onClick={() => navigate(`/details/${items.pk}`)}
                             >
                               {items.title}
                             </p>
@@ -520,7 +519,7 @@ const CardComponent = () => {
                             />
                           </CardContent>
                           <CardActions className="w-1/5 flex lg:flex-col xl:flx-col md:flex-col sm:flex-row xs:flex-row sm:justify-center xs:justify-center border-l-2 p-3  xs:w-full sm:w-full">
-                            <span className="my-5">
+                            <span className="my-5 cursor-pointer">
                               <FileCopyIcon
                                 sx={{ color: "#0375B7" }}
                                 onClick={() => setSelectedBid(items.image)}
@@ -567,7 +566,7 @@ const CardComponent = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

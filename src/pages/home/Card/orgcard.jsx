@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 
 const Orgcard = () => {
   return (
-    <div className=" border p-3 m-3 shadow-lg">
+    <div className=" border p-3 m-3 shadow-lg lg:block sm:hidden">
       <h1 className="text-xl font-popins text-center text-main">
         Organizational Category
       </h1>

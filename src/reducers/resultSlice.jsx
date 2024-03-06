@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from './urls.jsx'; // Correct the path if needed
+
 export const fetchresultData = createAsyncThunk(
   "data/fetchresultData",
   async ({
@@ -36,7 +38,7 @@ export const fetchresultData = createAsyncThunk(
       params.append("page", page);
     }
     const response = await axios.get(
-      `https://product.thekkabazar.com/tender/apis/tender-awarded-to/?${params.toString()}`
+      `${BASE_URL}/tender/apis/tender-awarded-to/?${params.toString()}`
     );
     const data = response.data;
     return data;
@@ -46,7 +48,7 @@ export const fetchOneResultData = createAsyncThunk(
   "data/fetchOneResultData",
   async ({ tenderId }) => {
     const response = await axios.get(
-      `https://product.thekkabazar.com/tender/apis/tender-awarded-to/${tenderId}/`
+      `${BASE_URL}/tender/apis/tender-awarded-to/${tenderId}/`
     );
 
     const data = response.data;

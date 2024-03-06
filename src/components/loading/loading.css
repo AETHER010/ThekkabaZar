@@ -22,7 +22,7 @@
   position: absolute;
   display: block;
   color: blue;
-  animation-duration: 4s;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
