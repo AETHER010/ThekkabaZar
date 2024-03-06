@@ -35,7 +35,7 @@ export default function Footer() {
           <h1 className="text-lg text-[#E7600D] ">Company</h1>
 
           <Link
-            to="/aboutus"
+            to="/taxvat"
             className="text-white mt-3 mb-3"
             style={{
               textDecoration: "none",
@@ -45,7 +45,7 @@ export default function Footer() {
             onMouseOver={(e) => (e.target.style.color = "black")}
             onMouseOut={(e) => (e.target.style.color = "white")}
           >
-            About Us
+            Business Tax and Services
           </Link>
 
           <Link

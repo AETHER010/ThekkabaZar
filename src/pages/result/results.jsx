@@ -134,6 +134,11 @@ export default function Results() {
   const handleImageClick = (image) => {
     setSelectedBid(image);
   };
+
+  const handleTypographyClick = (id) => {
+    const url = `/details/${id}`;
+    window.open(url, "_blank"); // Open the link in a new tab
+  };
   // const bidsToDisplay = isSearch ? filteredBids : currentBids;
   // console.log("ajfbkajsd", bidsToDisplay);
 
@@ -366,7 +371,7 @@ export default function Results() {
             </div>
             <div>
               {isgrid ? (
-                <div className="flex flex-row">
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xs:grid-cols-1 xl:grid-cols-3 gap-4">
                   {filteredBids?.length > 0 ? (
                     filteredBids?.map((items, index) => (
                       <div key={index} className="m-1">
@@ -388,8 +393,11 @@ export default function Results() {
                             <Typography
                               className="text-black font-bold font-popins text-md mt-3 cursor-pointer"
                               variant="body2"
+                              // onClick={() =>
+                              //   navigate(`/resultdetails/${items.tender.pk}`)
+                              // }
                               onClick={() =>
-                                navigate(`/resultdetails/${items.tender.pk}`)
+                                handleTypographyClick(items.tender.pk)
                               }
                             >
                               {items.tender.title}
@@ -518,8 +526,11 @@ export default function Results() {
                             </div>
                             <p
                               className="text-black font-bold font-popins text-md mt-3 cursor-pointer"
+                              // onClick={() =>
+                              //   navigate(`/resultdetails/${items.tender.pk}`)
+                              // }
                               onClick={() =>
-                                navigate(`/resultdetails/${items.tender.pk}`)
+                                handleTypographyClick(items.tender.pk)
                               }
                             >
                               {items.tender.title}

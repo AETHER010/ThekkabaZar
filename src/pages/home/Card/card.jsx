@@ -152,6 +152,11 @@ const CardComponent = () => {
     setSelectedBid(image);
   };
 
+  const handleTypographyClick = (id) => {
+    const url = `/details/${id}`;
+    window.open(url, "_blank"); // Open the link in a new tab
+  };
+
   // const currentBids = data?.data?.slice(indexOfFirstBid, indexOfLastBid);
 
   // const bidsToDisplay = search === "" ? filteredBids : currentBids;
@@ -410,7 +415,8 @@ const CardComponent = () => {
                             <Typography
                               className="text-black font-bold font-popins text-md mt-3 overflow-hidden line-clamp-2 cursor-pointer"
                               variant="body2"
-                              onClick={() => navigate(`/details/${items.pk}`)}
+                              // onClick={() => navigate(`/details/${items.pk}`)}
+                              onClick={() => handleTypographyClick(items.pk)}
                             >
                               {items.title}
                             </Typography>
@@ -510,7 +516,8 @@ const CardComponent = () => {
                             </div>
                             <p
                               className="text-black font-bold font-popins text-md mt-3 cursor-pointer"
-                              onClick={() => navigate(`/details/${items.pk}`)}
+                              // onClick={() => navigate(`/details/${items.pk}`)}
+                              onClick={() => handleTypographyClick(items.pk)}
                             >
                               {items.title}
                             </p>

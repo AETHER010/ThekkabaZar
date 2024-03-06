@@ -26,14 +26,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const access_token = useSelector((state) => state.users.access_token);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <Router>
       <div className="App">
@@ -43,38 +35,38 @@ function App() {
           autoClose={800}
           draggable
         />
-        {loading ? (
+        {/* {loading ? (
           <Loading />
-        ) : (
-          <>
-            <Navbar />
-            <ScrollToTopOnNavigate />
-            <Routes>
+        ) : ( */}
+        <>
+          <Navbar />
+          <ScrollToTopOnNavigate />
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/pricing" element={<Price />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/bazar" element={<Bazar />} />
+            <Route path="/privateWorks" element={<PrivateWorks />} />
+            <Route path="/taxvat" element={<Taxvat />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/details/:id" element={<DetailPage />} />
+            {/* <Route path="/aboutus" element={<AboutUs />} /> */}
+            <Route path="/register" element={<Register />} />
+            {/* <PrivateRoute path="/profile" element={<Profile />} /> */}
+            {access_token ? (
+              <Route path="/profile" element={<Profile />} />
+            ) : (
               <Route path="/" exact element={<Home />} />
-              <Route path="/pricing" element={<Price />} />
-              <Route path="/results" element={<Results />} />
-              <Route path="/bazar" element={<Bazar />} />
-              <Route path="/privateWorks" element={<PrivateWorks />} />
-              <Route path="/taxvat" element={<Taxvat />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/details/:id" element={<DetailPage />} />
-              {/* <Route path="/aboutus" element={<AboutUs />} /> */}
-              <Route path="/register" element={<Register />} />
-              {/* <PrivateRoute path="/profile" element={<Profile />} /> */}
-              {access_token ? (
-                <Route path="/profile" element={<Profile />} />
-              ) : (
-                <Route path="/" exact element={<Home />} />
-              )}
-              <Route
-                path="/bazar/productdetails/:mainCategory"
-                element={<ProductDetails />}
-              />
-              <Route path="/resultdetails/:id" element={<ResultDetailpage />} />
-            </Routes>
-            <Footer />
-          </>
-        )}
+            )}
+            <Route
+              path="/bazar/productdetails/:mainCategory"
+              element={<ProductDetails />}
+            />
+            <Route path="/resultdetails/:id" element={<ResultDetailpage />} />
+          </Routes>
+          <Footer />
+        </>
+        {/* )} */}
       </div>
     </Router>
   );
