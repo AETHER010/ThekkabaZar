@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Form from "../../components/form/resultForm";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -51,11 +50,17 @@ export default function Results() {
 
   const [filteredBids, setFilteredBids] = useState([]);
 
-  const { data, status, error } = useSelector((state) => state.result);
+  const { data, error } = useSelector((state) => state.result);
+
+  const [selectedBid, setSelectedBid] = useState(null);
 
   useEffect(() => {
     dispatch(fetchresultData());
-  }, [dispatch]);
+
+    if (error) {
+      return <div className="text-center font-bold text-red-800">{error}</div>;
+    }
+  }, [dispatch, error]);
 
   useEffect(() => {
     dispatch(fetchDropdownData());
@@ -126,6 +131,9 @@ export default function Results() {
     searchDataList();
   };
 
+  const handleImageClick = (image) => {
+    setSelectedBid(image);
+  };
   // const bidsToDisplay = isSearch ? filteredBids : currentBids;
   // console.log("ajfbkajsd", bidsToDisplay);
 
@@ -337,6 +345,26 @@ export default function Results() {
             </div>
 
             <div>
+              {selectedBid && (
+                <div
+                  onClick={() => setSelectedBid(null)}
+                  className="fixed z-10 top-0 left-0 w-full h-full bg-gray-600 bg-opacity-75 flex justify-center items-center"
+                >
+                  <img
+                    src={selectedBid}
+                    alt="Selected Bid"
+                    className="max-w-full max-h-full"
+                  />
+                  {/* <button
+                    className="absolute top-2 right-2 bg-red-500 p-2 text-white rounded"
+                    onClick={() => setSelectedBid(null)}
+                  >
+                    Close
+                  </button> */}
+                </div>
+              )}
+            </div>
+            <div>
               {isgrid ? (
                 <div className="flex flex-row">
                   {filteredBids?.length > 0 ? (
@@ -397,7 +425,12 @@ export default function Results() {
                             </div>
                             <div className="flex justify-center items-center">
                               <span className="my-5">
-                                <FileCopyIcon sx={{ color: "#0375B7" }} />
+                                <FileCopyIcon
+                                  sx={{ color: "#0375B7" }}
+                                  onClick={() =>
+                                    handleImageClick(items.tender.image)
+                                  }
+                                />
                               </span>
                             </div>
 
@@ -473,7 +506,12 @@ export default function Results() {
                                 </div>
                               </div>
                               <span className="my-5">
-                                <FileCopyIcon sx={{ color: "#0375B7" }} />
+                                <FileCopyIcon
+                                  sx={{ color: "#0375B7" }}
+                                  onClick={() =>
+                                    handleImageClick(items.tender.image)
+                                  }
+                                />
                               </span>
                             </div>
                             <p

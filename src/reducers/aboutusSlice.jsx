@@ -1,26 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { BASE_URL } from "./url.jsx";
 
 export const aboutUsform = createAsyncThunk(
   "data/aboutUsform",
   async ({ name, email, phone_number, subject, message }) => {
     console.log(name, email, phone_number, subject, message);
     const response = await axios.post(
-      "https://thekkabazar.itnepalsolutions.com/thekkabazar/apis/contactus/",
+      `${BASE_URL}/thekkabazar/apis/contactus/`,
       { name, email, phone_number, subject, message }
     );
     const data = response.message;
-    console.log(data);
     return data;
   }
 );
 
 export const aboutUsdata = createAsyncThunk("data/aboutUsdata", async () => {
   try {
-    const response = await axios.get(
-      " https://thekkabazar.itnepalsolutions.com/thekkabazar/apis/aboutus/"
-    );
+    const response = await axios.get(`${BASE_URL}/thekkabazar/apis/aboutus/`);
     const data = response.data;
     return data;
   } catch (error) {

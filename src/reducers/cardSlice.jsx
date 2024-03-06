@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import { BASE_URL } from "./url.jsx"; // Correct the path if needed
 import axios from "axios";
 
 export const fetchTenderListData = createAsyncThunk(
@@ -38,7 +38,7 @@ export const fetchTenderListData = createAsyncThunk(
       params.append("page", page);
     }
     const response = await axios.get(
-      `https://product.thekkabazar.com/tender/apis/tender/list/?${params.toString()}`
+      ` ${BASE_URL}/tender/apis/tender/list/?${params.toString()}`
     );
     const data = response.data;
     return data;
@@ -49,7 +49,7 @@ export const fetchOneTenderData = createAsyncThunk(
   "data/fetchOneTenderData",
   async ({ tenderId }) => {
     const response = await axios.get(
-      `https://product.thekkabazar.com/tender/apis/tenders/${tenderId}/`
+      `   ${BASE_URL}/tender/apis/tenders/${tenderId}/`
     );
     console.log(response);
     const data = response.data;
@@ -58,9 +58,7 @@ export const fetchOneTenderData = createAsyncThunk(
 );
 
 export const savebid = createAsyncThunk("data/savebid", async ({ id }) => {
-  const response = await axios.get(
-    `https://product.thekkabazar.com/tender/apis/tenders/${id}/`
-  );
+  const response = await axios.get(`${BASE_URL}/tender/apis/tenders/${id}/`);
   console.log(response);
   const data = response.data;
   return data;
@@ -70,7 +68,7 @@ export const savebid = createAsyncThunk("data/savebid", async ({ id }) => {
 //   "data/fetchTableData",
 //   async () => {
 //     const response = await axios.get(
-//       "https://product.thekkabazar.com/tender/apis/tender/list/"
+//       "${BASE_URL}/tender/apis/tender/list/"
 //     );
 //     const data = response.data;
 //     return data;

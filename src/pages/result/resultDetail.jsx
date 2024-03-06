@@ -13,7 +13,7 @@ import html2pdf from "html2pdf.js";
 
 const ResultDetailpage = () => {
   const dispatch = useDispatch();
-  const { one, status, error } = useSelector((state) => state.result);
+  const { one, error } = useSelector((state) => state.result);
   const tenderId = useParams();
 
   useEffect(() => {
@@ -23,7 +23,11 @@ const ResultDetailpage = () => {
   useEffect(() => {
     const id = tenderId.id;
     dispatch(fetchOneResultData({ tenderId: id }));
-  }, [dispatch, tenderId]);
+
+    if (error) {
+      return <div className="alert alert-danger">{error}</div>;
+    }
+  }, [dispatch, tenderId, error]);
 
   const items = one;
 
@@ -95,23 +99,61 @@ const ResultDetailpage = () => {
 
         <div className="flex flex-col mt-8">
           <h1 className="text-lg font-bold ">Documents</h1>
-          <div className="flex flex-row justify-center">
-            <img className="w-96 h-96" src={items.image} alt="" />
-            <div className="flex flex-row p-3 justify-center items-center">
-              <Button
-                className="bg-main h-9 m-5 rounded-lg"
-                variant="contained"
-                startIcon={<ArrowDownwardIcon />}
-                onClick={handleDownloadBrochure}
-              >
-                Download Brochure
-              </Button>
-              <Button
-                className="bg-main h-9 m-5 rounded-lg"
-                variant="contained"
-              >
-                Save Bid
-              </Button>
+          <div className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col">
+            <div className="flex flex-col justify-center">
+              <img className="w-96 h-96" src={items.image} alt="" />
+              <div className="flex flex-row p-3 justify-center items-center">
+                <Button
+                  className="bg-main h-9 m-5 rounded-lg"
+                  variant="contained"
+                  startIcon={<ArrowDownwardIcon />}
+                  onClick={handleDownloadBrochure}
+                >
+                  Download Brochure
+                </Button>
+                <Button
+                  className="bg-main h-9 m-5 rounded-lg"
+                  variant="contained"
+                >
+                  Save Bid
+                </Button>
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <table className="table-auto border p-4 w-full rounded-lg">
+                <thead>
+                  <tr className="border-b-2 p-4">
+                    <th className="p-4 font-bold">SN</th>
+                    <th className="p-4 font-bold">Particular Name</th>
+                    <th className="p-4 font-bold">Download</th>
+                  </tr>
+                </thead>
+                <tbody className="p-4">
+                  {one?.tender_files?.map((items, index) => (
+                    <tr
+                      key={index}
+                      className="p-4 text-center"
+                      style={{
+                        background: index % 2 === 0 ? "#dedcdc" : "#ffffff",
+                      }}
+                    >
+                      <td className="p-4 text-sm">{index}</td>
+                      <td className="p-4 text-sm">{items.title}</td>
+                      <td className="p-4 text-sm">
+                        <a
+                          href={items.files}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-orange underline font-bold border p-3 rounded-md cursor-pointer bg-main"
+                        >
+                          Open Link
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

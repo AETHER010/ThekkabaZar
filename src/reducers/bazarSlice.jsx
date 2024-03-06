@@ -1,13 +1,13 @@
-// dataSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createAction } from "@reduxjs/toolkit";
+import { BASE_URL } from "./url.jsx"; // Correct the path if needed
 
 export const fetchbazarData = createAsyncThunk(
   "data/fetchbazarData",
   async () => {
     const response = await axios.get(
-      "https://thekkabazar.com/products/apis/products/category/list/"
+      ` ${BASE_URL}/products/apis/products/category/list/`
     );
     const data = response.data;
     return data.data;
@@ -20,6 +20,8 @@ export const fetchproductListData = createAsyncThunk(
   "data/fetchproductListData",
   async ({ mainCategory, businessType, location, subcategory }) => {
     const params = new URLSearchParams();
+
+    console.log({ mainCategory, businessType, location, subcategory });
 
     if (mainCategory) {
       params.append("maincategory", mainCategory);
@@ -38,7 +40,7 @@ export const fetchproductListData = createAsyncThunk(
     }
 
     const response = await axios.get(
-      `https://thekkabazar.com/products/apis/products/list/?${params.toString()}`
+      `${BASE_URL}/products/apis/products/list/?${params.toString()}`
     );
 
     const data = response.data;

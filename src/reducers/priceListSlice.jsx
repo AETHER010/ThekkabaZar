@@ -1,13 +1,12 @@
 // dataSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from "./url.jsx"; //
 
 export const fetchPriceData = createAsyncThunk(
   "data/fetchPriceData",
   async () => {
-    const response = await axios.get(
-      "https://product.thekkabazar.com/thekkabazar/apis/pricing/"
-    );
+    const response = await axios.get(`${BASE_URL}/thekkabazar/apis/pricing/`);
     const data = response.data;
     console.log(data);
     return data;

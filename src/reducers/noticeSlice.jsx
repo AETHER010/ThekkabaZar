@@ -1,13 +1,12 @@
 // dataSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from "./url.jsx"; //
 
 export const fetchNoticeData = createAsyncThunk(
   "data/fetchNoticeData",
   async () => {
-    const response = await axios.get(
-      "https://product.thekkabazar.com/tender/apis/tender-notice/"
-    );
+    const response = await axios.get(`${BASE_URL}/tender/apis/tender-notice/`);
     const data = response.data;
     return data;
   }

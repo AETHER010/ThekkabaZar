@@ -2,12 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { BASE_URL } from "./url.jsx"; // Importing API_URL from your url.jsx file
 
 export const login = createAsyncThunk(
   "data/login",
   async ({ username, password }) => {
     const response = await axios.post(
-      "https://thekkabazar.com/accounts/apis/usermanagement/login/",
+      `${BASE_URL}/accounts/apis/usermanagement/login/`,
       { username, password }
     );
     const data = response.data;
@@ -36,7 +37,7 @@ export const register = createAsyncThunk(
     // company_registration_certificate,
   }) => {
     const response = await axios.post(
-      "https://thekkabazar.com/accounts/apis/usermanagement/create/user/",
+      `${BASE_URL}/accounts/apis/usermanagement/create/user/`,
       {
         username,
         fullname,
@@ -63,7 +64,7 @@ export const register = createAsyncThunk(
 
 export const getDistrict = createAsyncThunk("data/getDistrict", async () => {
   const response = await axios.get(
-    "https://thekkabazar.com/accounts/apis/usermanagement/create/user/"
+    `${BASE_URL}/accounts/apis/usermanagement/create/user/`
   );
   const data = response.data;
   return data;
@@ -116,11 +117,13 @@ const authSlice = createSlice({
       })
       .addCase(register.fulfilled, (state, action) => {
         state.status = "succeeded";
+        console.log("kjsdbvkjsdbglaj");
         toast.success("User Created successful");
       })
       .addCase(register.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+        toast.error("User Creation Failed", state.error);
       })
       .addCase(getDistrict.pending, (state) => {
         state.status = "loading";

@@ -13,14 +13,18 @@ import html2pdf from "html2pdf.js";
 
 const Detailpage = () => {
   const dispatch = useDispatch();
-  const { one, status, error } = useSelector((state) => state.card);
+  const { one, error } = useSelector((state) => state.card);
   const tenderId = useParams();
 
   useEffect(() => {
     const id = tenderId.id;
     dispatch(fetchOneTenderData({ tenderId: id }));
     // dispatch(fetchTableData());
-  }, [dispatch, tenderId]);
+
+    if (error) {
+      return <div className="alert alert-danger">{error}</div>;
+    }
+  }, [dispatch, tenderId, error]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

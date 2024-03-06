@@ -36,7 +36,7 @@ import { toast } from "react-toastify";
 const CardComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { data, status, error, message } = useSelector((state) => state.card);
+  const { data, status, error } = useSelector((state) => state.card);
   const [isgrid, setIsGrid] = useState(false);
   const { dropdowndata } = useSelector((state) => state.dropdetails);
   const [organization, setOrganization] = useState("");
@@ -265,8 +265,8 @@ const CardComponent = () => {
             </FormControl>
           </Box>
           <Box
-            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
-            sx={{ minWidth: 120, height: "3rem" }}
+            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2 mb-2"
+            sx={{ minWidth: 120 }}
           >
             <FormControl fullWidth className="bg-white">
               <TextField
@@ -285,7 +285,7 @@ const CardComponent = () => {
           </Box>
 
           <Box
-            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
+            className="w-full md:w-80 lg:w-56 xl:w-56"
             sx={{ minWidth: 120 }}
           >
             <FormControl fullWidth className="bg-white">
@@ -443,7 +443,7 @@ const CardComponent = () => {
                             <span className="my-5">
                               <FileCopyIcon
                                 sx={{ color: "#0375B7" }}
-                                onClick={() => setSelectedBid(items.image)}
+                                onClick={() => handleImageClick(items.image)}
                               />
                             </span>
                             <Button
@@ -484,7 +484,7 @@ const CardComponent = () => {
                                 Published Date: {items.published_date}
                               </p>
                             </div>
-                            <div className="flex flex-row mt-2">
+                            <div className="flex flex-row flex-1 flex-wrap mt-2">
                               <div className="flex flex-row bg-[#F0F7FF] mr-1 p-2 rounded-lg">
                                 <span>
                                   <LocationOnIcon />
@@ -523,7 +523,7 @@ const CardComponent = () => {
                             <span className="my-5">
                               <FileCopyIcon
                                 sx={{ color: "#0375B7" }}
-                                onClick={() => setSelectedBid(items.image)}
+                                onClick={() => handleImageClick(items.image)}
                               />
                             </span>
                             <Button

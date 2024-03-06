@@ -12,7 +12,6 @@ import PrivateWorks from "./pages/privateWorks/privatework";
 import Taxvat from "./pages/TaxVat/taxvat";
 import Login from "./pages/login/login";
 import DetailPage from "./pages/home/detailpage";
-import AboutUs from "./pages/AboutUs/aboutUs";
 import Profile from "./pages/profile/profile";
 import Register from "./pages/Register/register";
 import ResultDetailpage from "./pages/result/resultDetail";

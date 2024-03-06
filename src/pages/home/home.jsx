@@ -24,52 +24,72 @@ const Home = () => {
 
   return (
     <div>
-      <div className="p-8">
+      <div className="xl:p-8 lg:p-8 md:p-0 sm:p-0 xs:p-0">
         <Slider {...settings}>
           <div className="relative flex">
-            <img src={carouselImage} alt="Slider 1" className="w-full h-96" />
+            <img
+              src={carouselImage}
+              alt="Slider 1"
+              className="w-full sm:h-80 xl:h-96 lg:h-96 md:h-96 xs:h-80"
+            />
 
-            <div className="absolute lg:top-16 xl:top-16 md:top-2 sm:top-2 xs:top-2 right-0 text-white text-center w-1/2 p-8">
-              <h2 className="lg:text-4xl xl:text-4xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+            <div className="absolute lg:top-16 xl:top-16 md:top-16 sm:top-10 xs:top-10 right-0 flex flex-col justify-center text-white text-center w-1/2 p-8 xs:w-full sm:w-full">
+              <h2 className="lg:text-4xl xl:text-4xl md:text-md sm:text-md xs:text-sm font-bold mb-4">
                 Unlock Opportunities with Winning Bids!
               </h2>
-              <p>
+              <p className="text-sm">
                 Expert bid management for guaranteed results. Elevate your
                 business through successful tenders and projects.
               </p>
-              <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
-                Our Services
-              </button>
+              <div className="flex justify-center">
+                <button className="bg-[#F45115] w-1/3 text-white md:text-sm xs:text-sm sm:text-sm px-4 py-2 rounded mt-2">
+                  Our Services
+                </button>
+              </div>
             </div>
           </div>
-          <div className="relative">
-            <img src={carouselImage} alt="Slider2" className="w-full h-96 " />
-            <div className="absolute lg:top-16 xl:top-16 md:top-2 sm:top-2 xs:top-2 right-0 text-white text-center w-1/2 p-8">
-              <h2 className="lg:text-4xl xl:text-4xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+          <div className="relative flex">
+            <img
+              src={carouselImage}
+              alt="Slider 1"
+              className="w-full sm:h-80 xl:h-96 lg:h-96 md:h-96 xs:h-80"
+            />
+
+            <div className="absolute lg:top-16 xl:top-16 md:top-16 sm:top-10 xs:top-10 right-0 flex flex-col justify-center text-white text-center w-1/2 p-8 xs:w-full sm:w-full">
+              <h2 className="lg:text-4xl xl:text-4xl md:text-md sm:text-md xs:text-sm font-bold mb-4">
                 Unlock Opportunities with Winning Bids!
               </h2>
-              <p>
+              <p className="text-sm">
                 Expert bid management for guaranteed results. Elevate your
                 business through successful tenders and projects.
               </p>
-              <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
-                Our Services
-              </button>
+              <div className="flex justify-center">
+                <button className="bg-[#F45115] w-1/3 text-white md:text-sm xs:text-sm sm:text-sm px-4 py-2 rounded mt-2">
+                  Our Services
+                </button>
+              </div>
             </div>
           </div>
-          <div className="relative">
-            <img src={carouselImage} alt="Slider2" className="w-full h-96 " />
-            <div className="absolute lg:top-16 xl:top-16 md:top-2 sm:top-2 xs:top-2 right-0 text-white text-center w-1/2 p-8">
-              <h2 className="lg:text-4xl xl:text-4xl md:text-lg sm:text-lg xs:text-md font-bold mb-4">
+          <div className="relative flex">
+            <img
+              src={carouselImage}
+              alt="Slider 1"
+              className="w-full sm:h-80 xl:h-96 lg:h-96 md:h-96 xs:h-80"
+            />
+
+            <div className="absolute lg:top-16 xl:top-16 md:top-16 sm:top-10 xs:top-10 right-0 flex flex-col justify-center text-white text-center w-1/2 p-8 xs:w-full sm:w-full">
+              <h2 className="lg:text-4xl xl:text-4xl md:text-md sm:text-md xs:text-sm font-bold mb-4">
                 Unlock Opportunities with Winning Bids!
               </h2>
-              <p>
+              <p className="text-sm">
                 Expert bid management for guaranteed results. Elevate your
                 business through successful tenders and projects.
               </p>
-              <button className="bg-[#F45115] text-white px-4 py-2 rounded mt-2">
-                Our Services
-              </button>
+              <div className="flex justify-center">
+                <button className="bg-[#F45115] w-1/3 text-white md:text-sm xs:text-sm sm:text-sm px-4 py-2 rounded mt-2">
+                  Our Services
+                </button>
+              </div>
             </div>
           </div>
         </Slider>
