@@ -83,7 +83,7 @@ const ResultDetailpage = () => {
             ))}
           </div>
           <div className="flex flex-row bg-[#E2FBE4] mr-3 p-2 rounded-lg">
-            {items.source}
+            <span className="font-bold">Source:</span> {items.source}
           </div>
         </div>
 
@@ -160,7 +160,9 @@ const ResultDetailpage = () => {
       </div>
 
       <div className="lg:w-1/4 xl:w-1/4 md:w-full sm:w-full xs:w-full">
-        <OrgCard />
+        <div className="sm:hidden xs:hidden">
+          <OrgCard />
+        </div>
         <Noticecard />
       </div>
     </div>

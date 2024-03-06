@@ -285,7 +285,7 @@ const CardComponent = () => {
           </Box>
 
           <Box
-            className="w-full md:w-80 lg:w-56 xl:w-56"
+            className="w-full md:w-80 lg:w-56 xl:w-56 mt-2"
             sx={{ minWidth: 120 }}
           >
             <FormControl fullWidth className="bg-white">
@@ -392,7 +392,7 @@ const CardComponent = () => {
                   {filteredBids && filteredBids.length > 0 ? (
                     filteredBids?.map((items, index) => (
                       <div key={index} className="m-1">
-                        <Card className="p-2 h-[500px]" sx={{ maxWidth: 348 }}>
+                        <Card className="p-2" sx={{ maxWidth: 348 }}>
                           <CardMedia
                             sx={{ height: 140 }}
                             image={items.image}
@@ -435,6 +435,7 @@ const CardComponent = () => {
                                 </div>
                               </div>
                               <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
+                                <span className="font-bold">Source:</span>
                                 {items.source}
                               </div>
                             </div>
@@ -503,6 +504,7 @@ const CardComponent = () => {
                                 ))}
                               </div>
                               <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
+                                <span className="font-bold">Source: </span>{" "}
                                 {items.source}
                               </div>
                             </div>
@@ -561,8 +563,9 @@ const CardComponent = () => {
           </div>
 
           <div className="lg:w-1/4 md:w-full sm:w-full xs:w-full xl:w-1/4">
-            <Orgcard />
-
+            <div className="sm:hidden xs:hidden">
+              <Orgcard />
+            </div>
             <Noticecard />
           </div>
         </div>

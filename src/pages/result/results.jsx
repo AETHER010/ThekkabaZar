@@ -420,6 +420,7 @@ export default function Results() {
                                 </div>
                               </div>
                               <div className="bg-[#E2FBE4] mr-1 p-2 mt-2 rounded-lg w-40 flex justify-center">
+                                <span className="font-bold">Source:</span>{" "}
                                 {items.tender.source}
                               </div>
                             </div>
@@ -502,6 +503,7 @@ export default function Results() {
                                 </div>
 
                                 <div className="flex flex-row bg-[#E2FBE4] mr-1 p-2 rounded-lg">
+                                  <span className="font-bold">Source:</span>{" "}
                                   {items.tender.source}
                                 </div>
                               </div>
@@ -569,8 +571,9 @@ export default function Results() {
           </div>
 
           <div className="lg:w-1/4 xl:w-1/4 md:w-full sm:w-full xs:-full">
-            <Orgcard />
-
+            <div className="sm:hidden xs:hidden">
+              <Orgcard />
+            </div>
             <Noticecard />
           </div>
         </div>

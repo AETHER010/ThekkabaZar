@@ -159,7 +159,10 @@ const Detailpage = () => {
       </div>
 
       <div className="lg:w-1/4 xl:w-1/4 md:w-full sm:w-full xs:w-full">
-        <OrgCard />
+        <div className="sm:hidden xs:hidden">
+          <OrgCard />
+        </div>
+
         <Noticecard />
       </div>
     </div>

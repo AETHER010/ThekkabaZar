@@ -12,10 +12,6 @@ const Noticecard = () => {
     dispatch(fetchNoticeData());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log("Noticecard", data);
-  }, []);
-
   return (
     <div className="border mx-3 my-5 p-3 shadow-lg">
       <div className="flex flex-row justify-center">
