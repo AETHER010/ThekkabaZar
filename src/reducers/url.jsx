@@ -3,7 +3,7 @@ let env = "dev";
 
 let BASE_URL;
 
-if (env === "local") {
+if (env === "prod") {
   // Local development server URL
   BASE_URL = "http://127.0.0.1:8000";
 } else if (env === "dev") {
