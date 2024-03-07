@@ -121,12 +121,13 @@ export default function Footer() {
         <div className="flex flex-col items-start m-5 p-5 ">
           <h1 className="text-lg text-[#E7600D] ">Our Services</h1>
 
-          <p className="text-white mt-3 mb-3">Privacy Policy</p>
+          <p className="text-white mt-3 mb-3">कम्पनी दर्ता (प्रा.लि.)</p>
 
-          <p className="text-white mt-3 mb-3">Terms & Services</p>
+          <p className="text-white mt-3 mb-3">घरेलु / वाणिज्य दर्ता</p>
 
-          <p className="text-white mt-3 mb-3">Terms of Use</p>
-          <p className="text-white mt-3 mb-3">Refund Policy</p>
+          <p className="text-white mt-3 mb-3">उद्योग / ट्रेडमार्क दर्ता</p>
+          <p className="text-white mt-3 mb-3">बडा / पालिका दर्ता</p>
+          <p className="text-white mt-3 mb-3">प्यान / भ्याट दर्ता</p>
         </div>
 
         <div className="flex flex-col border border-slate-400 rounded-lg bg-sky-600 m-5 p-5">

@@ -49,7 +49,7 @@ export default function Taxvat() {
 
   return (
     <div className="p-8">
-      <Slider {...settings}>
+      {/* <Slider {...settings}>
         <div className="relative flex">
           <img
             src={carouselImage}
@@ -116,9 +116,9 @@ export default function Taxvat() {
             </div>
           </div>
         </div>
-      </Slider>
+      </Slider> */}
 
-      <div className="flex xl:flex-row lg:flex-row sm:flex-col md:flex-col xs:flex-col mt-[5rem]">
+      <div className="flex xl:flex-col lg:flex-col sm:flex-col md:flex-col xs:flex-col mt-[2rem]">
         <motion.div
           variants={{
             hidden: {
@@ -138,7 +138,7 @@ export default function Taxvat() {
           ref={ref}
           className="flex flex-col text-center justify-center p-5"
         >
-          <h1 className="text-3xl font-popins font-bold ">
+          <h1 className="text-3xl font-popins font-bold mb-4 ">
             We avail our multi-valued services
           </h1>
           <p className="text-xl font-popins text-center">
@@ -166,7 +166,7 @@ export default function Taxvat() {
           ref={ref}
           className="flex w-full "
         >
-          <img className="rounded-2xl" src={AboutImage} alt="abyt" />
+          {/* <img className="rounded-2xl" src={AboutImage} alt="abyt" /> */}
         </motion.div>
       </div>
 
@@ -260,11 +260,11 @@ export default function Taxvat() {
 
       <div className="h-[80vh] flex justify-center items-center  mt-[4rem]">
         <div className="about-container">
-          <div>
-            <h1 className="text-3xl font-popins font-bold text-main">
+          <div className="bg-[#F1FAFE] p-3">
+            <h1 className="text-3xl font-popins font-bold text-orange">
               About Us
             </h1>
-            <p className="text-md font-popins text-main">
+            <p className="text-2xl font-popin text-orange font-bold">
               We bring the right people together
             </p>
           </div>

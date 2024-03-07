@@ -279,6 +279,8 @@
   background-position: center;
   display: flex;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+
   align-items: center;
 }
 
