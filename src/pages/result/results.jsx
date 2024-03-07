@@ -128,7 +128,7 @@ export default function Results() {
     }
     setCurrentPage(newPage);
     dispatch(fetchresultData({ page: newPage }));
-    searchDataList();
+    // searchDataList();
   };
 
   const handleImageClick = (image) => {
@@ -572,9 +572,9 @@ export default function Results() {
               )}
               <div className="flex flex-row justify-center mt-7">
                 <Pagination
-                  count={search ? filteredBids.length : data?.total_pages}
+                  count={search ? data.data?.length : data?.total_pages}
                   page={currentPage}
-                  onChange={(page) => handleChangePage(page)}
+                  onChange={(page) => handleChangePage(currentPage + 1)}
                   color="primary"
                 />
               </div>
