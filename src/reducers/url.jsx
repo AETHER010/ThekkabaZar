@@ -1,9 +1,9 @@
 // url.jsx
-let env = "dev";
+let env = "prod";
 
 let BASE_URL;
 
-if (env === "prod") {
+if (env === "local") {
   // Local development server URL
   BASE_URL = "http://127.0.0.1:8000";
 } else if (env === "dev") {
